@@ -6,15 +6,6 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.scss$/,
-        use: [
-          // imports in reverse order
-          'style-loader',
-          'css-loader',
-          'sass-loader',
-        ],
-      },
-      {
         test: /\.js$/,
         exclude: /node_modules/,
         loader: 'babel-loader',
@@ -38,7 +29,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       hash: true,
-      template: 'src/index.html',
+      template: 'public/index.html',
     }),
     new webpack.ProvidePlugin({
         'React':    'react',
