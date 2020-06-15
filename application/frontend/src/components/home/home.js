@@ -1,12 +1,12 @@
-//import '../App/App.scss'
-
 const home = () => {
     return (
-        <center>
-            <div>
-                <h1>Home</h1>
-            </div>
-        </center>
+        <React.Fragment>
+            <center>
+                <div>
+                    <h1>Home</h1>
+                </div>
+            </center>
+        </React.Fragment>
     );
   };
   

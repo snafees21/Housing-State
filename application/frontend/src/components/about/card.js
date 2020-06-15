@@ -1,15 +1,14 @@
-const card = ({ img }) => {
+import '../../sass/App.scss'
+
+const card = ({ img, name, page }) => {
     return(
-        <div className='card text-center'>
+        <div className='card mt-5 text-center shadow'>
             <div className='overflow'>
                 <img src={img} className='card-img-top'/>
             </div>
-            <div className='card-body text-dark'>
-                <h4 className='card-title'>Card Title</h4>
-                <p className='card-text text-secondary'>
-                    TODO: text goes here
-                </p>
-                <a href='#' className='btn btn-outline-success'>
+            <div className='card-body p-3 text-dark'>
+                <h4 className='card-title'>{name}</h4>
+                <a href={page} className='btn btn-outline-success stretched-link'>
                     About Me
                 </a>
             </div>

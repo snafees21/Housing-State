@@ -1,21 +1,31 @@
 import Card from './card';
 
-import imgGarret from '../../assets/imgs/garrett.png';
+// images should be square (nxn pixels)
+import imgGarrett from '../../assets/imgs/garrett.png';
+// import imgBuu from '../../assets/imgs/garrett.png';
+// import imgNick from '../../assets/imgs/garrett.png';
+// import imgSarah from '../../assets/imgs/garrett.png';
+// import imgKamelia from '../../assets/imgs/garrett.png';
+// import imgMantahsa from '../../assets/imgs/garrett.png';
+
 
 
 const about = () => {
     return (
       <React.Fragment>
-        <div className='container-fluid d-flex justify-content-center'>
-            <div className='row'>
-                <div className='col-md-4'>
-                    <Card img={imgGarret}/>
+        <div className='card-deck align-item-center justify-content-center'>
+            <div className='row pt-5'>
+                <div className='col-md-4 mx-auto'>
+                    <Card img={imgGarrett} name={'Garrett Johnson'} page={'/garrett'}/>
+                    <Card img={imgGarrett} name={'Your Name'} page={'/name'}/>
                 </div>
-                <div className='col-md-4'>
-                    <Card img={imgGarret}/>
+                <div className='col-md-4 mx-auto'>
+                    <Card img={imgGarrett} name={'Your Name'} page={'/name'}/>
+                    <Card img={imgGarrett} name={'Your Name'} page={'/name'}/>
                 </div>
-                <div className='col-md-4'>
-                    <Card img={imgGarret}/>
+                <div className='col-md-4 mx-auto'>
+                    <Card img={imgGarrett} name={'Your Name'} page={'/name'}/>
+                    <Card img={imgGarrett} name={'Your Name'} page={'/name'}/>
                 </div>
             </div>
         </div>
