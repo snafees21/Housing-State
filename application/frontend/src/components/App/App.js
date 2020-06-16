@@ -8,27 +8,22 @@ import { Switch, Route } from 'react-router-dom';
 const App = ({ }) => {
     return (
         <React.Fragment>
-            <div>
-                <header>
-                    <Navbar/>
-                </header>
-                <div>
-                    <Switch>
-                        <Route path="/about">
-                            <About />
-                        </Route>
-                  
-                <Route path="/kamelia">
-                    <Kamelia />
+            <Navbar/>
+            
+            <Switch>
+                <Route path="/about">
+                    <About />
                 </Route>
-        
-                <Route exact path="/">
+
+                <Route path="/kamelia">
+                            <Kamelia />
+                        </Route>
+
+                <Route path="/">
                     <Home />
                 </Route>
-        
-                </Switch>
-            </div>
-        </div>
+
+            </Switch>
             
         </React.Fragment> 
     );
