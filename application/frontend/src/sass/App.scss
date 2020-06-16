@@ -1,4 +1,8 @@
-@import '~bootstrap/scss/bootstrap';
+@import '~rfs/scss';
+
 
 // import all other scss files here (they should all start with "_")
-@import 'components/_card.scss'
+// this is the only file imported by index.js
+@import 'components/main';
+@import 'components/card';
+@import 'components/custom';
