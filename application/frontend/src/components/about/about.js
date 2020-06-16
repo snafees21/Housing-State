@@ -17,7 +17,7 @@ const about = () => {
             CSC648 Summer 2020, Team 5
         </div>
         <div className='card-deck container-fluid align-item-center justify-content-center'>
-            <div className='row pt-5'>
+            <div className='row py-5'>
                 <div className='col-md-4 mx-auto'>
                     <Card img={imgGarrett} name={'Garrett Johnson'} page={'/garrett'}/>
                     <Card img={imgGarrett} name={'Your Name'} page={'/name'}/>
