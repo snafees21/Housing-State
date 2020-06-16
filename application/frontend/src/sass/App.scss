@@ -2,6 +2,7 @@
 
 
 // import all other scss files here (they should all start with "_")
+// this is the only file imported by index.js
 @import 'components/main';
 @import 'components/card';
 @import 'components/custom';

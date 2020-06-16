@@ -1,7 +1,8 @@
 import Home from '../home/home';
 import About from '../about/about';
 import Navbar from '../../utils/navbar';
-import { Switch, Route } from 'react-router-dom'; import Garrett from '../about/userPages/garrett';
+import Garrett from '../about/userPages/garrett';
+import { Switch, Route } from 'react-router-dom';
 
 
 const App = ({ }) => {
