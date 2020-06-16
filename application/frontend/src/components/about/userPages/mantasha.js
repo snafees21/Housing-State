@@ -1,5 +1,5 @@
 import { bioMantasha } from '../../../utils/text';
-import imgMantasha from '../../../assets/imgs/mantasha.jpeg';
+import imgMantasha from '../../../assets/imgs/imgMantasha.jpeg';
 
 const mantasha = () => {
     return (

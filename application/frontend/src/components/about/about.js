@@ -27,8 +27,8 @@ const about = () => {
                     <Card img={imgGarrett} name={'Your Name'} page={'/name'}/>
                 </div>
                 <div className='col-md-4 mx-auto'>
-                   
-                    <Card img={imgMantasha} name={'Mantasha Khan'} page={'/about/mantasha'}/>
+                    <Card img={imgGarrett} name={'Your Name'} page={'/name'}/>
+                    <Card img={imgMantasha} name={'Mantasha Khan'} page={'/mantasha'}/>
                 </div>
             </div>
         </div>
