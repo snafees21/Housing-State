@@ -9,7 +9,7 @@ const bioBuu = '';
 
 const bioNick = '';
 
-const bioSarah = '';
+const bioSarah = 'Hello! My name is Sarah Nafees and I am a senior at SFSU.  I am the Frontend Lead for this project. ';
 
 const bioKamelia = 'Hello! My name is Kamelia Shaharova, I will be a senior this upcoming Fall semester at SFSU. \
                     I am interested in data science and web development, and am currently exploring my options \

@@ -4,8 +4,8 @@ import Card from './card';
 import imgGarrett from '../../assets/imgs/garrett.png';
 // import imgBuu from '../../assets/imgs/garrett.png';
 // import imgNick from '../../assets/imgs/garrett.png';
-// import imgSarah from '../../assets/imgs/garrett.png';
-
+ import imgSarah from '../../assets/imgs/Sarah.png';
+// import imgKamelia from '../../assets/imgs/garrett.png';
 import imgKamelia from '../../assets/imgs/kamelia.png';
 import imgMantasha from '../../assets/imgs/imgMantasha.jpeg'
 // import imgMantahsa from '../../assets/imgs/garrett.png';
@@ -29,7 +29,7 @@ const about = () => {
                     <Card img={imgKamelia} name={'Kamelia Shaharova'} page={'/kamelia'}/>
                 </div>
                 <div className='col-md-4 mx-auto'>
-                    <Card img={imgGarrett} name={'Your Name'} page={'/name'}/>
+                    <Card img={imgSarah} name={'Sarah Nafees'} page={'/sarah'}/>
                     <Card img={imgGarrett} name={'Your Name'} page={'/name'}/>
                 </div>
                 <div className='col-md-4 mx-auto'>

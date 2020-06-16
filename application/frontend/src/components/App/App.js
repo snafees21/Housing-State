@@ -1,6 +1,7 @@
 import Home from '../home/home';
 import About from '../about/about';
 import Navbar from '../../utils/navbar';
+import Sarah from '../about/userPages/sarah';
 
 import Kamelia from '../about/userPages/kamelia';
 import Garrett from '../about/userPages/garrett';
@@ -31,20 +32,20 @@ const App = ({ }) => {
                             <Mantasha />
                         </Route>
 
-
-                <Route path="/kamelia">
+                        <Route path="/kamelia">
                             <Kamelia />
                         </Route>
 
-                <Route path="/">
-                    <Home />
-                </Route>
-
-            </Switch>
-            <Route exact path="/">
-                            <Home />
+                        <Route path="/sarah">
+                            <Sarah />
                         </Route>
-                    </Switch>
+
+                        <Route path="/">
+                             <Home />
+                         </Route>
+
+                     </Switch>
+            
                 </div>
             </div>
 
