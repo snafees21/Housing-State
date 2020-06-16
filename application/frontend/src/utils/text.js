@@ -10,7 +10,7 @@ const bioSarah = '';
 
 const bioKamelia = '';
 
-const bioMantasha = '';
+const bioMantasha = 'Hello everyone, My name is Mantasha Khan. I am a junior at SF State';
 
 export {
     bioGarrett,

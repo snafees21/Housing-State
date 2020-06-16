@@ -6,7 +6,7 @@ import imgGarrett from '../../assets/imgs/garrett.png';
 // import imgNick from '../../assets/imgs/garrett.png';
 // import imgSarah from '../../assets/imgs/garrett.png';
 // import imgKamelia from '../../assets/imgs/garrett.png';
-// import imgMantahsa from '../../assets/imgs/garrett.png';
+import imgMantasha from '../../assets/imgs/imgMantasha.jpeg';
 
 
 
@@ -24,8 +24,8 @@ const about = () => {
                     <Card img={imgGarrett} name={'Your Name'} page={'/name'}/>
                 </div>
                 <div className='col-md-4 mx-auto'>
-                    <Card img={imgGarrett} name={'Your Name'} page={'/name'}/>
-                    <Card img={imgGarrett} name={'Your Name'} page={'/name'}/>
+                    <Card img={imgMantasha} name={'Your Name'} page={'/name'}/>
+                    <Card img={imgMantasha} name={'Mantasha Khan'} page={'/about/mantasha'}/>
                 </div>
             </div>
         </div>
