@@ -13,7 +13,11 @@ const bioSarah = '';
 
 const bioKamelia = '';
 
-const bioMantasha = '';
+const bioMantasha = 'Hello everyone, My name is Mantasha Khan. I am a junior at SF State. \
+                    I am an international student from India. I have been working for Math Department \
+                    at SFSU since Spring 2020. I am still exploring my interests in the field of  \
+                    Computer Science. I am excited to learn new things in this class and improve my coding skills.\
+                    Apart from academics I love playing table tennis. ';
 
 export {
     bioGarrett,

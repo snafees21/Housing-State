@@ -2,6 +2,9 @@ import Home from '../home/home';
 import About from '../about/about';
 import Navbar from '../../utils/navbar';
 import Garrett from '../about/userPages/garrett';
+
+import Mantasha from '../about/userPages/mantasha';
+
 import { Switch, Route } from 'react-router-dom';
 
 
@@ -20,6 +23,10 @@ const App = ({ }) => {
 
                         <Route path="/garrett">
                             <Garrett />
+                        </Route>
+
+                        <Route path="/mantasha">
+                            <Mantasha />
                         </Route>
 
                         <Route exact path="/">
