@@ -17,7 +17,7 @@ const about = () => {
             <div className='row pt-5'>
                 <div className='col-md-4 mx-auto'>
                     <Card img={imgGarrett} name={'Garrett Johnson'} page={'/garrett'}/>
-                    <Card img={imgKamelia} name={'Kamelia Shaharova'} page={'/about/kamelia'}/>
+                    <Card img={imgKamelia} name={'Kamelia Shaharova'} page={'/kamelia'}/>
                 </div>
                 <div className='col-md-4 mx-auto'>
                     <Card img={imgGarrett} name={'Your Name'} page={'/name'}/>
