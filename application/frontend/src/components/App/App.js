@@ -1,6 +1,8 @@
 import Home from '../home/home';
 import About from '../about/about';
 import Navbar from '../../utils/navbar';
+
+import Kamelia from '../about/userPages/kamelia';
 import Garrett from '../about/userPages/garrett';
 
 import Mantasha from '../about/userPages/mantasha';
@@ -29,12 +31,24 @@ const App = ({ }) => {
                             <Mantasha />
                         </Route>
 
-                        <Route exact path="/">
+
+                <Route path="/kamelia">
+                            <Kamelia />
+                        </Route>
+
+                <Route path="/">
+                    <Home />
+                </Route>
+
+            </Switch>
+            <Route exact path="/">
                             <Home />
                         </Route>
                     </Switch>
                 </div>
             </div>
+
+            
         </React.Fragment> 
     );
   }

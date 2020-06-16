@@ -11,7 +11,10 @@ const bioNick = '';
 
 const bioSarah = '';
 
-const bioKamelia = '';
+const bioKamelia = 'Hello! My name is Kamelia Shaharova, I will be a senior this upcoming Fall semester at SFSU. \
+                    I am interested in data science and web development, and am currently exploring my options \
+                    but I am very excited about my future and its possibilities. In my free time I enjoy \
+                    running, cooking, and skiing!';
 
 const bioMantasha = 'Hello everyone, My name is Mantasha Khan. I am a junior at SF State. \
                     I am an international student from India. I have been working for Math Department \
