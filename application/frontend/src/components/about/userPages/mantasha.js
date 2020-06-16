@@ -1,18 +1,18 @@
-import { bioGarrett } from '../../../utils/text';
-import imgGarrett from '../../../assets/imgs/garrett.png';
+import { bioMantasha } from '../../../utils/text';
+import imgMantasha from '../../../assets/imgs/mantasha.jpeg';
 
-const garrett = () => {
+const mantasha = () => {
     return (
         <React.Fragment>
             <div className="container-fluid">
                 <div className="row">
                     <div className="col-sm-3 m-3">
-                        <img src={imgGarrett} className="rounded img-fluid" />
+                        <img src={imgMantasha} className="rounded img-fluid" />
                     </div>
                     <div className="col-sm-6 mx-3 mt-5">
-                        <h1 className="title">Garrett Johnson</h1>
+                        <h1 className="title">Mantasha Khan</h1>
                         <div>
-                            <p>{bioGarrett}</p>
+                            <p>{bioMantasha}</p>
                         </div>
                     </div>
                 </div>
@@ -21,4 +21,4 @@ const garrett = () => {
     );
   };
   
-  export default garrett;
+  export default mantasha;
