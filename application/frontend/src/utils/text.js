@@ -6,7 +6,7 @@ const bioBuu = '';
 
 const bioNick = '';
 
-const bioSarah = 'Hello! My name is Sarah Nafees. I am a senior at SFSU.';
+const bioSarah = 'Hello! My name is Sarah Nafees and I am a senior at SFSU.  I am the Frontend Lead for this project. ';
 
 const bioKamelia = '';
 

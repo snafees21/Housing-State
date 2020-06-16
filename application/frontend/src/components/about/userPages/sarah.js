@@ -5,7 +5,7 @@ const sarah = () => {
         <React.Fragment>
             <center>
                 <div>
-                    <h1>sarah</h1>
+                    <h1> Sarah Nafees</h1>
                 </div>
                 <div>
                     <p>{bioSarah}</p>
