@@ -1,18 +1,18 @@
-import { bioKamelia } from '../../../utils/text';
+import { biogarrett } from '../../../utils/text';
 
 const garrett = () => {
     return (
         <React.Fragment>
             <center>
                 <div>
-                    <h1>Kamelia</h1>
+                    <h1>Garrett</h1>
                 </div>
                 <div>
-                    <p>{bioKamelia}</p>
+                    <p>{biogarrett}</p>
                 </div>
             </center>
         </React.Fragment>
     );
   };
   
-  export default kamelia;
+  export default garrett;
