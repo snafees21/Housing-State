@@ -8,7 +8,7 @@ const bioNick = '';
 
 const bioSarah = '';
 
-const bioKamelia = '';
+const bioKamelia = 'Hi, my name is Kamelia Shaharova! I will be a senior this Fall semester at SFSU.';
 
 const bioMantasha = '';
 
