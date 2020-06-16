@@ -5,7 +5,7 @@ import imgGarrett from '../../assets/imgs/garrett.png';
 // import imgBuu from '../../assets/imgs/garrett.png';
 // import imgNick from '../../assets/imgs/garrett.png';
 // import imgSarah from '../../assets/imgs/garrett.png';
-import imgKamelia from '../../assets/imgs/kamelia.jpg';
+import imgKamelia from '../../assets/imgs/kamelia.png';
 // import imgMantahsa from '../../assets/imgs/garrett.png';
 
 
