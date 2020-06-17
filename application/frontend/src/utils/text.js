@@ -5,7 +5,8 @@ const bioGarrett = 'Hi! My name is Garrett Johnson. I am a senior at SFSU studyi
                     future. I am excited to be team lead on this project and look forward to sharing \
                     some of the experience I have gained at my job with the rest of my team.';
 
-const bioBuu = '';
+const bioBuu = 'Hi Everyone! My name is Buu Phan and I will be a senior this upcoming semester. \
+                One goal I have is to pass all my classes and have at least 3.6 GPA at the end of my senior year.';
 
 const bioNick = '';
 
