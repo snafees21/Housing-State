@@ -17,15 +17,15 @@ const about = () => {
         </div>
         <div className='card-deck container-fluid align-item-center justify-content-center'>
             <div className='row py-5'>
-                <div className='col-md-4 mx-auto align-items-stretch'>
+                <div className='col-md-4 mx-auto'>
                     <Card img={imgGarrett} name={'Garrett Johnson'} page={'/garrett'}/>
                     <Card img={imgKamelia} name={'Kamelia Shaharova'} page={'/kamelia'}/>
                 </div>
-                <div className='col-md-4 mx-auto align-items-stretch'>
+                <div className='col-md-4 mx-auto'>
                     <Card img={imgSarah} name={'Sarah Nafees'} page={'/sarah'}/>
                     <Card img={imgGarrett} name={'Your Name'} page={'/name'}/>
                 </div>
-                <div className='col-md-4 mx-auto align-items-stretch'>
+                <div className='col-md-4 mx-auto'>
                     <Card img={imgGarrett} name={'Your Name'} page={'/name'}/>
                     <Card img={imgMantasha} name={'Mantasha Khan'} page={'/mantasha'}/>
                 </div>

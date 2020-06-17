@@ -2,10 +2,8 @@ import Home from '../home/home';
 import About from '../about/about';
 import Navbar from '../../utils/navbar';
 import Sarah from '../about/userPages/sarah';
-
 import Kamelia from '../about/userPages/kamelia';
 import Garrett from '../about/userPages/garrett';
-
 import Mantasha from '../about/userPages/mantasha';
 
 import { Switch, Route } from 'react-router-dom';
@@ -20,7 +18,7 @@ const App = ({ }) => {
                 </header>
                 <div>
                     <Switch>
-                        
+
                         <Route path="/about">
                             <About />
                         </Route>
