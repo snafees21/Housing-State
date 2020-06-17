@@ -5,6 +5,7 @@ import Sarah from '../about/userPages/sarah';
 import Kamelia from '../about/userPages/kamelia';
 import Garrett from '../about/userPages/garrett';
 import Mantasha from '../about/userPages/mantasha';
+import Nick from '../about/userPages/nick';
 
 import { Switch, Route } from 'react-router-dom';
 
@@ -37,6 +38,10 @@ const App = ({ }) => {
 
                         <Route path="/sarah">
                             <Sarah />
+                        </Route>
+
+                        <Route path="/nick">
+                            <Nick />
                         </Route>
 
                         <Route path="/">
