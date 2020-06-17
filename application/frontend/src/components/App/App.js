@@ -44,6 +44,7 @@ const App = ({ }) => {
                         <Route path="/buu">
                             <Buu />
                         </Route>
+                        
                         <Route path="/nick">
                             <Nick />
                         </Route>

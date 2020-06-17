@@ -1,6 +1,6 @@
 import Card from './card';
 
-// images must be square (nxn pixels)
+// images should be square (nxn pixels)
 import imgGarrett from '../../assets/imgs/garrett.png';
 import imgBuu from '../../assets/imgs/buu.png';
 import imgNick from '../../assets/imgs/nick.png';
@@ -18,16 +18,16 @@ const about = () => {
         <div className='card-deck container-fluid align-item-center justify-content-center'>
             <div className='row py-5'>
                 <div className='col-md-4 mx-auto'>
-                    <Card img={imgGarrett} name={'Garrett Johnson'} page={'/garrett'}/>
-                    <Card img={imgKamelia} name={'Kamelia Shaharova'} page={'/kamelia'}/>
+                    <Card img={imgGarrett} name={'Garrett Johnson'} page={'/garrett'} />
+                    <Card img={imgKamelia} name={'Kamelia Shaharova'} page={'/kamelia'} />
                 </div>
                 <div className='col-md-4 mx-auto'>
-                    <Card img={imgSarah} name={'Sarah Nafees'} page={'/sarah'}/>
-                    <Card img={imgNick} name={'Nick Brown'} page={'/nick'}/>
+                    <Card img={imgSarah} name={'Sarah Nafees'} page={'/sarah'} />
+                    <Card img={imgNick} name={'Nick Brown'} page={'/nick'} />
                 </div>
                 <div className='col-md-4 mx-auto'>
-                    <Card img={imgBuu} name={'Your Name'} page={'/buu'}/>
-                    <Card img={imgMantasha} name={'Mantasha Khan'} page={'/mantasha'}/>
+                    <Card img={imgBuu} name={'Buu Phan'} page={'/buu'} />
+                    <Card img={imgMantasha} name={'Mantasha Khan'} page={'/mantasha'} />
                 </div>
             </div>
         </div>
