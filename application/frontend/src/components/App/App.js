@@ -5,9 +5,10 @@ import Sarah from '../about/userPages/sarah';
 import Kamelia from '../about/userPages/kamelia';
 import Garrett from '../about/userPages/garrett';
 import Mantasha from '../about/userPages/mantasha';
+import Buu from '../about/userPages/buu';
 import Nick from '../about/userPages/nick';
-
 import { Switch, Route } from 'react-router-dom';
+
 
 
 const App = ({ }) => {
@@ -40,6 +41,9 @@ const App = ({ }) => {
                             <Sarah />
                         </Route>
 
+                        <Route path="/buu">
+                            <Buu />
+                        </Route>
                         <Route path="/nick">
                             <Nick />
                         </Route>
@@ -52,7 +56,6 @@ const App = ({ }) => {
                 </div>
             </div>
 
-            
         </React.Fragment> 
     );
   }

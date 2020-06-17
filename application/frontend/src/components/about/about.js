@@ -2,7 +2,7 @@ import Card from './card';
 
 // images must be square (nxn pixels)
 import imgGarrett from '../../assets/imgs/garrett.png';
-// import imgBuu from '../../assets/imgs/garrett.png';
+import imgBuu from '../../assets/imgs/buu.png';
 import imgNick from '../../assets/imgs/nick.png';
 import imgSarah from '../../assets/imgs/sarah.png';
 import imgKamelia from '../../assets/imgs/kamelia.png';
@@ -26,7 +26,7 @@ const about = () => {
                     <Card img={imgNick} name={'Nick Brown'} page={'/nick'}/>
                 </div>
                 <div className='col-md-4 mx-auto'>
-                    <Card img={imgGarrett} name={'Your Name'} page={'/name'}/>
+                    <Card img={imgBuu} name={'Your Name'} page={'/buu'}/>
                     <Card img={imgMantasha} name={'Mantasha Khan'} page={'/mantasha'}/>
                 </div>
             </div>
