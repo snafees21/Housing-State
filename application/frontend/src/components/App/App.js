@@ -20,6 +20,7 @@ const App = ({ }) => {
                 </header>
                 <div>
                     <Switch>
+                        
                         <Route path="/about">
                             <About />
                         </Route>
@@ -45,7 +46,6 @@ const App = ({ }) => {
                          </Route>
 
                      </Switch>
-            
                 </div>
             </div>
 
