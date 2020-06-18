@@ -1,19 +1,22 @@
-import Cards from "./cards";
-import Page from "./page";
-import { useRouteMatch, Switch, Route } from "react-router-dom";
+import { useRouteMatch, Switch, Route } from 'react-router-dom';
+import Cards from './cards';
+import Page from './pageRoute';
 
 const about = () => {
-  const { path, url } = useRouteMatch();
+  const { path } = useRouteMatch();
 
   return (
-    <React.Fragment>
-      <Cards />
+    <>
       <Switch>
+        <Route exact path={path}>
+          <Cards />
+        </Route>
+
         <Route path={`${path}/:name`}>
           <Page />
         </Route>
       </Switch>
-    </React.Fragment>
+    </>
   );
 };
 

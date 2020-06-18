@@ -1,21 +1,22 @@
 const express = require('express');
 const path = require('path');
 const httpProxy = require('http-proxy');
+
 const app = express();
 const port = process.env.PORT_NUMBER || 80;
 
 const apiProxy = httpProxy.createProxyServer();
 
 apiProxy.on('error', (err, req, res) => {
-  console.log(err)
+  console.log(err);
   res.status(500).send('Proxy Error');
 });
 
-app.all("/api/*", (req, res) => {
+app.all('/api/*', (req, res) => {
   // sends api requests to the backend
-  console.log(req.path)
+  console.log(req.path);
   apiProxy.web(req, res, {
-    target: 'http://localhost:1235',
+    target: 'http://localhost:3000',
   });
 });
 
