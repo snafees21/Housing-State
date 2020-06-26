@@ -5,7 +5,7 @@
 
 ## Formatting
 
-ESLint can be used to properly format code. The following command will attempt to fix any formatting issues in the current directory
+ESLint can be used to properly format code. The following command will attempt to fix any formatting issues in the current directory. Please run this before committing.
 `npx eslint "**/*.js" --ignore-pattern dist/ --fix`
 
 ### Testing
