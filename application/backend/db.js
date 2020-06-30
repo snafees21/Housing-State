@@ -1,0 +1,20 @@
+const Sequelize = require('sequelize');
+
+// TODO: change args here
+const connectDB = new Sequelize('housing_state', 'root', 'G8t0r3s!', {
+  host: 'localhost',
+  dialect: 'mysql',
+  operatorsAliases: false,
+  pool: {
+    max: 10,
+    min: 0,
+    acquire: 3000,
+  },
+});
+
+connectDB
+  .authenticate()
+  .then(() => console.log('Databse conneted successfully'))
+  .catch((error) => console.log('Error: ', error));
+
+export default connectDB;

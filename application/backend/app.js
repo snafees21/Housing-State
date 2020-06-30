@@ -1,9 +1,10 @@
 import cors from 'cors';
 import express from 'express';
+import connectDB from './db';
 import { test } from './routes/index';
 
-const PORT = process.env.PORT || 3000;
 const app = express();
+const PORT = process.env.PORT || 3000;
 
 app.use(cors());
 app.use('/api/test', test);
