@@ -1,8 +1,8 @@
-import { bioBuu } from '../../../utils/text';
-import imgBuu from '../../../assets/imgs/buu.png';
+import { bioBuu } from "../../../utils/text";
+import imgBuu from "../../../assets/imgs/buu.png";
 
 const buu = () => (
-  <>
+  <React.Fragment>
     <div className="container-fluid">
       <div className="row">
         <div className="col-sm-3 m-3">
@@ -16,7 +16,7 @@ const buu = () => (
         </div>
       </div>
     </div>
-  </>
+  </React.Fragment>
 );
 
 export default buu;
