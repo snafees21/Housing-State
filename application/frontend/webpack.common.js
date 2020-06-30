@@ -21,10 +21,10 @@ module.exports = {
           options: {
             name: '[name].[hash].[ext]',
             outputPath: 'imgs',
-          }
-        }
+          },
+        },
       },
-    ]
+    ],
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -32,8 +32,8 @@ module.exports = {
       template: 'public/index.html',
     }),
     new webpack.ProvidePlugin({
-        'React':    'react',
-        'ReactDOM': 'react-dom',
+      React: 'react',
+      ReactDOM: 'react-dom',
     }),
-  ]
-}
+  ],
+};
