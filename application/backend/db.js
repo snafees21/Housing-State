@@ -1,6 +1,5 @@
 const Sequelize = require('sequelize');
 
-// TODO: change args here
 const connectDB = new Sequelize('housing_state', 'root', 'G8t0r3s!', {
   host: 'localhost',
   dialect: 'mysql',
