@@ -1,6 +1,6 @@
 ## MySQL
 
-### Installation
+### AWS Installation
 
 Follow instructions in this [guide](https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-ubuntu-18-04)
 
@@ -14,6 +14,6 @@ Follow instructions in this [guide](https://www.digitalocean.com/community/tutor
 
 #### Running Scripts
 
-`mqsql> source <path to .sql file>
+After logging in: `mqsql> source <path to .sql file>`
 
 > **Example:** TODO
