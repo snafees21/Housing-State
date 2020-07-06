@@ -1,7 +1,7 @@
-import { Switch, Route } from "react-router-dom";
-import Home from "../home/home";
-import About from "../about/about";
-import Navbar from "../../utils/navbar";
+import { Switch, Route } from 'react-router-dom';
+import Home from '../home/home';
+import About from '../about/about';
+import Navbar from '../../utils/navbar';
 
 const App = ({}) => (
   <React.Fragment>
@@ -11,11 +11,11 @@ const App = ({}) => (
       </header>
       <div>
         <Switch>
-          <Route path="/about">
+          <Route path='/about'>
             <About />
           </Route>
 
-          <Route exact path="/">
+          <Route exact path='/'>
             <Home />
           </Route>
         </Switch>
