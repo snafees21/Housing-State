@@ -15,5 +15,3 @@ Follow instructions in this [guide](https://www.digitalocean.com/community/tutor
 #### Running Scripts
 
 After logging in: `mqsql> source <path to .sql file>`
-
-> **Example:** TODO
