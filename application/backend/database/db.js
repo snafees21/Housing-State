@@ -14,7 +14,7 @@ const connectDB = new Sequelize('housing_state', 'root', 'G8t0r3s!', {
 
 connectDB
   .authenticate()
-  .then(() => console.log('Databse conneted successfully'))
+  .then(() => console.log('Database conneted successfully'))
   .catch((error) => console.log('Error: ', error));
 
 export default connectDB;

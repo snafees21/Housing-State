@@ -5,6 +5,6 @@
 
 ### Testing
 
-**Development:** Run `npm run dev`
+**Development:** `npm run dev`
 
-**Production:** Run `npm start`
+**Production:** `npm start`
