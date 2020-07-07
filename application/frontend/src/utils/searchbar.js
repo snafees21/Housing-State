@@ -1,6 +1,8 @@
 import React from "react";
+import axios from "axios";
+
 const searchbar = () => {
-  const [input, setInput] = React.useState("San Francisco, CA");
+  const [location, setLocation] = React.useState("San Francisco, CA");
   let inclStudent = true;
   let inclStaff = true;
   let inclApartment = true;
@@ -12,6 +14,16 @@ const searchbar = () => {
   let showCondominium = false;
 
   const handleSearch = () => {
+    const body = {
+      location: location,
+      inclStudent: inclStudent,
+      inclStaff: inclStaff,
+      inclApartment: inclApartment,
+      inclCondominium: inclCondominium,
+    };
+    // axios.post("/api/search", body).catch(() => {
+    //   console.log("Failed to search");
+    // });
     console.log(
       "Include student: " +
         inclStudent +
@@ -39,6 +51,7 @@ const searchbar = () => {
         " condominium: " +
         inclCondominium
     );
+    handleSearch();
   };
 
   const handleReset = () => {
@@ -46,8 +59,14 @@ const searchbar = () => {
     inclStaff = true;
     inclApartment = true;
     inclCondominium = true;
+
+    var inputs = document.querySelectorAll(".form-check-input");
+    for (var i = 0; i < inputs.length; i++) {
+      inputs[i].checked = false;
+    }
+
     console.log(
-      "Include student: " +
+      "(Reset?) Include student: " +
         inclStudent +
         " Staff: " +
         inclStaff +
@@ -58,36 +77,40 @@ const searchbar = () => {
     );
   };
 
+  const handleDisplayMap = () => {
+    console.log("Show map");
+  };
+
+  React.useEffect(() => {
+    handleDisplayMap();
+  }, []); //
+
   return (
-    <div class="row justify-content-md-center">
+    <div class="row justify-content-md">
       <form class="form-group col-md-6">
         <input
           class="form-control mr-sm-2"
           type="search"
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
+          value={location}
+          onChange={(e) => setLocation(e.target.value)}
         />
       </form>
 
       <div class="dropdown">
         <button
-          class="btn btn-secondary dropdown-toggle"
+          class="btn btn-outline-success my-2 my-sm-0 dropdown-toggle"
           type="button"
-          id="dropdownMenuButton"
-          data-toggle="dropdown"
-          aria-haspopup="true"
-          aria-expanded="false"
+          data-toggle="collapse"
+          data-target="#myList"
         >
           Filter
         </button>
 
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <div class="container"> 
-        <header>Check on the box to show only that type</header>
-        <div>--------------------</div>
-        </div>
+        <div id="myList" class="dropdown-menu">
           <div class="container">
-          <div>Role:</div>
+            <header>Check on the box to show only that type</header>
+            <div>--------------------</div>
+            <div>Role:</div>
             <div class="row">
               <div class="form-group">
                 <div class="form-check">
@@ -131,7 +154,7 @@ const searchbar = () => {
             </div>
           </div>
           <div class="container">
-          <div>House Type:</div>
+            <div>House Type:</div>
             <div class="row">
               <div class="form-group">
                 <div class="form-check">
@@ -182,7 +205,7 @@ const searchbar = () => {
                 class="btn btn-outline-success my-2 my-sm-0"
                 onClick={() => handleFilter()}
               >
-                Apply
+                Apply Search
               </button>
             </div>
           </div>
@@ -198,7 +221,6 @@ const searchbar = () => {
               </button>
             </div>
           </div>
-
         </div>
       </div>
       <div>
