@@ -3,6 +3,7 @@
 ## AWS server
 
 **How to Connect**
+
 > **Public IP:** `18.221.223.41`
 >
 > **SSH key:** `.ec2-key.pem`
@@ -12,10 +13,11 @@
 ### MySQL Database
 
 **How to Connect**
-> **URL or IP/Port:** No database used for M0
+
+> **Port:** `3306`
 >
-> **Username:**
+> **Username:** `root`
 >
-> **Password:**
+> **Password:** `G8t0r3s!`
 >
-> **Name:**
+> **Name:** `housing_state`

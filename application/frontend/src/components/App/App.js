@@ -13,11 +13,11 @@ const App = ({}) => (
       </header>
       <div>
         <Switch>
-          <Route path="/about">
+          <Route path='/about'>
             <About />
           </Route>
 
-          <Route exact path="/">
+          <Route exact path='/'>
             <Home />
           </Route>
         </Switch>
