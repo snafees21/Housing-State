@@ -39,6 +39,7 @@ const searchbar = () => {
                       name='location'
                       className='form-control'
                       placeholder='Enter an address, city, or ZIP code'
+                      maxLength='40'
                       value={values.location}
                       onChange={handleChange}
                       onBlur={handleBlur}
