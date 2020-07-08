@@ -2,10 +2,10 @@ import { Formik } from 'formik';
 
 const searchbar = () => {
   return (
-    <div class='row container-fluid align-item-center justify-content-center'>
-      <div class='col-md-6'>
-        <div class='card'>
-          <div class='card-body'>
+    <div className='row container-fluid align-item-center justify-content-center'>
+      <div className='col-md-6'>
+        <div className='card'>
+          <div className='card-body'>
             <Formik
               initialValues={{
                 location: '',
@@ -33,25 +33,25 @@ const searchbar = () => {
                 isSubmitting,
               }) => (
                 <form onSubmit={handleSubmit}>
-                  <div class='form-group'>
+                  <div className='form-group'>
                     <input
                       type='text'
                       name='location'
-                      class='form-control'
+                      className='form-control'
                       placeholder='Enter an address, city, or ZIP code'
                       value={values.location}
                       onChange={handleChange}
                       onBlur={handleBlur}
                     />
                   </div>
-                  <div class='mt-5 mb-1'>
-                    <p class='text-left text-muted'>Advanced Search</p>
+                  <div className='mt-5 mb-1'>
+                    <p className='text-left text-muted'>Advanced Search</p>
                   </div>
-                  <div class='form-row'>
-                    <div class='form-group col-auto my-1'>
+                  <div className='form-row'>
+                    <div className='form-group col-sm-3 my-1 ting'>
                       <select
                         name='input1'
-                        class='form-control border border-info'
+                        className='form-control border border-info'
                         value={values.input1}
                         onChange={handleChange}
                         onBlur={handleBlur}
@@ -65,10 +65,10 @@ const searchbar = () => {
                         <option value='Choice 3'>Choice 3</option>
                       </select>
                     </div>
-                    <div class='form-group col-auto my-1'>
+                    <div className='form-group col-sm-3 my-1'>
                       <select
                         name='input2'
-                        class='form-control border border-info'
+                        className='form-control border border-info'
                         value={values.input2}
                         onChange={handleChange}
                         onBlur={handleBlur}
@@ -82,10 +82,10 @@ const searchbar = () => {
                         <option value='Choice 3'>Choice 3</option>
                       </select>
                     </div>
-                    <div class='form-group col-auto my-1'>
+                    <div className='form-group col-sm-3 my-1'>
                       <select
                         name='input3'
-                        class='form-control border border-info'
+                        className='form-control border border-info'
                         value={values.input3}
                         onChange={handleChange}
                         onBlur={handleBlur}
@@ -99,10 +99,10 @@ const searchbar = () => {
                         <option value='Choice 3'>Choice 3</option>
                       </select>
                     </div>
-                    <div class='form-group col-auto my-1'>
+                    <div className='form-group col-sm-3 my-1'>
                       <select
                         name='input4'
-                        class='form-control border border-info'
+                        className='form-control border border-info'
                         value={values.input4}
                         onChange={handleChange}
                         onBlur={handleBlur}
@@ -120,7 +120,7 @@ const searchbar = () => {
                   <button
                     type='submit'
                     disabled={isSubmitting}
-                    class='btn btn-info float-right'
+                    className='btn btn-info float-right mt-3'
                   >
                     Search
                   </button>
