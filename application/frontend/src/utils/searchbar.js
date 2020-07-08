@@ -59,6 +59,10 @@ const searchbar = () => {
     inclStaff = true;
     inclApartment = true;
     inclCondominium = true;
+    showStudent = false;
+    showStaff = false;
+    showApartment = false;
+    showCondominium = false;
 
     var inputs = document.querySelectorAll(".form-check-input");
     for (var i = 0; i < inputs.length; i++) {
@@ -75,6 +79,7 @@ const searchbar = () => {
         " condominium: " +
         inclCondominium
     );
+    handleSearch();
   };
 
   const handleDisplayMap = () => {
@@ -86,150 +91,144 @@ const searchbar = () => {
   }, []); //
 
   return (
-    <div class="row justify-content-md">
-      <form class="form-group col-md-6">
-        <input
-          class="form-control mr-sm-2"
-          type="search"
-          value={location}
-          onChange={(e) => setLocation(e.target.value)}
-        />
-      </form>
+    <div class="container-fluid my-3">
+      <div class="row">
+        <div class="col-md-9">
+          <div class="input-group">
+            <input
+              class="form-control"
+              type="search"
+              value={location}
+              onChange={(e) => setLocation(e.target.value)}
+              placeholder="Enter a location"
+            />
 
-      <div class="dropdown">
-        <button
-          class="btn btn-outline-success my-2 my-sm-0 dropdown-toggle"
-          type="button"
-          data-toggle="collapse"
-          data-target="#myList"
-        >
-          Filter
-        </button>
+            <div class="dropdown dropdown-lg">
+              <button
+                class="btn btn-outline-primary my-2 my-sm-0 dropdown-toggle"
+                type="button"
+                data-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Filter
+                <span class="caret"></span>
+              </button>
 
-        <div id="myList" class="dropdown-menu">
-          <div class="container">
-            <header>Check on the box to show only that type</header>
-            <div>--------------------</div>
-            <div>Role:</div>
-            <div class="row">
-              <div class="form-group">
-                <div class="form-check">
-                  <div class="col-sm">
-                    <input
-                      class="form-check-input"
-                      type="checkbox"
-                      id="gridCheck"
-                      onClick={() => {
-                        if (showStudent) {
-                          showStudent = false;
-                        } else showStudent = true;
-                      }}
-                    />
-                    <label class="form-check-label" for="gridCheck">
-                      Student
-                    </label>
-                  </div>
+              <div class="dropdown-menu dropdown-menu-right bg-light" role="menu">
+              <div class="container-fluid">
+                  <center>Check on the box to show only that type</center>
+                  <div>--------------------</div>
+                  
+                  <div >Role: </div>
+                    <div class="form-group">
+                      <div class="form-check">
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          id="gridCheck"
+                          onClick={() => {
+                            if (showStudent) {
+                              showStudent = false;
+                            } else showStudent = true;
+                          }}
+                        />
+                        <label class="form-check-label" for="gridCheck">
+                          Student
+                        </label>
+                      </div>
+
+                      <div class="form-check">
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          id="gridCheck"
+                          onClick={() => {
+                            if (showStaff) {
+                              showStaff = false;
+                            } else showStaff = true;
+                          }}
+                        />
+                        <label class="form-check-label" for="gridCheck">
+                          Staff
+                        </label>
+                      </div>
+                    </div>
+                  
+                  
+
+                    <div>House Type: </div> 
+                    <div class="form-group">
+                      <div class="form-check">
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          id="gridCheck"
+                          onClick={() => {
+                            if (showApartment) {
+                              showApartment = false;
+                            } else showApartment = true;
+                          }}
+                        />
+                        <label class="form-check-label" for="gridCheck">
+                          Apartment
+                        </label>
+                      </div>
+
+                      <div class="form-check">
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          id="gridCheck"
+                          onClick={() => {
+                            if (showCondominium) {
+                              showCondominium = false;
+                            } else showCondominium = true;
+                          }}
+                        />
+                        <label class="form-check-label" for="gridCheck">
+                          Condominium
+                        </label>
+                      </div>
+                    </div>
+                    
+                  
+
+                    <div class="btn-group">
+                      <div>
+                        <button
+                          class="btn btn-outline-primary my-2 my-sm-0"
+                          onClick={() => handleFilter()}
+                        >
+                          Apply Search
+                        </button>
+                      </div>
+                      <div>
+                        <button
+                          class="btn btn-outline-primary my-2 my-sm-0"
+                          onClick={() => handleReset()}
+                        >
+                          Reset Search
+                        </button>
+                      </div>
+                    </div>
+                  
                 </div>
-              </div>
 
-              <div class="form-group">
-                <div class="form-check">
-                  <div class="col-sm">
-                    <input
-                      class="form-check-input"
-                      type="checkbox"
-                      id="gridCheck"
-                      onClick={() => {
-                        if (showStaff) {
-                          showStaff = false;
-                        } else showStaff = true;
-                      }}
-                    />
-                    <label class="form-check-label" for="gridCheck">
-                      Staff
-                    </label>
-                  </div>
-                </div>
               </div>
             </div>
-          </div>
-          <div class="container">
-            <div>House Type:</div>
-            <div class="row">
-              <div class="form-group">
-                <div class="form-check">
-                  <div class="col-sm">
-                    <input
-                      class="form-check-input"
-                      type="checkbox"
-                      id="gridCheck"
-                      onClick={() => {
-                        if (showApartment) {
-                          showApartment = false;
-                        } else showApartment = true;
-                      }}
-                    />
-                    <label class="form-check-label" for="gridCheck">
-                      Apartment
-                    </label>
-                  </div>
-                </div>
-              </div>
 
-              <div class="form-group">
-                <div class="form-check">
-                  <div class="col-sm">
-                    <input
-                      class="form-check-input"
-                      type="checkbox"
-                      id="gridCheck"
-                      onClick={() => {
-                        if (showCondominium) {
-                          showCondominium = false;
-                        } else showCondominium = true;
-                      }}
-                    />
-                    <label class="form-check-label" for="gridCheck">
-                      Condominium
-                    </label>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
 
-          <div class="container">
-            <div class="row"></div>
             <div>
               <button
-                class="btn btn-outline-success my-2 my-sm-0"
-                onClick={() => handleFilter()}
+                class="btn btn-outline-primary my-2 my-sm-0"
+                onClick={() => handleSearch()}
               >
-                Apply Search
+                Search
               </button>
             </div>
-          </div>
 
-          <div class="container">
-            <div class="row"></div>
-            <div>
-              <button
-                class="btn btn-outline-success my-2 my-sm-0"
-                onClick={() => handleReset()}
-              >
-                Reset
-              </button>
-            </div>
           </div>
         </div>
-      </div>
-      <div>
-        <button
-          class="btn btn-outline-success my-2 my-sm-0"
-          onClick={() => handleSearch()}
-        >
-          Search
-        </button>
       </div>
     </div>
   );
