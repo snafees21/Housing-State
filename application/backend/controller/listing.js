@@ -1,11 +1,13 @@
 const Listing = require('../models/Listing');
+const Sequelize = require('sequelize');
+const Op = Sequelize.Op;
 
 // route: GET /api/listing
 exports.getListings = (req, res, next) => {
-  Listing.findAll()
+  Listing.findAll({where: {full_address: {[Op.like]: '%ey%'}}})
     .then((listings) => {
       console.log(listings);
-      res.sendStatus(200);
+      res.send(listings);
     })
     .catch((error) => {
       console.log(error);
