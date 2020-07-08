@@ -15,11 +15,11 @@ const connectDB = new Sequelize('housing_state', 'root', 'G8t0r3s!', {
 
 connectDB
   .authenticate()
-  .then(() => console.log('Database conneted successfully'))
+  .then(() => console.log('Database connected successfully'))
   .catch((error) => console.log('Error: ', error));
 
 // sync all tables with database
 // set to: sync({force: true}) to force drop and recreate of all tables on save (for dev testing)
-connectDB.sync();
+connectDB.sync({force: true});
 
 export default connectDB;
