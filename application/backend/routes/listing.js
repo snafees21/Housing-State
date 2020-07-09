@@ -1,6 +1,7 @@
 import express from 'express';
 import {
   searchListings,
+  getListing,
   getListingByUserId,
   addListing,
   updateListing,
@@ -14,8 +15,10 @@ listing.route('/').get(searchListings).post(addListing);
 // the '/:' allows params to be passed
 listing
   .route('/:id')
-  .get(getListingByUserId)
+  .get(getListing)
   .patch(updateListing)
   .delete(deleteListing);
+
+listing.route('/user/:id').get(getListingByUserId);
 
 export default listing;

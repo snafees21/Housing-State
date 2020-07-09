@@ -37,12 +37,10 @@ exports.addListing = async (req, res, next) => {
 };
 
 // route: GET /api/listing/:id
-exports.getListingByUserId = async (req, res, next) => {
+exports.getListing = async (req, res, next) => {
   try {
-    const listings = await Listing.findAll({
-      where: { user_id: req.params.id },
-    });
-    res.send(listings);
+    const listing = await Listing.findByPk(req.params.id);
+    res.send(listing);
   } catch (error) {
     console.log(error);
     res.sendStatus(500);
@@ -70,6 +68,19 @@ exports.deleteListing = async (req, res, next) => {
     const listing = await Listing.findByPk(req.params.id);
     await listing.destroy();
     res.sendStatus(200);
+  } catch (error) {
+    console.log(error);
+    res.sendStatus(500);
+  }
+};
+
+// route: GET /api/listing/user/:id
+exports.getListingByUserId = async (req, res, next) => {
+  try {
+    const listings = await Listing.findAll({
+      where: { user_id: req.params.id },
+    });
+    res.send(listings);
   } catch (error) {
     console.log(error);
     res.sendStatus(500);
