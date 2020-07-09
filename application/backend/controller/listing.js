@@ -52,8 +52,10 @@ exports.getListingByUserId = async (req, res, next) => {
 // route: PATCH /api/listing/:id
 exports.updateListing = async (req, res, next) => {
   try {
+    // finds listing by primary key, then updates.
     // will update as many fields as are passed into it
-    await Listing.update(req.body, { where: { user_id: req.params.id } });
+    const listing = await Listing.findByPk(req.params.id);
+    await listing.update(req.body);
     res.sendStatus(200);
   } catch (error) {
     console.log(error);
@@ -65,7 +67,7 @@ exports.updateListing = async (req, res, next) => {
 exports.deleteListing = async (req, res, next) => {
   try {
     // finds listing by primary key, then calls destroy on it
-    const listing = await Listing.findByPK(req.params.id);
+    const listing = await Listing.findByPk(req.params.id);
     await listing.destroy();
     res.sendStatus(200);
   } catch (error) {
