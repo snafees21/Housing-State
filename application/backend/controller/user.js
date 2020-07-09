@@ -1,16 +1,16 @@
 const User = require('../models/User');
 
-// route: GET /api/listing
+// route: GET /api/user
 exports.getUsers = async (req, res, next) => {
-  res.send('GET listing'); // TODO: replace with actual code
+  res.send('GET user'); // TODO: replace with actual code
 };
 
-// route: POST /api/listing
+// route: POST /api/user
 exports.addUsers = async (req, res, next) => {
-  res.send('POST listing'); // TODO: replace with actual code
+  res.send('POST user'); // TODO: replace with actual code
 };
 
-// route: DELETE /api/listing/:id
+// route: DELETE /api/user/:id
 exports.deleteUsers = async (req, res, next) => {
-  res.send('DELETE listing'); // TODO: replace with actual code
+  res.send('DELETE user'); // TODO: replace with actual code
 };
