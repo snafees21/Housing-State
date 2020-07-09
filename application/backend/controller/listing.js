@@ -53,7 +53,7 @@ exports.getListingByUserId = async (req, res, next) => {
 exports.updateListing = async (req, res, next) => {
   try {
     // finds listing by primary key, then updates.
-    // will update as many fields as are passed into it
+    // will update as many fields as are passed into the body
     const listing = await Listing.findByPk(req.params.id);
     await listing.update(req.body);
     res.sendStatus(200);
