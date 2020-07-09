@@ -1,8 +1,8 @@
-import connectDB from '../database/db';
+import db from '../database/db';
 const Sequelize = require('sequelize');
 
 // defines schema for messages table ('s' added by sequelize)
-const Message = connectDB.define('Message', {
+const Message = db.define('Message', {
   id: {
     type: Sequelize.INTEGER(10),
     allowNull: false,
