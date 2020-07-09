@@ -1,8 +1,8 @@
-import connectDB from '../database/db';
+import db from '../database/db';
 const Sequelize = require('sequelize');
 
 // defines schema for users table ('s' added by sequelize)
-const User = connectDB.define('User', {
+const User = db.define('User', {
   id: {
     type: Sequelize.INTEGER(10),
     allowNull: false,
