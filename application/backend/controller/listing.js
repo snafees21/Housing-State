@@ -25,6 +25,8 @@ exports.searchListings = async (req, res, next) => {
 
 // route: POST /api/listing
 exports.addListing = async (req, res, next) => {
+  // unpacks key, values of req.body to provide
+  // {column: value} association
   try {
     await Listing.create(req.body);
     res.sendStatus(200);
@@ -49,8 +51,8 @@ exports.getListingByUserId = async (req, res, next) => {
 
 // route: PATCH /api/listing/:id
 exports.updateListing = async (req, res, next) => {
-  console.log(req.body);
   try {
+    // will update as many fields as are passed into it
     await Listing.update(req.body, { where: { user_id: req.params.id } });
     res.sendStatus(200);
   } catch (error) {
@@ -61,5 +63,13 @@ exports.updateListing = async (req, res, next) => {
 
 // route: DELETE /api/listing/:id
 exports.deleteListing = async (req, res, next) => {
-  res.send('DELETE listing'); // TODO: replace with actual code
+  try {
+    // finds listing by primary key, then calls destroy on it
+    const listing = await Listing.findByPK(req.params.id);
+    await listing.destroy();
+    res.sendStatus(200);
+  } catch (error) {
+    console.log(error);
+    res.sendStatus(500);
+  }
 };
