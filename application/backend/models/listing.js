@@ -1,8 +1,8 @@
-import connectDB from '../database/db';
+import db from '../database/db';
 const Sequelize = require('sequelize');
 
 // defines schema for listings table ('s' added by sequelize)
-const Listing = connectDB.define('Listing', {
+const Listing = db.define('Listing', {
   id: {
     type: Sequelize.INTEGER(10),
     allowNull: false,
