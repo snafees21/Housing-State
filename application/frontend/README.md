@@ -10,7 +10,7 @@ ESLint can be used to properly format code. The following command will attempt t
 
 ### Testing
 
-**Development:** `npm start`
+**Development:** `npm run start`
 
 **Production:** `npm run build`
 

@@ -1,6 +1,11 @@
-import { Formik } from 'formik';
+import { Field, Form, Formik } from 'formik';
+import axios from 'axios';
 
 const searchbar = () => {
+  const searchListings = (body) => {
+    axios.get('/api/listing', body).then((data) => console.log(res.data));
+  };
+
   return (
     <div className='row container-fluid align-item-center justify-content-center'>
       <div className='col-md-6'>
@@ -17,12 +22,16 @@ const searchbar = () => {
               onSubmit={(values, { setSubmitting, resetForm }) => {
                 setSubmitting(true);
 
+                axios.get('/api/listing').catch((e) => console.log(e)); //searchListings(body);
+                resetForm();
+                setSubmitting(false);
+
                 // this is a placeholder that will display inputs untill we get our endpoint setup
-                setTimeout(() => {
-                  alert(JSON.stringify(values, null, 2));
-                  resetForm();
-                  setSubmitting(false);
-                }, 500);
+                // setTimeout(() => {
+                //   alert(JSON.stringify(values, null, 2));
+                //   resetForm();
+                //   setSubmitting(false);
+                // }, 500);
               }}
             >
               {({
@@ -32,9 +41,9 @@ const searchbar = () => {
                 handleSubmit,
                 isSubmitting,
               }) => (
-                <form onSubmit={handleSubmit}>
+                <Form onSubmit={handleSubmit}>
                   <div className='form-group'>
-                    <input
+                    <Field
                       type='text'
                       name='location'
                       className='form-control'
@@ -50,72 +59,68 @@ const searchbar = () => {
                   </div>
                   <div className='form-row'>
                     <div className='form-group col-sm-3 my-1 ting'>
-                      <select
+                      <Field
+                        as='select'
                         name='input1'
                         className='form-control border border-info'
                         value={values.input1}
                         onChange={handleChange}
                         onBlur={handleBlur}
                       >
-                        <option value='' selected>
-                          Filter 1
-                        </option>
+                        <option defaultValue=''>Filter 1</option>
                         <option value=''>All</option>
                         <option value='Choice 1'>Choice 1</option>
                         <option value='Choice 2'>Choice 2</option>
                         <option value='Choice 3'>Choice 3</option>
-                      </select>
+                      </Field>
                     </div>
                     <div className='form-group col-sm-3 my-1'>
-                      <select
+                      <Field
+                        as='select'
                         name='input2'
                         className='form-control border border-info'
                         value={values.input2}
                         onChange={handleChange}
                         onBlur={handleBlur}
                       >
-                        <option value='' selected>
-                          Filter 2
-                        </option>
+                        <option defaultValue=''>Filter 2</option>
                         <option value=''>All</option>
                         <option value='Choice 1'>Choice 1</option>
                         <option value='Choice 2'>Choice 2</option>
                         <option value='Choice 3'>Choice 3</option>
-                      </select>
+                      </Field>
                     </div>
                     <div className='form-group col-sm-3 my-1'>
-                      <select
+                      <Field
+                        as='select'
                         name='input3'
                         className='form-control border border-info'
                         value={values.input3}
                         onChange={handleChange}
                         onBlur={handleBlur}
                       >
-                        <option value='' selected>
-                          Filter 3
-                        </option>
+                        <option defaultValue=''>Filter 3</option>
                         <option value=''>All</option>
                         <option value='Choice 1'>Choice 1</option>
                         <option value='Choice 2'>Choice 2</option>
                         <option value='Choice 3'>Choice 3</option>
-                      </select>
+                      </Field>
                     </div>
                     <div className='form-group col-sm-3 my-1'>
-                      <select
+                      <Field
+                        as='select'
                         name='input4'
                         className='form-control border border-info'
                         value={values.input4}
                         onChange={handleChange}
                         onBlur={handleBlur}
                       >
-                        <option value='' selected>
-                          Filter 4
-                        </option>
+                        <option defaultValue=''>Filter 4</option>
                         <option value=''>All</option>
                         <option value='Choice 1'>Choice 1</option>
                         <option value='Choice 2'>Choice 2</option>
                         <option value='Choice 3'>Choice 3</option>
-                      </select>
+                      </Field>
                     </div>
                   </div>
                   <button
@@ -125,7 +130,7 @@ const searchbar = () => {
                   >
                     Search
                   </button>
-                </form>
+                </Form>
               )}
             </Formik>
           </div>
