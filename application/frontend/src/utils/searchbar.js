@@ -1,10 +1,20 @@
-import { Field, Form, Formik } from 'formik';
+import { Field, Form, Formik, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
 import axios from 'axios';
 
 const searchbar = () => {
   const searchListings = (body) => {
-    axios.get('/api/listing', body).then((data) => console.log(res.data));
+    axios
+      .post('/api/listing', body)
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch(); //TODO:
   };
+
+  const validationSchema = Yup.object({
+    full_address: Yup.string().required('Required'),
+  });
 
   return (
     <div className='row container-fluid align-item-center justify-content-center'>
@@ -12,26 +22,20 @@ const searchbar = () => {
         <div className='card'>
           <div className='card-body'>
             <Formik
+              validationSchema={validationSchema}
               initialValues={{
-                location: '',
-                input1: '',
-                input2: '',
-                input3: '',
-                input4: '',
+                full_address: '',
+                unit_type: '',
+                offer_type: '',
+                bedrooms: '',
+                cost: '',
               }}
               onSubmit={(values, { setSubmitting, resetForm }) => {
                 setSubmitting(true);
 
-                axios.get('/api/listing').catch((e) => console.log(e)); //searchListings(body);
-                resetForm();
+                searchListings(values);
+                resetForm(); // MAYBE WE DONT WANT THIS!!!!!!!!!!
                 setSubmitting(false);
-
-                // this is a placeholder that will display inputs untill we get our endpoint setup
-                // setTimeout(() => {
-                //   alert(JSON.stringify(values, null, 2));
-                //   resetForm();
-                //   setSubmitting(false);
-                // }, 500);
               }}
             >
               {({
@@ -40,18 +44,24 @@ const searchbar = () => {
                 handleBlur,
                 handleSubmit,
                 isSubmitting,
+                errors,
               }) => (
                 <Form onSubmit={handleSubmit}>
                   <div className='form-group'>
+                    {/* make this a required field! */}
                     <Field
                       type='text'
-                      name='location'
+                      name='full_address'
                       className='form-control'
                       placeholder='Enter an address, city, or ZIP code'
                       maxLength='40'
-                      value={values.location}
+                      value={values.full_address}
                       onChange={handleChange}
                       onBlur={handleBlur}
+                    />
+                    <ErrorMessage
+                      name='full_address'
+                      render={(msg) => <p className='text-danger'>{msg}</p>}
                     />
                   </div>
                   <div className='mt-5 mb-1'>
@@ -61,65 +71,69 @@ const searchbar = () => {
                     <div className='form-group col-sm-3 my-1 ting'>
                       <Field
                         as='select'
-                        name='input1'
+                        name='unit_type'
                         className='form-control border border-info'
-                        value={values.input1}
+                        value={values.unit_type}
                         onChange={handleChange}
                         onBlur={handleBlur}
                       >
-                        <option defaultValue=''>Filter 1</option>
-                        <option value=''>All</option>
-                        <option value='Choice 1'>Choice 1</option>
-                        <option value='Choice 2'>Choice 2</option>
-                        <option value='Choice 3'>Choice 3</option>
+                        {' '}
+                        {/* WE PROBABLY WANT TO ADD LABELS ON TOP OF EACH BUTTON!!!!!!!!!!!!!!!!*/}
+                        <option defaultValue=''>Unit Type</option>
+                        <option value=''>All Unit Types</option>
+                        <option value='house'>House</option>
+                        <option value='appartment'>Appartment</option>
+                        <option value='townhouse'>Townhouse</option>
                       </Field>
                     </div>
                     <div className='form-group col-sm-3 my-1'>
                       <Field
                         as='select'
-                        name='input2'
+                        name='offer_type'
                         className='form-control border border-info'
-                        value={values.input2}
+                        value={values.offer_type}
                         onChange={handleChange}
                         onBlur={handleBlur}
                       >
-                        <option defaultValue=''>Filter 2</option>
-                        <option value=''>All</option>
-                        <option value='Choice 1'>Choice 1</option>
-                        <option value='Choice 2'>Choice 2</option>
-                        <option value='Choice 3'>Choice 3</option>
+                        <option defaultValue=''>Offer Type</option>
+                        <option value=''>All Offer Types</option>
+                        <option value='buy'>Buy</option>
+                        <option value='rent'>Rent</option>
                       </Field>
                     </div>
                     <div className='form-group col-sm-3 my-1'>
                       <Field
                         as='select'
-                        name='input3'
+                        name='bedrooms'
                         className='form-control border border-info'
-                        value={values.input3}
+                        value={values.bedrooms}
                         onChange={handleChange}
                         onBlur={handleBlur}
                       >
-                        <option defaultValue=''>Filter 3</option>
-                        <option value=''>All</option>
-                        <option value='Choice 1'>Choice 1</option>
-                        <option value='Choice 2'>Choice 2</option>
-                        <option value='Choice 3'>Choice 3</option>
+                        <option defaultValue=''>Bedrooms</option>
+                        <option value=''>All Bedrooms</option>
+                        <option value='1'> 1</option>
+                        <option value='2'>&lt;= 2</option>
+                        <option value='3'>&lt;= 3</option>
+                        <option value='4'>&lt;= 4</option>
+                        <option value='5'>&lt;= 5</option>
                       </Field>
                     </div>
                     <div className='form-group col-sm-3 my-1'>
                       <Field
                         as='select'
-                        name='input4'
+                        name='cost'
                         className='form-control border border-info'
-                        value={values.input4}
+                        value={values.cost}
                         onChange={handleChange}
                         onBlur={handleBlur}
                       >
-                        <option defaultValue=''>Filter 4</option>
-                        <option value=''>All</option>
-                        <option value='Choice 1'>Choice 1</option>
-                        <option value='Choice 2'>Choice 2</option>
-                        <option value='Choice 3'>Choice 3</option>
+                        <option defaultValue=''>Cost</option>
+                        <option value=''>Any Price</option>
+                        <option value='750'>&lt; 750</option>
+                        <option value='1000'>&lt;1000</option>
+                        <option value='1500'>&lt;1500</option>
+                        <option value='3000'>&lt;3000</option>
                       </Field>
                     </div>
                   </div>

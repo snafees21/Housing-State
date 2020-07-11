@@ -4,6 +4,7 @@ const Op = Sequelize.Op;
 
 // route: GET /api/listing
 exports.searchListings = async (req, res, next) => {
+  console.log(req.body);
   try {
     let where = {
       [Op.or]: [
@@ -25,6 +26,7 @@ exports.searchListings = async (req, res, next) => {
 
 // route: POST /api/listing
 exports.addListing = async (req, res, next) => {
+  console.log(req.body);
   // unpacks key, values of req.body to provide
   // {column: value} association
   try {
