@@ -11,7 +11,7 @@ const listingsDisplay = ({ listings, setListings }) => {
       city: 'San Francisco',
       cost: 6700,
       createdAt: '2020-07-07T22:11:16.000Z',
-      full_address: '1600 Holloway Ave',
+      search_term: '1600 Holloway Ave',
       furnished: true,
       id: 1,
       lease_length: 6,
@@ -42,6 +42,9 @@ const listingsDisplay = ({ listings, setListings }) => {
                       className='card-img-top embed-responsive-item img-fluid'
                     />
                   </div>
+                </div>
+                <div className='col-4'>
+                  <h6 className='text-left'>{list.search_term}</h6>
                 </div>
               </div>
             </div>

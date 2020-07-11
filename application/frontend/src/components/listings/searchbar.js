@@ -15,7 +15,7 @@ const searchbar = ({ listings, setListings }) => {
 
   // define form validation rules here
   const validationSchema = Yup.object({
-    full_address: Yup.string().required('Required'),
+    search_term: Yup.string().required('Required'),
   });
 
   return (
@@ -26,7 +26,7 @@ const searchbar = ({ listings, setListings }) => {
             <Formik
               validationSchema={validationSchema}
               initialValues={{
-                full_address: '',
+                search_term: '',
                 unit_type: '',
                 offer_type: '',
                 bedrooms: '',
@@ -49,16 +49,16 @@ const searchbar = ({ listings, setListings }) => {
                   <div className='form-group'>
                     <Field
                       type='text'
-                      name='full_address'
+                      name='search_term'
                       className='form-control'
                       placeholder='Enter an address, city, or ZIP code'
                       maxLength='40'
-                      value={values.full_address}
+                      value={values.search_term}
                       onChange={handleChange}
                       onBlur={handleBlur}
                     />
                     <ErrorMessage
-                      name='full_address'
+                      name='search_term'
                       render={(msg) => <p className='text-danger'>{msg}</p>}
                     />
                   </div>

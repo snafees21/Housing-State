@@ -112,22 +112,21 @@ const Listing = db.define('Listing', {
   },
 
   full_address: {
-    // virtual columns to not exist in the db,
-    // but can be calculated on the fly
-    type: Sequelize.VIRTUAL,
-    get() {
+    type: Sequelize.STRING(100),
+    set() {
       return (
-        this.getDataValue('building_num') +
+        `${this.building_num}` +
         ' ' +
-        this.getDataValue('street') +
+        `${this.street}` +
         ', ' +
-        this.getDataValue('city') +
+        `${this.city}` +
         ', ' +
-        this.getDataValue('state') +
+        `${this.state}` +
         ' ' +
-        this.getDataValue('zip_code')
+        `${this.zip_code}`
       );
     },
+    comment: 'building_num + street + city + state + zip_code',
   },
 });
 

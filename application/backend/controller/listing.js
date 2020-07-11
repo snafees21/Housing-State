@@ -8,9 +8,9 @@ exports.searchListings = async (req, res, next) => {
     let where = {
       [Op.or]: [
         // match on address or city or zip or unit_type or offer_type or bedrooms or cost
-        { full_address: { [Op.like]: `%${req.query.full_address}%` } },
-        { city: { [Op.like]: `%${req.query.full_address}%` } },
-        { zip_code: { [Op.like]: `%${req.query.full_address}%` } },
+        { full_address: { [Op.like]: `%${req.query.search_term}%` } },
+        { city: { [Op.eq]: req.query.search_term } },
+        { zip_code: { [Op.eq]: req.query.search_term } },
         { unit_type: { [Op.eq]: req.query.unit_type } },
         { offer_type: { [Op.eq]: req.query.offer_type } },
         { bedrooms: { [Op.lte]: req.query.bedrooms } },
