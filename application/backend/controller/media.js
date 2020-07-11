@@ -21,7 +21,7 @@ exports.getMedia = async (req, res, next) => {
 
 // route: POST /api/media
 exports.addMedia = async (req, res, next) => {
-    try {
+    try { 
         res.sendStatus(200);
     } catch (error) {
         console.log(error);
