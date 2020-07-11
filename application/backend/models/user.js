@@ -4,7 +4,7 @@ const Sequelize = require('sequelize');
 // defines schema for users table ('s' added by sequelize)
 const User = db.define('User', {
   id: {
-    type: Sequelize.INTEGER(10),
+    type: Sequelize.INTEGER,
     allowNull: false,
     unique: true,
     autoIncrement: true,

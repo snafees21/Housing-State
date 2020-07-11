@@ -4,14 +4,14 @@ const Sequelize = require('sequelize');
 // defines schema for messages table ('s' added by sequelize)
 const Message = db.define('Message', {
   id: {
-    type: Sequelize.INTEGER(10),
+    type: Sequelize.INTEGER,
     allowNull: false,
     autoIncrement: true,
     primaryKey: true,
   },
 
   from_user: {
-    type: Sequelize.INTEGER(10),
+    type: Sequelize.INTEGER,
     allowNull: false,
     references: {
       model: 'users',
@@ -21,7 +21,7 @@ const Message = db.define('Message', {
   },
 
   to_user: {
-    type: Sequelize.INTEGER(10),
+    type: Sequelize.INTEGER,
     allowNull: false,
     references: {
       model: 'users',

@@ -75,8 +75,8 @@ const searchbar = ({ listings, setListings }) => {
                         onChange={handleChange}
                         onBlur={handleBlur}
                       >
-                        {' '}
-                        {/* WE PROBABLY WANT TO ADD LABELS ON TOP OF EACH BUTTON!!!!!!!!!!!!!!!!*/}
+                        {/* WE PROBABLY WANT TO ADD LABELS ON TOP OF EACH BUTTON!!!!!!!!!!!!!!!! */}
+                        {/* THESE COULD ALSO BE THEIR OWN COMPONENT WHERE THE OPTIONS ARE MAPPED */}
                         <option value=''>Unit Type</option>
                         <option value=''>All Unit Types</option>
                         <option value='house'>House</option>

@@ -4,14 +4,14 @@ const Sequelize = require('sequelize');
 // defines schema for listings table ('s' added by sequelize)
 const Listing = db.define('Listing', {
   id: {
-    type: Sequelize.INTEGER(10),
+    type: Sequelize.INTEGER,
     allowNull: false,
     autoIncrement: true,
     primaryKey: true,
   },
 
   user_id: {
-    type: Sequelize.INTEGER(10),
+    type: Sequelize.INTEGER,
     allowNull: false,
     references: {
       model: 'users',
@@ -20,14 +20,8 @@ const Listing = db.define('Listing', {
     comment: 'foreign key, from `users` table',
   },
 
-  full_address: {
-    type: Sequelize.STRING(100),
-    allowNull: false,
-    comment: 'building_num + street, + city, + state + zip_code',
-  },
-
   building_num: {
-    type: Sequelize.STRING(4),
+    type: Sequelize.CHAR(4),
     allowNull: false,
     comment: 'up to 4 digit number identifying a building on a street',
   },
@@ -60,7 +54,7 @@ const Listing = db.define('Listing', {
   },
 
   cost: {
-    type: Sequelize.INTEGER(10),
+    type: Sequelize.INTEGER,
     allowNull: false,
   },
 
@@ -83,7 +77,7 @@ const Listing = db.define('Listing', {
   },
 
   bedrooms: {
-    type: Sequelize.INTEGER(2),
+    type: Sequelize.INTEGER,
     allowNull: false,
   },
 
@@ -108,6 +102,32 @@ const Listing = db.define('Listing', {
     type: Sequelize.DATEONLY,
     allowNull: true,
     comment: 'date the renter is allowed to move in',
+  },
+
+  description: {
+    type: Sequelize.STRING(1000),
+    allowNull: true,
+    comment:
+      'any additional information the poster wants to provide via free form text',
+  },
+
+  full_address: {
+    // virtual columns to not exist in the db,
+    // but can be calculated on the fly
+    type: Sequelize.VIRTUAL,
+    get() {
+      return (
+        this.getDataValue('building_num') +
+        ' ' +
+        this.getDataValue('street') +
+        ', ' +
+        this.getDataValue('city') +
+        ', ' +
+        this.getDataValue('state') +
+        ' ' +
+        this.getDataValue('zip_code')
+      );
+    },
   },
 });
 
