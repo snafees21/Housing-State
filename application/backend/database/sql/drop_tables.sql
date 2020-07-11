@@ -14,3 +14,9 @@ DROP TABLE IF EXISTS `housing_state`.`messaging` ;
 -- Table `housing_state`.`users`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `housing_state`.`users` ;
+
+
+-- -----------------------------------------------------
+-- Table `housing_state`.`media`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `housing_state`.`media` ;

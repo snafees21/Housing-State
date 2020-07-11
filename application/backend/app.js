@@ -1,6 +1,6 @@
 import cors from 'cors';
 import express from 'express';
-import { user, listing, message } from './routes/index';
+import { user, listing, message, media } from './routes/index';
 const bodyParser = require('body-parser');
 
 const app = express();
@@ -13,5 +13,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/api/user', user);
 app.use('/api/listing', listing);
 app.use('/api/message', message);
+app.use('/api/media', media);
 
 app.listen(PORT, () => console.log(`Backend listening on port ${PORT}!`));
