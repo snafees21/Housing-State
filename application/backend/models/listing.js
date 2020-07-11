@@ -23,6 +23,9 @@ const Listing = db.define('Listing', {
   building_num: {
     type: Sequelize.CHAR(4),
     allowNull: false,
+    validate: {
+      isNumeric: true,
+    },
     comment: 'up to 4 digit number identifying a building on a street',
   },
 
@@ -44,6 +47,9 @@ const Listing = db.define('Listing', {
   zip_code: {
     type: Sequelize.CHAR(5),
     allowNull: false,
+    validate: {
+      isNumeric: true,
+    },
   },
 
   apt_suite: {
@@ -56,6 +62,9 @@ const Listing = db.define('Listing', {
   cost: {
     type: Sequelize.INTEGER,
     allowNull: false,
+    validate: {
+      isNumeric: true,
+    },
   },
 
   unit_type: {
@@ -67,6 +76,9 @@ const Listing = db.define('Listing', {
   lease_length: {
     type: Sequelize.INTEGER(5),
     allowNull: true,
+    validate: {
+      isNumeric: true,
+    },
     comment: 'length of lease in months, if applicable',
   },
 
@@ -79,6 +91,9 @@ const Listing = db.define('Listing', {
   bedrooms: {
     type: Sequelize.INTEGER,
     allowNull: false,
+    validate: {
+      isNumeric: true,
+    },
   },
 
   bathrooms: {
@@ -96,12 +111,18 @@ const Listing = db.define('Listing', {
   sq_footage: {
     type: Sequelize.INTEGER(5),
     allowNull: true,
+    validate: {
+      isNumeric: true,
+    },
   },
 
   available_at: {
     type: Sequelize.DATEONLY,
     allowNull: true,
     comment: 'date the renter is allowed to move in',
+    validate: {
+      isDate: true,
+    },
   },
 
   description: {
@@ -114,16 +135,17 @@ const Listing = db.define('Listing', {
   full_address: {
     type: Sequelize.STRING(100),
     set() {
-      return (
+      this.setDataValue(
+        'full_address',
         `${this.building_num}` +
-        ' ' +
-        `${this.street}` +
-        ', ' +
-        `${this.city}` +
-        ', ' +
-        `${this.state}` +
-        ' ' +
-        `${this.zip_code}`
+          ' ' +
+          `${this.street}` +
+          ', ' +
+          `${this.city}` +
+          ', ' +
+          `${this.state}` +
+          ' ' +
+          `${this.zip_code}`
       );
     },
     comment: 'building_num + street + city + state + zip_code',
