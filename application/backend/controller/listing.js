@@ -4,16 +4,16 @@ const Op = Sequelize.Op;
 
 // route: GET /api/listing
 exports.searchListings = async (req, res, next) => {
-  console.log(req.body);
+  console.log(req.query.full_address);
   try {
     let where = {
       [Op.or]: [
         // match on address or unit_type or offer_type or bedrooms or cost
-        { full_address: { [Op.like]: `%${req.body.full_address}%` } },
-        { unit_type: { [Op.eq]: req.body.unit_type } },
-        { offer_type: { [Op.eq]: req.body.offer_type } },
-        { bedrooms: { [Op.lte]: req.body.bedrooms } },
-        { cost: { [Op.lte]: req.body.cost } },
+        { full_address: { [Op.like]: `%${req.query.full_address}%` } },
+        { unit_type: { [Op.eq]: req.query.unit_type } },
+        { offer_type: { [Op.eq]: req.query.offer_type } },
+        { bedrooms: { [Op.lte]: req.query.bedrooms } },
+        { cost: { [Op.lte]: req.query.cost } },
       ],
     };
     const listings = await Listing.findAll({ where: where });

@@ -4,8 +4,9 @@ import axios from 'axios';
 
 const searchbar = () => {
   const searchListings = (body) => {
+    console.log(body);
     axios
-      .post('/api/listing', body)
+      .get('/api/listing', { params: body })
       .then((res) => {
         console.log(res.data);
       })
@@ -32,9 +33,7 @@ const searchbar = () => {
               }}
               onSubmit={(values, { setSubmitting, resetForm }) => {
                 setSubmitting(true);
-
                 searchListings(values);
-                resetForm(); // MAYBE WE DONT WANT THIS!!!!!!!!!!
                 setSubmitting(false);
               }}
             >
@@ -44,7 +43,6 @@ const searchbar = () => {
                 handleBlur,
                 handleSubmit,
                 isSubmitting,
-                errors,
               }) => (
                 <Form onSubmit={handleSubmit}>
                   <div className='form-group'>
