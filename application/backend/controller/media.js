@@ -1,9 +1,12 @@
-var fs = require('fs')   //added this
+/* This needs a lot of work, we can use 
+   fs.readFileSync('/path/to/file') and 
+   fs.writeFileSync('/path/to/file', media.data)
+   to read and write to the file DB. 
+*/
+
 const Media = require('../models/Media');
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
-
-//const db = require()
 
 // roure: GET /api/media/:id
 exports.getMedia = async (req, res, next) => {
@@ -19,8 +22,6 @@ exports.getMedia = async (req, res, next) => {
 // route: POST /api/media
 exports.addMedia = async (req, res, next) => {
     try {
-        //added this next line for where the file is located
-        //fs.writeFileSync('C:\Users\nickb\Pictures\tester', media.data); 
         res.sendStatus(200);
     } catch (error) {
         console.log(error);
