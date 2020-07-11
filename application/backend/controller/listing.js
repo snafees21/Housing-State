@@ -4,12 +4,13 @@ const Op = Sequelize.Op;
 
 // route: GET /api/listing
 exports.searchListings = async (req, res, next) => {
-  console.log(req.query.full_address);
   try {
     let where = {
       [Op.or]: [
         // match on address or unit_type or offer_type or bedrooms or cost
         { full_address: { [Op.like]: `%${req.query.full_address}%` } },
+        { city: { [Op.like]: `%${req.query.full_address}%` } },
+        { zip_code: { [Op.like]: `%${req.query.full_address}%` } },
         { unit_type: { [Op.eq]: req.query.unit_type } },
         { offer_type: { [Op.eq]: req.query.offer_type } },
         { bedrooms: { [Op.lte]: req.query.bedrooms } },
@@ -26,7 +27,6 @@ exports.searchListings = async (req, res, next) => {
 
 // route: POST /api/listing
 exports.addListing = async (req, res, next) => {
-  console.log(req.body);
   // unpacks key, values of req.body to provide
   // {column: value} association
   try {

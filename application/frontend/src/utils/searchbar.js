@@ -2,15 +2,15 @@ import { Field, Form, Formik, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
 
-const searchbar = () => {
+const searchbar = ({ listings, setListings }) => {
   const searchListings = (body) => {
-    console.log(body);
     axios
       .get('/api/listing', { params: body })
       .then((res) => {
+        setListings(res.data);
         console.log(res.data);
       })
-      .catch(); //TODO:
+      .catch();
   };
 
   const validationSchema = Yup.object({
@@ -31,7 +31,7 @@ const searchbar = () => {
                 bedrooms: '',
                 cost: '',
               }}
-              onSubmit={(values, { setSubmitting, resetForm }) => {
+              onSubmit={(values, { setSubmitting }) => {
                 setSubmitting(true);
                 searchListings(values);
                 setSubmitting(false);
@@ -46,7 +46,6 @@ const searchbar = () => {
               }) => (
                 <Form onSubmit={handleSubmit}>
                   <div className='form-group'>
-                    {/* make this a required field! */}
                     <Field
                       type='text'
                       name='full_address'
@@ -77,7 +76,7 @@ const searchbar = () => {
                       >
                         {' '}
                         {/* WE PROBABLY WANT TO ADD LABELS ON TOP OF EACH BUTTON!!!!!!!!!!!!!!!!*/}
-                        <option defaultValue=''>Unit Type</option>
+                        <option value=''>Unit Type</option>
                         <option value=''>All Unit Types</option>
                         <option value='house'>House</option>
                         <option value='appartment'>Appartment</option>
@@ -93,7 +92,7 @@ const searchbar = () => {
                         onChange={handleChange}
                         onBlur={handleBlur}
                       >
-                        <option defaultValue=''>Offer Type</option>
+                        <option value=''>Offer Type</option>
                         <option value=''>All Offer Types</option>
                         <option value='buy'>Buy</option>
                         <option value='rent'>Rent</option>
@@ -108,7 +107,7 @@ const searchbar = () => {
                         onChange={handleChange}
                         onBlur={handleBlur}
                       >
-                        <option defaultValue=''>Bedrooms</option>
+                        <option value=''>Bedrooms</option>
                         <option value=''>All Bedrooms</option>
                         <option value='1'> 1</option>
                         <option value='2'>&lt;= 2</option>
@@ -126,12 +125,12 @@ const searchbar = () => {
                         onChange={handleChange}
                         onBlur={handleBlur}
                       >
-                        <option defaultValue=''>Cost</option>
+                        <option value=''>Cost</option>
                         <option value=''>Any Price</option>
                         <option value='750'>&lt; 750</option>
-                        <option value='1000'>&lt;1000</option>
-                        <option value='1500'>&lt;1500</option>
-                        <option value='3000'>&lt;3000</option>
+                        <option value='1000'>&lt; 1000</option>
+                        <option value='1500'>&lt; 1500</option>
+                        <option value='3000'>&lt; 3000</option>
                       </Field>
                     </div>
                   </div>
