@@ -1,4 +1,3 @@
-import '../../sass/App.scss';
 import { Link } from 'react-router-dom';
 
 const card = ({ img, name, page }) => (

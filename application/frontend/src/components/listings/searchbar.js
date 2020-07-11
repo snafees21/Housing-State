@@ -3,9 +3,9 @@ import * as Yup from 'yup';
 import axios from 'axios';
 
 const searchbar = ({ listings, setListings }) => {
-  const searchListings = (body) => {
+  const searchListings = (query) => {
     axios
-      .get('/api/listing', { params: body })
+      .get('/api/listing', { params: query })
       .then((res) => {
         setListings(res.data);
         console.log(res.data);
@@ -13,6 +13,7 @@ const searchbar = ({ listings, setListings }) => {
       .catch();
   };
 
+  // define form validation rules here
   const validationSchema = Yup.object({
     full_address: Yup.string().required('Required'),
   });
