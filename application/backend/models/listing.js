@@ -4,14 +4,14 @@ const Sequelize = require('sequelize');
 // defines schema for listings table ('s' added by sequelize)
 const Listing = db.define('Listing', {
   id: {
-    type: Sequelize.INTEGER(10),
+    type: Sequelize.INTEGER,
     allowNull: false,
     autoIncrement: true,
     primaryKey: true,
   },
 
   user_id: {
-    type: Sequelize.INTEGER(10),
+    type: Sequelize.INTEGER,
     allowNull: false,
     references: {
       model: 'users',
@@ -20,15 +20,12 @@ const Listing = db.define('Listing', {
     comment: 'foreign key, from `users` table',
   },
 
-  full_address: {
-    type: Sequelize.STRING(100),
-    allowNull: false,
-    comment: 'building_num + street, + city, + state + zip_code',
-  },
-
   building_num: {
-    type: Sequelize.STRING(4),
+    type: Sequelize.CHAR(4),
     allowNull: false,
+    validate: {
+      isNumeric: true,
+    },
     comment: 'up to 4 digit number identifying a building on a street',
   },
 
@@ -50,6 +47,9 @@ const Listing = db.define('Listing', {
   zip_code: {
     type: Sequelize.CHAR(5),
     allowNull: false,
+    validate: {
+      isNumeric: true,
+    },
   },
 
   apt_suite: {
@@ -60,8 +60,11 @@ const Listing = db.define('Listing', {
   },
 
   cost: {
-    type: Sequelize.INTEGER(10),
+    type: Sequelize.INTEGER,
     allowNull: false,
+    validate: {
+      isNumeric: true,
+    },
   },
 
   unit_type: {
@@ -73,6 +76,9 @@ const Listing = db.define('Listing', {
   lease_length: {
     type: Sequelize.INTEGER(5),
     allowNull: true,
+    validate: {
+      isNumeric: true,
+    },
     comment: 'length of lease in months, if applicable',
   },
 
@@ -83,8 +89,11 @@ const Listing = db.define('Listing', {
   },
 
   bedrooms: {
-    type: Sequelize.INTEGER(2),
+    type: Sequelize.INTEGER,
     allowNull: false,
+    validate: {
+      isNumeric: true,
+    },
   },
 
   bathrooms: {
@@ -102,12 +111,50 @@ const Listing = db.define('Listing', {
   sq_footage: {
     type: Sequelize.INTEGER(5),
     allowNull: true,
+    validate: {
+      isNumeric: true,
+    },
   },
 
   available_at: {
     type: Sequelize.DATEONLY,
     allowNull: true,
     comment: 'date the renter is allowed to move in',
+    validate: {
+      isDate: true,
+    },
+  },
+
+  description: {
+    type: Sequelize.STRING(1000),
+    allowNull: true,
+    comment:
+      'any additional information the poster wants to provide via free form text',
+  },
+
+  full_address: {
+    type: Sequelize.STRING(100),
+    set() {
+      this.setDataValue(
+        'full_address',
+        `${this.building_num}` +
+          ' ' +
+          `${this.street}` +
+          ', ' +
+          `${this.city}` +
+          ', ' +
+          `${this.state}` +
+          ' ' +
+          `${this.zip_code}`
+      );
+    },
+    comment: 'building_num + street + city + state + zip_code',
+  },
+
+  img_path: {
+    type: Sequelize.STRING(100),
+    allowNull: false,
+    comment: 'path to image in files system corresponding to posting',
   },
 });
 

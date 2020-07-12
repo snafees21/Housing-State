@@ -1,5 +1,6 @@
 const Listing = require('../models/Listing');
 const Sequelize = require('sequelize');
+path = require('path');
 const Op = Sequelize.Op;
 
 // route: GET /api/listing
@@ -7,12 +8,14 @@ exports.searchListings = async (req, res, next) => {
   try {
     let where = {
       [Op.or]: [
-        // match on address or unit_type or offer_type or bedrooms or cost
-        { full_address: { [Op.like]: `%${req.body.full_address}%` } },
-        { unit_type: { [Op.eq]: req.body.unit_type } },
-        { offer_type: { [Op.eq]: req.body.offer_type } },
-        { bedrooms: { [Op.lte]: req.body.bedrooms } },
-        { cost: { [Op.lte]: req.body.cost } },
+        // match on address or city or zip or unit_type or offer_type or bedrooms or cost
+        { full_address: { [Op.like]: `%${req.query.search_term}%` } },
+        { city: { [Op.eq]: req.query.search_term } },
+        { zip_code: { [Op.eq]: req.query.search_term } },
+        { unit_type: { [Op.eq]: req.query.unit_type } },
+        { offer_type: { [Op.eq]: req.query.offer_type } },
+        { bedrooms: { [Op.lte]: req.query.bedrooms } },
+        { cost: { [Op.lte]: req.query.cost } },
       ],
     };
     const listings = await Listing.findAll({ where: where });
@@ -31,7 +34,7 @@ exports.addListing = async (req, res, next) => {
     await Listing.create(req.body);
     res.sendStatus(200);
   } catch (error) {
-    console.log(error);
+    //console.log(error);
     res.sendStatus(500);
   }
 };
