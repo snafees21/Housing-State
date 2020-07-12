@@ -1,2 +1,18 @@
+// images will zoom in instead of stretch to fit the aspect ratio
+.embed-responsive {
+  .card-img-top {
+    object-fit: cover;
+  }
+}
 
+.overflow {
+  overflow: hidden;
+}
 
+.drop-text {
+  font-size: 0.75rem;
+}
+
+.label-text {
+  font-size: 0.45rem;
+}

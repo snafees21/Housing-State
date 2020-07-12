@@ -24,5 +24,15 @@ module.exports = merge(common, {
   },
   devServer: {
     historyApiFallback: true,
+    hot: true,
+    port: 8080,
+    contentBase: path.join(__dirname, 'dist'),
+    proxy: {
+      '/api/*': {
+        target: 'http://localhost:3000',
+        secure: false,
+        changeOrigin: true,
+      },
+    },
   },
 });
