@@ -11,7 +11,7 @@ const listingsDisplay = ({ listing }) => {
                 <div className='col-3'>
                   <div className='embed-responsive embed-responsive-1by1 overflow img-thumbnail'>
                     <img
-                      src={img}
+                      src={`http://localhost:3000/${listing.img_path}`}
                       className='card-img-top embed-responsive-item img-fluid'
                     />
                   </div>

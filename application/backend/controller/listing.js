@@ -1,5 +1,6 @@
 const Listing = require('../models/Listing');
 const Sequelize = require('sequelize');
+path = require('path');
 const Op = Sequelize.Op;
 
 // route: GET /api/listing
@@ -30,7 +31,7 @@ exports.addListing = async (req, res, next) => {
   // unpacks key, values of req.body to provide
   // {column: value} association
   try {
-    // await Listing.create(req.body);
+    await Listing.create(req.body);
     res.sendStatus(200);
   } catch (error) {
     //console.log(error);
