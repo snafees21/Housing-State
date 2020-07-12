@@ -16,6 +16,7 @@ node_modules/
 
 # misc
 dist/
+backend/public/
 
 .DS_Store
 .env.local
