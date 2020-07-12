@@ -1,5 +1,5 @@
 import Searchbar from '../search/searchbar';
-import ListingDisplay from '../search/displayResults';
+import ListingDisplay from '../search/showListings';
 
 const home = () => {
   const [listings, setListings] = React.useState([]);
@@ -13,7 +13,7 @@ const home = () => {
         <div>
           {listings.map((listing) => (
             // Warning: Each child in a list should have a unique "key" prop. TODO
-            <ListingDisplay listing={listing} />
+            <ListingDisplay key={listing.id} listing={listing} />
           ))}
         </div>
       </center>
@@ -22,13 +22,3 @@ const home = () => {
 };
 
 export default home;
-
-{
-  /* <ul>
-  {friends.map((p, i) => (
-    <li key={p.id}>
-      {p.name}, {p.age}, {i}
-    </li>
-  ))}
-</ul>; */
-}

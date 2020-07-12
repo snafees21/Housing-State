@@ -1,9 +1,7 @@
-import img from '../../assets/imgs/kamelia.png'; // TODO delete
-
 const listingsDisplay = ({ listing }) => {
   return (
     <React.Fragment>
-      <div className='row my-1 container-fluid align-item-center justify-content-center'>
+      <div className='row my-4 container-fluid align-item-center justify-content-center'>
         <div className='col-lg-10'>
           <div className='card'>
             <div className='card-body'>

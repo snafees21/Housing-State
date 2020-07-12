@@ -66,50 +66,58 @@ const searchbar = ({ listings, setListings }) => {
                     <p className='text-left text-muted'>Advanced Search</p>
                   </div>
                   <div className='form-row'>
-                    <div className='form-group col-sm-3 my-1 ting'>
+                    <div className='form-group col-sm-3 text-left'>
+                      <label className='label-text' htmlFor='unit_type'>
+                        Unit Type
+                      </label>
+
                       <Field
                         as='select'
+                        id='unit_type'
                         name='unit_type'
-                        className='form-control border border-info'
+                        className='form-control border border-info drop-text'
                         value={values.unit_type}
                         onChange={handleChange}
                         onBlur={handleBlur}
                       >
-                        {/* WE PROBABLY WANT TO ADD LABELS ON TOP OF EACH BUTTON!!!!!!!!!!!!!!!! */}
-                        {/* THESE COULD ALSO BE THEIR OWN COMPONENT WHERE THE OPTIONS ARE MAPPED */}
-                        <option value=''>Unit Type</option>
-                        <option value=''>All Unit Types</option>
+                        <option value=''>All</option>
                         <option value='house'>House</option>
-                        <option value='appartment'>Appartment</option>
+                        <option value='appartment'>Apartment</option>
                         <option value='townhouse'>Townhouse</option>
                       </Field>
                     </div>
-                    <div className='form-group col-sm-3 my-1'>
+                    <div className='form-group col-sm-3 text-left'>
+                      <label className='label-text' htmlFor='offer_type'>
+                        Offer Type
+                      </label>
                       <Field
                         as='select'
+                        id='offer_type'
                         name='offer_type'
-                        className='form-control border border-info'
+                        className='form-control border border-info drop-text'
                         value={values.offer_type}
                         onChange={handleChange}
                         onBlur={handleBlur}
                       >
-                        <option value=''>Offer Type</option>
-                        <option value=''>All Offer Types</option>
+                        <option value=''>All</option>
                         <option value='buy'>Buy</option>
                         <option value='rent'>Rent</option>
                       </Field>
                     </div>
-                    <div className='form-group col-sm-3 my-1'>
+                    <div className='form-group col-sm-3 text-left'>
+                      <label className='label-text' htmlFor='bedrooms'>
+                        Bedrooms
+                      </label>
                       <Field
                         as='select'
+                        id='bedrooms'
                         name='bedrooms'
-                        className='form-control border border-info'
+                        className='form-control border border-info drop-text'
                         value={values.bedrooms}
                         onChange={handleChange}
                         onBlur={handleBlur}
                       >
-                        <option value=''>Bedrooms</option>
-                        <option value=''>All Bedrooms</option>
+                        <option value=''>All</option>
                         <option value='1'> 1</option>
                         <option value='2'>&lt;= 2</option>
                         <option value='3'>&lt;= 3</option>
@@ -117,17 +125,20 @@ const searchbar = ({ listings, setListings }) => {
                         <option value='5'>&lt;= 5</option>
                       </Field>
                     </div>
-                    <div className='form-group col-sm-3 my-1'>
+                    <div className='form-group col-sm-3 text-left'>
+                      <label className='label-text' htmlFor='cost'>
+                        Cost
+                      </label>
                       <Field
                         as='select'
+                        id='cost'
                         name='cost'
-                        className='form-control border border-info'
+                        className='form-control border border-info drop-text'
                         value={values.cost}
                         onChange={handleChange}
                         onBlur={handleBlur}
                       >
-                        <option value=''>Cost</option>
-                        <option value=''>Any Price</option>
+                        <option value=''>Any</option>
                         <option value='750'>&lt; 750</option>
                         <option value='1000'>&lt; 1000</option>
                         <option value='1500'>&lt; 1500</option>
