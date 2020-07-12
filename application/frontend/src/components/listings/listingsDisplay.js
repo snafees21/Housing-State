@@ -1,36 +1,9 @@
-import img from '../../assets/imgs/kamelia.png';
+import img from '../../assets/imgs/kamelia.png'; // TODO delete
 
-const listingsDisplay = ({ listings, setListings }) => {
-  const lists = [
-    {
-      apt_suite: null,
-      available_at: '2020-07-07',
-      bathrooms: 2,
-      bedrooms: 5,
-      building_num: '1600',
-      city: 'San Francisco',
-      cost: 6700,
-      createdAt: '2020-07-07T22:11:16.000Z',
-      search_term: '1600 Holloway Ave',
-      furnished: true,
-      id: 1,
-      lease_length: 6,
-      offer_type: 'rent',
-      sq_footage: null,
-      state: 'CA',
-      street: 'Holloway Ave',
-      unit_type: 'house',
-      updatedAt: '2020-07-09T21:59:53.000Z',
-      user_id: 2,
-      zip_code: '94010',
-    },
-  ];
-
-  const list = lists[0];
-
+const listingsDisplay = ({ listing }) => {
   return (
     <React.Fragment>
-      <div className='row container-fluid align-item-center justify-content-center'>
+      <div className='row my-1 container-fluid align-item-center justify-content-center'>
         <div className='col-lg-10'>
           <div className='card'>
             <div className='card-body'>
@@ -43,8 +16,15 @@ const listingsDisplay = ({ listings, setListings }) => {
                     />
                   </div>
                 </div>
-                <div className='col-4'>
-                  <h6 className='text-left'>{list.search_term}</h6>
+                <div className='col-4 text-left'>
+                  <h5>{listing.full_address}</h5>
+                  <ul>
+                    <li>Bedrooms: {listing.bedrooms}</li>
+                    <li>Bathrooms: {listing.bathrooms}</li>
+                    <li>Cost: {listing.cost}</li>
+                    <li>Offer Type: {listing.offer_type}</li>
+                    <li>Unit Type: {listing.unit_type}</li>
+                  </ul>
                 </div>
               </div>
             </div>

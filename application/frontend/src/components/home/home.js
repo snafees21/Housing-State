@@ -2,18 +2,19 @@ import Searchbar from '../listings/searchbar';
 import ListingDisplay from '../listings/listingsDisplay';
 
 const home = () => {
-  const [listings, setListings] = React.useState({});
+  const [listings, setListings] = React.useState([]);
+
   return (
     <React.Fragment>
       <center>
-        <div>
-          <h1>Home</h1>
-        </div>
-        <div>
+        <div className='my-5'>
           <Searchbar listings={listings} setListings={setListings} />
         </div>
         <div>
-          <ListingDisplay listings={listings} setListings={setListings} />
+          {listings.map((listing) => (
+            // Warning: Each child in a list should have a unique "key" prop. TODO
+            <ListingDisplay listing={listing} />
+          ))}
         </div>
       </center>
     </React.Fragment>

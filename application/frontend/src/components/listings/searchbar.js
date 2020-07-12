@@ -10,7 +10,7 @@ const searchbar = ({ listings, setListings }) => {
         setListings(res.data);
         console.log(res.data);
       })
-      .catch();
+      .catch(error);
   };
 
   // define form validation rules here
@@ -21,7 +21,7 @@ const searchbar = ({ listings, setListings }) => {
   return (
     <div className='row container-fluid align-item-center justify-content-center'>
       <div className='col-md-6'>
-        <div className='card'>
+        <div className='card mb-4'>
           <div className='card-body'>
             <Formik
               validationSchema={validationSchema}
@@ -35,7 +35,7 @@ const searchbar = ({ listings, setListings }) => {
               onSubmit={(values, { setSubmitting }) => {
                 setSubmitting(true);
                 searchListings(values);
-                setSubmitting(false);
+                setSubmitting(false); // TODO: need to refresh after submit rn
               }}
             >
               {({

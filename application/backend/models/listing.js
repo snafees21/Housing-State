@@ -150,6 +150,12 @@ const Listing = db.define('Listing', {
     },
     comment: 'building_num + street + city + state + zip_code',
   },
+
+  image_path: {
+    type: Sequelize.STRING(100),
+    allowNull: false,
+    comment: 'path to image in files system corresponding to posting',
+  },
 });
 
 module.exports = Listing;

@@ -3,6 +3,7 @@ import {
   getUsers,
   addUser,
   authenticateUser,
+  validateUser,
   deleteUsers,
 } from '../controller/user';
 
@@ -12,6 +13,6 @@ user.route('/').get(getUsers).post(addUser);
 user.route('/auth/').post(authenticateUser);
 
 // the '/:' allows params to be passed
-user.route('/:id').delete(deleteUsers);
+user.route('/:id').get(validateUser).delete(deleteUsers);
 
 export default user;

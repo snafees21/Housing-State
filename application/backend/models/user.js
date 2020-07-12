@@ -1,5 +1,5 @@
 import db from '../database/db';
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcrypt-nodejs');
 const Sequelize = require('sequelize');
 
 // defines schema for users table ('s' added by sequelize)

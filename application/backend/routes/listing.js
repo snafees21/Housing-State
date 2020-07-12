@@ -7,10 +7,14 @@ import {
   updateListing,
   deleteListing,
 } from '../controller/listing';
+const upload = require('../utils/storage');
 
 const listing = express.Router();
 
-listing.route('/').get(searchListings).post(addListing);
+listing
+  .route('/')
+  .get(searchListings)
+  .post(upload.single('listingImage'), addListing);
 
 // the '/:' allows params to be passed
 listing
