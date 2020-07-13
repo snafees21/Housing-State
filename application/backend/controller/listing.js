@@ -1,6 +1,5 @@
-const Listing = require('../models/Listing');
+const Listing = require('../models/listing');
 const Sequelize = require('sequelize');
-path = require('path');
 const Op = Sequelize.Op;
 
 // route: GET /api/listing
@@ -34,7 +33,7 @@ exports.addListing = async (req, res, next) => {
     await Listing.create(req.body);
     res.sendStatus(200);
   } catch (error) {
-    //console.log(error);
+    console.log(error);
     res.sendStatus(500);
   }
 };

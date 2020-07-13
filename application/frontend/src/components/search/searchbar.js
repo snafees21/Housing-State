@@ -3,12 +3,12 @@ import * as Yup from 'yup';
 import axios from 'axios';
 
 const searchbar = ({ listings, setListings }) => {
-  const searchListings = (query) => {
+  const searchListings = (query, { setSubmitting }) => {
     axios
       .get('/api/listing', { params: query })
       .then((res) => {
         setListings(res.data);
-        console.log(res.data);
+        setSubmitting(false);
       })
       .catch(error);
   };
@@ -34,8 +34,7 @@ const searchbar = ({ listings, setListings }) => {
               }}
               onSubmit={(values, { setSubmitting }) => {
                 setSubmitting(true);
-                searchListings(values);
-                setSubmitting(false); // TODO: need to refresh after submit rn
+                searchListings(values, { setSubmitting });
               }}
             >
               {({
@@ -70,7 +69,6 @@ const searchbar = ({ listings, setListings }) => {
                       <label className='label-text' htmlFor='unit_type'>
                         Unit Type
                       </label>
-
                       <Field
                         as='select'
                         id='unit_type'

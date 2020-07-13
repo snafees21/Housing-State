@@ -18,7 +18,6 @@ const User = db.define(
       type: Sequelize.STRING(100),
       unique: true,
       allowNull: false,
-      primaryKey: true,
       validate: {
         isEmail: true,
       },

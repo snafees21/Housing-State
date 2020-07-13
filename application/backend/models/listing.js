@@ -14,7 +14,7 @@ const Listing = db.define('Listing', {
     type: Sequelize.INTEGER,
     allowNull: false,
     references: {
-      model: 'users',
+      model: 'Users',
       key: 'id',
     },
     comment: 'foreign key, from `users` table',
@@ -74,7 +74,7 @@ const Listing = db.define('Listing', {
   },
 
   lease_length: {
-    type: Sequelize.INTEGER(5),
+    type: Sequelize.INTEGER,
     allowNull: true,
     validate: {
       isNumeric: true,
@@ -109,7 +109,7 @@ const Listing = db.define('Listing', {
   },
 
   sq_footage: {
-    type: Sequelize.INTEGER(5),
+    type: Sequelize.INTEGER,
     allowNull: true,
     validate: {
       isNumeric: true,
