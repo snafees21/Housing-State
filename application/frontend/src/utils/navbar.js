@@ -8,14 +8,14 @@ const navbar = () => {
           </li>
         </ul>
       </div>
-      <div class='ml-auto navbar-brand order-0'>
+      <div className='ml-auto navbar-brand order-0'>
         <button
-          class='navbar-toggler'
+          className='navbar-toggler'
           type='button'
           data-toggle='collapse'
           data-target='.dual-collapse2'
         >
-          <span class='navbar-toggler-icon' />
+          <span className='navbar-toggler-icon' />
         </button>
       </div>
       <div className='navbar-collapse collapse w-100 order-2 dual-collapse2'>

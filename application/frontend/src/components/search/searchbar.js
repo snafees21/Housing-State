@@ -1,5 +1,4 @@
 import { Field, Form, Formik, ErrorMessage } from 'formik';
-import * as Yup from 'yup';
 import axios from 'axios';
 
 const searchbar = ({ listings, setListings }) => {
@@ -13,18 +12,12 @@ const searchbar = ({ listings, setListings }) => {
       .catch(error);
   };
 
-  // define form validation rules here
-  const validationSchema = Yup.object({
-    search_term: Yup.string().required('Required'),
-  });
-
   return (
     <div className='row container-fluid align-item-center justify-content-center'>
       <div className='col-md-6'>
         <div className='card mb-4'>
           <div className='card-body'>
             <Formik
-              validationSchema={validationSchema}
               initialValues={{
                 search_term: '',
                 unit_type: '',
@@ -55,10 +48,6 @@ const searchbar = ({ listings, setListings }) => {
                       value={values.search_term}
                       onChange={handleChange}
                       onBlur={handleBlur}
-                    />
-                    <ErrorMessage
-                      name='search_term'
-                      render={(msg) => <p className='text-danger'>{msg}</p>}
                     />
                   </div>
                   <div className='mt-5 mb-1'>
