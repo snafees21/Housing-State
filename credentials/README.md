@@ -4,11 +4,11 @@
 
 **How to Connect**
 
-> **Public IP:** `18.221.223.41`
+> **Public IP:** `3.17.193.189`
 >
 > **SSH key:** `.ec2-key.pem`
 >
-> To connect sitting at root directory: `ssh -i credentials/.ec2-key.pem ubuntu@ec2-18-221-223-41.us-east-2.compute.amazonaws.com`
+> To connect sitting at root directory: `ssh -i credentials/.ec2-key.pem ubuntu@ec2-3-17-193-189.us-east-2.compute.amazonaws.com`
 
 ### MySQL Database
 

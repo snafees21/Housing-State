@@ -1,6 +1,6 @@
 import cors from 'cors';
 import express from 'express';
-import { user, listing, message } from './routes/index';
+import { user, listing, message } from './src/routes/index';
 const bodyParser = require('body-parser');
 
 const app = express();

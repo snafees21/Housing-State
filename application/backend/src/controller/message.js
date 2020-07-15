@@ -1,4 +1,4 @@
-const Message = require('../models/Message');
+const Message = require('../models/message');
 
 // route: GET /api/message
 exports.getMessages = async (req, res, next) => {

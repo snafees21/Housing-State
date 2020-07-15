@@ -1,22 +1,16 @@
-import { Field, Form, Formik, ErrorMessage } from 'formik';
-import * as Yup from 'yup';
+import { Field, Form, Formik } from 'formik';
 import axios from 'axios';
 
 const searchbar = ({ listings, setListings }) => {
-  const searchListings = (query) => {
+  const searchListings = (query, { setSubmitting }) => {
     axios
       .get('/api/listing', { params: query })
       .then((res) => {
         setListings(res.data);
-        console.log(res.data);
+        setSubmitting(false);
       })
       .catch(error);
   };
-
-  // define form validation rules here
-  const validationSchema = Yup.object({
-    search_term: Yup.string().required('Required'),
-  });
 
   return (
     <div className='row container-fluid align-item-center justify-content-center'>
@@ -24,7 +18,6 @@ const searchbar = ({ listings, setListings }) => {
         <div className='card mb-4'>
           <div className='card-body'>
             <Formik
-              validationSchema={validationSchema}
               initialValues={{
                 search_term: '',
                 unit_type: '',
@@ -34,8 +27,7 @@ const searchbar = ({ listings, setListings }) => {
               }}
               onSubmit={(values, { setSubmitting }) => {
                 setSubmitting(true);
-                searchListings(values);
-                setSubmitting(false); // TODO: need to refresh after submit rn
+                searchListings(values, { setSubmitting });
               }}
             >
               {({
@@ -57,10 +49,6 @@ const searchbar = ({ listings, setListings }) => {
                       onChange={handleChange}
                       onBlur={handleBlur}
                     />
-                    <ErrorMessage
-                      name='search_term'
-                      render={(msg) => <p className='text-danger'>{msg}</p>}
-                    />
                   </div>
                   <div className='mt-5 mb-1'>
                     <p className='text-left text-muted'>Advanced Search</p>
@@ -70,7 +58,6 @@ const searchbar = ({ listings, setListings }) => {
                       <label className='label-text' htmlFor='unit_type'>
                         Unit Type
                       </label>
-
                       <Field
                         as='select'
                         id='unit_type'
