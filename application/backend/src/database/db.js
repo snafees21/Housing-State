@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 
 // credentials to log into database, these should live in a config file
-// not added to git
+// instead of being added to git
 const db = new Sequelize('housing_state', 'root', 'G8t0r3s!', {
   host: 'localhost',
   dialect: 'mysql',
