@@ -1,4 +1,4 @@
-import { Field, Form, Formik, ErrorMessage } from 'formik';
+import { Field, Form, Formik } from 'formik';
 import axios from 'axios';
 
 const searchbar = ({ listings, setListings }) => {
