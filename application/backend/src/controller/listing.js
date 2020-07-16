@@ -10,8 +10,6 @@ exports.searchListings = async (req, res, next) => {
         // match and address and city or zip and unit_type and offer_type and bedrooms and cost
         // non-numeric fields use like so that we can match on a blank value '%%'
         { full_address: { [Op.like]: `%${req.query.search_term}%` } },
-        { city: { [Op.like]: `%${req.query.search_term}%` } },
-        { zip_code: { [Op.like]: `%${req.query.search_term}%` } },
         { unit_type: { [Op.like]: `%${req.query.unit_type}%` } },
         { offer_type: { [Op.like]: `%${req.query.offer_type}%` } },
         { bedrooms: { [Op.gte]: req.query.bedrooms } },
