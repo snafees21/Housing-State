@@ -22,8 +22,8 @@ const searchbar = ({ listings, setListings }) => {
                 search_term: '',
                 unit_type: '',
                 offer_type: '',
-                bedrooms: '',
-                cost: '',
+                bedrooms: 0,
+                cost: 0,
               }}
               onSubmit={(values, { setSubmitting }) => {
                 setSubmitting(true);
@@ -105,11 +105,11 @@ const searchbar = ({ listings, setListings }) => {
                         onBlur={handleBlur}
                       >
                         <option value=''>All</option>
-                        <option value='1'> 1</option>
-                        <option value='2'>&lt;= 2</option>
-                        <option value='3'>&lt;= 3</option>
-                        <option value='4'>&lt;= 4</option>
-                        <option value='5'>&lt;= 5</option>
+                        <option value='1'>1+</option>
+                        <option value='2'>2+</option>
+                        <option value='3'>3+</option>
+                        <option value='4'>4+</option>
+                        <option value='5'>5+</option>
                       </Field>
                     </div>
                     <div className='form-group col-sm-3 text-left'>
@@ -126,10 +126,10 @@ const searchbar = ({ listings, setListings }) => {
                         onBlur={handleBlur}
                       >
                         <option value=''>Any</option>
-                        <option value='750'>&lt; 750</option>
-                        <option value='1000'>&lt; 1000</option>
-                        <option value='1500'>&lt; 1500</option>
-                        <option value='3000'>&lt; 3000</option>
+                        <option value='750'>750+</option>
+                        <option value='1000'>1000+</option>
+                        <option value='1500'>1500+</option>
+                        <option value='3000'>3000+</option>
                       </Field>
                     </div>
                   </div>
