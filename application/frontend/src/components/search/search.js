@@ -126,10 +126,10 @@ const searchbar = ({ listings, setListings }) => {
                         onBlur={handleBlur}
                       >
                         <option value=''>Any</option>
-                        <option value='750'>750+</option>
-                        <option value='1000'>1000+</option>
-                        <option value='1500'>1500+</option>
-                        <option value='3000'>3000+</option>
+                        <option value='750'>$750+</option>
+                        <option value='1000'>$1000+</option>
+                        <option value='1500'>$1500+</option>
+                        <option value='3000'>$3000+</option>
                       </Field>
                     </div>
                   </div>
