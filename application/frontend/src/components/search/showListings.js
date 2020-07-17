@@ -9,12 +9,12 @@ const listingsDisplay = ({ listing }) => {
                 <div className='col-3'>
                   <div className='embed-responsive embed-responsive-1by1 overflow img-thumbnail'>
                     <img
-                      src={`http://localhost:3000/${listing.img_path}`}
+                      src={`/api/image/${listing.img_path}`}
                       className='card-img-top embed-responsive-item img-fluid'
                     />
                   </div>
                 </div>
-                <div className='col-4 text-left'>
+                <div className='col text-left'>
                   <h5>{listing.full_address}</h5>
                   <ul>
                     <li>Bedrooms: {listing.bedrooms}</li>
