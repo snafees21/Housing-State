@@ -2,6 +2,7 @@ import { Switch, Route } from 'react-router-dom';
 import Home from '../home/home';
 import About from '../about/about';
 import Navbar from '../../utils/navbar';
+import Message from '../message/messagePage';
 
 const App = ({}) => (
   <React.Fragment>
@@ -17,6 +18,10 @@ const App = ({}) => (
 
           <Route exact path='/'>
             <Home />
+          </Route>
+
+          <Route path ='/message'>
+            <Message/>
           </Route>
         </Switch>
       </div>
