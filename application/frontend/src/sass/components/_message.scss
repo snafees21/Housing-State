@@ -1,0 +1,39 @@
+.scroll {
+    overflow-y: scroll;
+    height: 82vh;
+    width: 82vh;
+  }
+  
+  .no-padding {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  
+  .high-light{
+    border-color: blueviolet;
+    border-width:3px;
+    border-style: solid;
+  }
+  
+  .high-light2{
+    border-color: greenyellow;
+    border-width:3px;
+    border-style: solid;
+  }
+  
+  .high-light3{
+    border-color: rgb(33, 54, 121);
+    border-width:3px;
+    border-style: solid;
+  }
+  
+  .high-light4{
+    border-color:red;
+    border-width:3px;
+    border-style: solid;
+  }
+  
+  .full-screen{
+    height: 92.5vh;
+    width: 90vh;
+  }
