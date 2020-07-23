@@ -6,15 +6,14 @@ const Op = Sequelize.Op;
 exports.searchListings = async (req, res, next) => {
   try {
     let where = {
-      [Op.or]: [
-        // match on address or city or zip or unit_type or offer_type or bedrooms or cost
+      [Op.and]: [
+        // match and address and city or zip and unit_type and offer_type and bedrooms and cost
+        // non-numeric fields use like so that we can match on a blank value '%%'
         { full_address: { [Op.like]: `%${req.query.search_term}%` } },
-        { city: { [Op.eq]: req.query.search_term } },
-        { zip_code: { [Op.eq]: req.query.search_term } },
-        { unit_type: { [Op.eq]: req.query.unit_type } },
-        { offer_type: { [Op.eq]: req.query.offer_type } },
-        { bedrooms: { [Op.lte]: req.query.bedrooms } },
-        { cost: { [Op.lte]: req.query.cost } },
+        { unit_type: { [Op.like]: `%${req.query.unit_type}%` } },
+        { offer_type: { [Op.like]: `%${req.query.offer_type}%` } },
+        { bedrooms: { [Op.gte]: req.query.bedrooms } },
+        { cost: { [Op.gte]: req.query.cost } },
       ],
     };
     const listings = await Listing.findAll({ where: where });
