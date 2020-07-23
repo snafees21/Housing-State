@@ -1,4 +1,4 @@
-const User = require('../models/user');
+const User = require('../models/User');
 
 // route: GET /api/user
 exports.getUsers = async (req, res, next) => {
