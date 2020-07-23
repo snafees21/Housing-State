@@ -12,7 +12,6 @@ const home = () => {
         </div>
         <div>
           {listings.map((listing) => (
-            // Warning: Each child in a list should have a unique "key" prop. TODO
             <ListingDisplay key={listing.id} listing={listing} />
           ))}
         </div>

@@ -1,22 +1,16 @@
-import { Field, Form, Formik, ErrorMessage } from 'formik';
-import * as Yup from 'yup';
+import { Field, Form, Formik } from 'formik';
 import axios from 'axios';
 
 const searchbar = ({ listings, setListings }) => {
-  const searchListings = (query) => {
+  const searchListings = (query, { setSubmitting }) => {
     axios
       .get('/api/listing', { params: query })
       .then((res) => {
         setListings(res.data);
-        console.log(res.data);
+        setSubmitting(false);
       })
       .catch(error);
   };
-
-  // define form validation rules here
-  const validationSchema = Yup.object({
-    search_term: Yup.string().required('Required'),
-  });
 
   return (
     <div className='row container-fluid align-item-center justify-content-center'>
@@ -24,18 +18,16 @@ const searchbar = ({ listings, setListings }) => {
         <div className='card mb-4'>
           <div className='card-body'>
             <Formik
-              validationSchema={validationSchema}
               initialValues={{
                 search_term: '',
                 unit_type: '',
                 offer_type: '',
-                bedrooms: '',
-                cost: '',
+                bedrooms: 0,
+                cost: 0,
               }}
               onSubmit={(values, { setSubmitting }) => {
                 setSubmitting(true);
-                searchListings(values);
-                setSubmitting(false); // TODO: need to refresh after submit rn
+                searchListings(values, { setSubmitting });
               }}
             >
               {({
@@ -57,10 +49,6 @@ const searchbar = ({ listings, setListings }) => {
                       onChange={handleChange}
                       onBlur={handleBlur}
                     />
-                    <ErrorMessage
-                      name='search_term'
-                      render={(msg) => <p className='text-danger'>{msg}</p>}
-                    />
                   </div>
                   <div className='mt-5 mb-1'>
                     <p className='text-left text-muted'>Advanced Search</p>
@@ -70,7 +58,6 @@ const searchbar = ({ listings, setListings }) => {
                       <label className='label-text' htmlFor='unit_type'>
                         Unit Type
                       </label>
-
                       <Field
                         as='select'
                         id='unit_type'
@@ -118,11 +105,11 @@ const searchbar = ({ listings, setListings }) => {
                         onBlur={handleBlur}
                       >
                         <option value=''>All</option>
-                        <option value='1'> 1</option>
-                        <option value='2'>&lt;= 2</option>
-                        <option value='3'>&lt;= 3</option>
-                        <option value='4'>&lt;= 4</option>
-                        <option value='5'>&lt;= 5</option>
+                        <option value='1'>1+</option>
+                        <option value='2'>2+</option>
+                        <option value='3'>3+</option>
+                        <option value='4'>4+</option>
+                        <option value='5'>5+</option>
                       </Field>
                     </div>
                     <div className='form-group col-sm-3 text-left'>
@@ -139,10 +126,10 @@ const searchbar = ({ listings, setListings }) => {
                         onBlur={handleBlur}
                       >
                         <option value=''>Any</option>
-                        <option value='750'>&lt; 750</option>
-                        <option value='1000'>&lt; 1000</option>
-                        <option value='1500'>&lt; 1500</option>
-                        <option value='3000'>&lt; 3000</option>
+                        <option value='750'>750+</option>
+                        <option value='1000'>1000+</option>
+                        <option value='1500'>1500+</option>
+                        <option value='3000'>3000+</option>
                       </Field>
                     </div>
                   </div>
