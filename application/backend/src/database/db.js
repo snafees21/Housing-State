@@ -1,7 +1,8 @@
 const Sequelize = require('sequelize');
-
+const env = process.env.NODE_ENV || 'production';
+const config = require(__dirname + '/../config/config.json')[env];
 // credentials to log into database, these should live in a config file
-// instead of being added to git
+// not added to git
 const db = new Sequelize('housing_state', 'root', 'G8t0r3s!', {
   host: 'localhost',
   dialect: 'mysql',
@@ -13,9 +14,10 @@ const db = new Sequelize('housing_state', 'root', 'G8t0r3s!', {
     idle: 10000,
   },
 });
+const db = new Sequelize(config.database, config.username, config.password, config);
 
 db.authenticate()
-  .then(() => console.log('Database conneted successfully'))
+  .then(() => console.log('Database connected successfully'))
   .catch((error) => console.log('Error: ', error));
 
 // sync all tables with database
