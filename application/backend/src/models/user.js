@@ -76,7 +76,12 @@ User.prototype.validPassword = async (password) => {
 
 // returns true if user is admin 
 User.prototype.isAdmin = async (type) => {
-  return await compare(type, 'admin');
+  //return await compare(type, 'admin')
+  if(type == 'admin') {
+    return 1;
+  } else {
+    return 0;
+  }
 };
 
 module.exports = User;

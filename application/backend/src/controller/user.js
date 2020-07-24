@@ -17,10 +17,13 @@ exports.getUsers = async (req, res, next) => {
 exports.validateUser = async (req, res, next) => {
   // return if user has sfsu email and if they are an admin
   try {
-    const user = await User.findByPk(req.params.id);
-    if (user.isAdmin() && sfsu_verified == 1) {
-      res.send(user);
-    }
+      const users = await User.findAll({
+        where: {id: req.params.id,
+                sfsu_verified: 1,
+                type: 'admin'
+        },         
+      });
+      res.send(users);
   } catch (error) {
     console.log(error);
     res.sendStatus(500)
