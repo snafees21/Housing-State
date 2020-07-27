@@ -11,6 +11,13 @@ const searchbar = ({ listings, setListings }) => {
       })
       .catch(error);
   };
+  const formData = {
+    search_term: '',
+    unit_type: '',
+    offer_type: '',
+    bedrooms: 0,
+    cost: 0,
+  };
 
   return (
     <div className='row container-fluid align-item-center justify-content-center'>
@@ -18,13 +25,7 @@ const searchbar = ({ listings, setListings }) => {
         <div className='card mb-4'>
           <div className='card-body'>
             <Formik
-              initialValues={{
-                search_term: '',
-                unit_type: '',
-                offer_type: '',
-                bedrooms: 0,
-                cost: 0,
-              }}
+              initialValues={{ ...formData }}
               onSubmit={(values, { setSubmitting }) => {
                 setSubmitting(true);
                 searchListings(values, { setSubmitting });

@@ -5,7 +5,7 @@ const home = () => {
   const [listings, setListings] = React.useState([]);
 
   return (
-    <React.Fragment>
+    <>
       <center>
         <div className='my-5'>
           <Searchbar listings={listings} setListings={setListings} />
@@ -16,7 +16,7 @@ const home = () => {
           ))}
         </div>
       </center>
-    </React.Fragment>
+    </>
   );
 };
 

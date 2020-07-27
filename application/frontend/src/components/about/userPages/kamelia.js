@@ -2,7 +2,7 @@ import { bioKamelia } from '../../../utils/text';
 import imgKamelia from '../../../assets/imgs/kamelia.png';
 
 const kamelia = () => (
-  <React.Fragment>
+  <>
     <div className='container-fluid'>
       <div className='row'>
         <div className='col-sm-3 m-3'>
@@ -16,7 +16,7 @@ const kamelia = () => (
         </div>
       </div>
     </div>
-  </React.Fragment>
+  </>
 );
 
 export default kamelia;

@@ -2,7 +2,7 @@ import { bioMantasha } from '../../../utils/text';
 import imgMantasha from '../../../assets/imgs/imgMantasha.jpeg';
 
 const mantasha = () => (
-  <React.Fragment>
+  <>
     <div className='container-fluid'>
       <div className='row'>
         <div className='col-sm-3 m-3'>
@@ -16,7 +16,7 @@ const mantasha = () => (
         </div>
       </div>
     </div>
-  </React.Fragment>
+  </>
 );
 
 export default mantasha;
