@@ -12,8 +12,9 @@ const page2 = () => {
           <Select
             as='select'
             name='unit_type'
-            className='form-control border border-info drop-text'
+            className='form-control border border drop-text'
           >
+            <option value=''>Pick</option>
             <option value='house'>House</option>
             <option value='appartment'>Apartment</option>
             <option value='townhouse'>Townhouse</option>
@@ -26,24 +27,23 @@ const page2 = () => {
           <Select
             as='select'
             name='offer_type'
-            className='form-control border border-info drop-text'
+            className='form-control border drop-text'
           >
-            <option value=''>All</option>
+            <option value=''>Pick</option>
             <option value='buy'>Buy</option>
             <option value='rent'>Rent</option>
           </Select>
         </div>
-      </div>
-      <div className='form-row justify-content-center'>
-        <div className='form-group col-sm-6 text-left'>
+        <div className='form-group col-sm-2 text-left'>
           <label className='label-text' htmlFor='bedrooms'>
             Bedrooms
           </label>
           <Select
             as='select'
             name='bedrooms'
-            className='form-control border border-info drop-text'
+            className='form-control border drop-text'
           >
+            <option value=''>Pick</option>
             <option value='1'>1</option>
             <option value='2'>2</option>
             <option value='3'>3</option>
@@ -62,8 +62,9 @@ const page2 = () => {
           <Select
             as='select'
             name='bathrooms'
-            className='form-control border border-info drop-text'
+            className='form-control border drop-text'
           >
+            <option value=''>Pick</option>
             <option value='1'>1</option>
             <option value='2'>2</option>
             <option value='3'>3</option>
@@ -71,7 +72,9 @@ const page2 = () => {
             <option value='5'>5</option>
           </Select>
         </div>
-        <div className='form-group col-sm-3 text-left'>
+      </div>
+      <div className='form-row justify-content-center'>
+        <div className='form-group col-sm-10 text-left'>
           <label className='label-text' htmlFor='description'>
             Description
           </label>

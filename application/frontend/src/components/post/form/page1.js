@@ -13,7 +13,6 @@ const page1 = () => {
             name='building_num'
             className='form-control'
             maxLength='4'
-            //component={InputField}
           />
         </div>
 
@@ -26,7 +25,6 @@ const page1 = () => {
             name='street'
             className='form-control'
             maxLength='20'
-            //component={InputField}
           />
         </div>
       </div>
@@ -40,7 +38,6 @@ const page1 = () => {
             name='city'
             className='form-control'
             maxLength='20'
-            //component={InputField}
           />
         </div>
         <div className='form-group col-sm-2 text-left'>
@@ -52,7 +49,6 @@ const page1 = () => {
             name='state'
             className='form-control'
             maxLength='2'
-            //component={InputField}
           />
         </div>
         <div className='form-group col-sm-3 text-left'>
@@ -63,8 +59,7 @@ const page1 = () => {
             type='text'
             name='zip_code'
             className='form-control'
-            maxLength='2'
-            //component={InputField}
+            maxLength='5'
           />
         </div>
       </div>

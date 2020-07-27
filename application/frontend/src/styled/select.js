@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 
 const StyledSelect = styled.select`
-  color: var(--blue);
+  color: var(--grey);
 `;
 
 export default StyledSelect;

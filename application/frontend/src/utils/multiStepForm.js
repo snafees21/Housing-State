@@ -44,14 +44,22 @@ const Wizard = ({ children, initialValues, onSubmit }) => {
             Step {stepNumber + 1} of {totalSteps}
           </p>
           {step}
-          <div style={{ display: 'flex' }}>
+          <div>
             {stepNumber > 0 && (
-              <button onClick={() => previous(formik.values)} type='button'>
+              <button
+                className='btn btn-warning float-left mt-3'
+                onClick={() => previous(formik.values)}
+                type='button'
+              >
                 Back
               </button>
             )}
             <div>
-              <button disabled={formik.isSubmitting} type='submit'>
+              <button
+                className='btn btn-dark float-right mt-3'
+                disabled={formik.isSubmitting}
+                type='submit'
+              >
                 {isLastStep ? 'Submit' : 'Next'}
               </button>
             </div>
