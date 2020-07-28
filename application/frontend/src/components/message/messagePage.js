@@ -1,142 +1,159 @@
-import AllMessages from "../message/allMessages";
+import ShowRecent from "./showRecent";
+
+import DisplayMessage from "./displayMessage";
 import axios from "axios";
 
-const messagePage = () => {
+const messagePage = ({ userID, userName }) => {
   const [messages, setMessages] = React.useState([]);
-  const [username, setUsername] = React.useState('');
-  const [userMessage, setUserMessage] = React.useState('');
+  const [to_user, setTo_user] = React.useState("");
+  const [from_user, setFrom_user] = React.useState("");
 
-  const handleNewMesseages = () => {
-    const body = {
-      username: username,
-      message: userMessage,
-    };
+  const friends = [
+    { id: 1, name: "Dave", message: "Hello! I like this house!" },
+    { id: 2, name: "Kelly", message: "Hi! How much is this house?" },
+    { id: 3, name: "Max", message: "Bye! This house is too small" },
+    { id: 4, name: "Jack", message: "Thanks! I will move in tomorrow" },
+    { id: 5, name: "David", message: "Hello! I interested in this house" },
+    { id: 6, name: "Kayla", message: "Hi! I would like to see the kitchen" },
+    { id: 7, name: "Maxie", message: "Bye!" },
+    { id: 8, name: "Jacky", message: "Thanks!" },
+  ];
+
+  const friend2 = [
+    { id: 1, name: "Dave", message: "Hello!" },
+    { id: 2, name: "Kelly", message: "Hi!" },
+    { id: 3, name: "Max", message: "Bye!" },
+    { id: 4, name: "Jack", message: "Thanks!" },
+  ];
+
+  const friend3 = [
+    { id: 1, name: "Dave", message: "Hello!" },
+    { id: 2, name: "Kelly", message: "Hi!" },
+  ];
+
+  const smessages = [
+    { id: 1, from_user: "Dave", to_user: "kelly", message: "Hello!" },
+    { id: 2, from_user: "Kelly", to_user: "Dave", message: "bye" },
+  ];
+
+  //need to be replace
+  const getMessages = (name, message) => {
+    setFrom_user(name);
+    setTo_user(message); //todo
+    /*
+    query ={
+      to_user: to_user,
+      from_user: from_user
+    }
     axios
-      .post("/api/userNewMessages", body)
+      .get('/api/message/conversation', { params: query })
       .then((res) => {
-        if (res.data) {
-          console.log("success");
-        } else {
-          console.log(res.data);
-        }
       })
       .catch(() => {
         console.log("Failed");
       });
+*/
   };
 
-  const getAllMessages = () => {
-    axios
-      .post("/api/getAllMessages", body)
-      .then((res) => {
-        if (res.data) {
-          console.log("success");
-        } else {
-          console.log(res.data);
-        }
-      })
-      .catch(() => {
-        console.log("Failed");
-      });
+  const getRecentMessages = () => {
+    /*axios
+    .get('/api/message/recent', { params: query })
+    .then((res) => {
+    })
+    .catch(() => {
+      console.log("Failed");
+    });
+    */
   };
 
   return (
-    <div class="row container-fluid no-padding bg-dark">
-      <div class="col-md-5 no-padding high-light full-screen">
-        <ul class="nav nav-tabs high-light" id="myTab" role="tablist">
-          <li class="nav-item high-light">
+    <div class="row container-fluid message-no-padding">
+      <div class="col-md-4 message-no-padding full-screen message-high-light">
+        <ul
+          class="nav nav-tabs message-high-light bg-dark"
+          id="myTab"
+          role="tablist"
+        >
+          <li class="card nav-item">
             <a
               class="nav-link bg-dark text-white"
-              id="home-tab"
+              id="input-tab"
               data-toggle="tab"
-              href="#home"
+              href="#input"
               role="tab"
-              aria-controls="home"
-              aria-selected="true"
             >
               Inbox
             </a>
           </li>
-          <li class="nav-item high-light">
+          <li class="card nav-item">
             <a
               class="nav-link bg-dark text-white"
-              id="profile-tab"
+              id="sent-tab"
               data-toggle="tab"
-              href="#profile"
+              href="#sent"
               role="tab"
-              aria-controls="profile"
-              aria-selected="false"
             >
               Sent
             </a>
           </li>
-          <li class="nav-item high-light">
+          <li class="card nav-item">
             <a
               class="nav-link bg-dark text-white"
-              id="contact-tab"
+              id="marked-tab"
               data-toggle="tab"
-              href="#contact"
+              href="#marked"
               role="tab"
-              aria-controls="contact"
-              aria-selected="false"
             >
               Marked
             </a>
           </li>
         </ul>
 
-        <div class="tab-content high-light2" id="myTabContent">
-          <div
-            class="tab-pane fade show active"
-            id="home"
-            role="tabpanel"
-            aria-labelledby="home-tab"
-          >
-            <div class="col high-light3 no-padding">
-              <div className=" scroll ">
-                <AllMessages />
+        <div class="tab-content bg-dark" id="myTabContent">
+          <div class="tab-pane fade show active" id="input" role="tabpanel">
+            <div class="col message-no-padding message-scroll">
+              <div id="sent-tab" data-toggle="tab" href="#message" role="tab">
+                {friends.map((friend) => (
+                  <div onClick={() => getMessages(friend.name, friend.message)}>
+                    <ShowRecent name={friend.name} message={friend.message} />
+                  </div>
+                ))}
               </div>
             </div>
           </div>
 
-          <div
-            class="tab-pane fade"
-            id="profile"
-            role="tabpanel"
-            aria-labelledby="profile-tab"
-          >
-            <div class="col high-light3 no-padding">
-              <div className=" scroll ">
-                <AllMessages />
-                <AllMessages />
-                <AllMessages />
+          <div class="tab-pane fade" id="sent" role="tabpanel">
+            <div class="col message-no-padding message-scroll">
+              <div id="sent-tab" data-toggle="tab" href="#message" role="tab">
+                {friend2.map((friend) => (
+                  <div onClick={() => getMessages(friend.name, friend.message)}>
+                    <ShowRecent name={friend.name} message={friend.message} />
+                  </div>
+                ))}
               </div>
             </div>
           </div>
 
-          <div
-            class="tab-pane fade"
-            id="contact"
-            role="tabpanel"
-            aria-labelledby="contact-tab"
-          >
-            <div class="col high-light3 no-padding">
-              <div className="scroll">
-                <AllMessages />
-                <AllMessages />
-                <AllMessages />
-                <AllMessages />
-                <AllMessages />
-                <AllMessages />
-                <AllMessages />
+          <div class="tab-pane fade" id="marked" role="tabpanel">
+            <div class="col message-no-padding message-scroll">
+              <div id="sent-tab" data-toggle="tab" href="#message" role="tab">
+                {friend3.map((friend) => (
+                  <div onClick={() => getMessages(friend.name, friend.message)}>
+                    <ShowRecent name={friend.name} message={friend.message} />
+                  </div>
+                ))}
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="col high-light4 d-flex justify-content-center">
-        <div>Text</div>
+      <div class="col message-no-padding full-screen message-high-light bg-dark">
+        <div class=" tab-content">
+          <div class="tab-pane fade" id="message" role="tabpanel">
+            <DisplayMessage from_user={from_user} to_user={to_user} />
+          </div>
+        </div>
       </div>
     </div>
   );
