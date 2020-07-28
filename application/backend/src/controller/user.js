@@ -17,13 +17,13 @@ exports.getUsers = async (req, res, next) => {
 exports.validateUser = async (req, res, next) => {
   // return if user has sfsu email and if they are an admin
   try {
-      const users = await User.findAll({
-        where: {id: req.params.id,
-                sfsu_verified: 1,
-                type: 'admin'
-        },         
+      const users = await User.findByPk({
+       // where: {id: req.params.id,
+       //         sfsu_verified: 1,
+       //         type: 'admin'
+       // },         
       });
-      res.send(users);
+      res.send(users); 
   } catch (error) {
     console.log(error);
     res.sendStatus(500)
@@ -33,8 +33,13 @@ exports.validateUser = async (req, res, next) => {
 // route: POST /api/user
 exports.addUser = async (req, res, next) => {
   try {
-    await User.create(req.body);
+    const user = await User.findOne({ where: {email: req.body.email}});
+    if(user){
+      res.send({ sucess: false, message: 'Email already in use.'})
+    } else {
+    //await User.create(req.body);
     res.sendStatus(200);
+    }
   } catch (error){
     console.log(error);
     res.sendStatus(500);
