@@ -41,12 +41,15 @@
 }
 
 .message-message {
+  float: left;
   margin: 5px;
   padding: 10px;
-  float: left;
   border-radius: 10px;
 }
 
 .message-reply {
   float: right;
+  margin: 5px;
+  padding: 10px;
+  border-radius: 10px;
 }
