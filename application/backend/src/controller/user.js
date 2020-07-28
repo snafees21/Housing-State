@@ -17,12 +17,7 @@ exports.getUsers = async (req, res, next) => {
 exports.validateUser = async (req, res, next) => {
   // return if user has sfsu email and if they are an admin
   try {
-      const users = await User.findByPk({
-       // where: {id: req.params.id,
-       //         sfsu_verified: 1,
-       //         type: 'admin'
-       // },         
-      });
+      const users = await User.findByPk(req.params.id);
       res.send(users); 
   } catch (error) {
     console.log(error);
@@ -33,12 +28,12 @@ exports.validateUser = async (req, res, next) => {
 // route: POST /api/user
 exports.addUser = async (req, res, next) => {
   try {
-    const user = await User.findOne({ where: {email: req.body.email}});
-    if(user){
-      res.send({ sucess: false, message: 'Email already in use.'})
-    } else {
-    //await User.create(req.body);
+    if(User.findOne({where: {email:  req.body.email}})){
+     await User.create(req.body);
     res.sendStatus(200);
+     res.send(user);
+     } else {
+      res.sendStatus(900);
     }
   } catch (error){
     console.log(error);
@@ -49,7 +44,7 @@ exports.addUser = async (req, res, next) => {
 // route: POST /api/user/auth
 exports.authenticateUser = async (req, res, next) => {
   try {
-    const user = await User.findOne({ where: { email: res.body.email } });
+    const user = await User.findOne({ where: { email: req.body.email } });
     if (!user) {
       res.send({ sucess: false, message: 'Invalid Email' });
     } else if (!user.validPassword(res.body.password)) {
