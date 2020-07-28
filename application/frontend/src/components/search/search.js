@@ -36,7 +36,6 @@ const searchbar = ({ setListings }) => {
                 <Form>
                   <div className='form-group'>
                     <TextInput
-                      type='text'
                       name='search_term'
                       className='form-control'
                       placeholder='Enter an address, city, or ZIP code'
@@ -52,7 +51,6 @@ const searchbar = ({ setListings }) => {
                         Unit Type
                       </label>
                       <Select
-                        as='select'
                         id='unit_type'
                         name='unit_type'
                         className='form-control border drop-text'
@@ -68,7 +66,6 @@ const searchbar = ({ setListings }) => {
                         Offer Type
                       </label>
                       <Select
-                        as='select'
                         id='offer_type'
                         name='offer_type'
                         className='form-control border drop-text'
@@ -83,7 +80,6 @@ const searchbar = ({ setListings }) => {
                         Bedrooms
                       </label>
                       <Select
-                        as='select'
                         id='bedrooms'
                         name='bedrooms'
                         className='form-control border drop-text'
@@ -101,7 +97,6 @@ const searchbar = ({ setListings }) => {
                         Cost
                       </label>
                       <Select
-                        as='select'
                         id='cost'
                         name='cost'
                         className='form-control border drop-text'

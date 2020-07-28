@@ -2,6 +2,7 @@ import * as Yup from 'yup';
 import axios from 'axios';
 import Page1 from './form/page1';
 import Page2 from './form/page2';
+import Page3 from './form/page3';
 import { Wizard, WizardStep } from '../../utils/multiStepForm';
 
 const post = ({}) => {
@@ -26,6 +27,10 @@ const post = ({}) => {
     bathrooms: '',
     building_num: '',
     zip_code: '',
+    cost: '',
+    sq_footage: '',
+    lease_length: '',
+    img: undefined,
   };
 
   // define form validation rules
@@ -39,7 +44,7 @@ const post = ({}) => {
 
   const page2Validation = Yup.object({
     bedrooms: Yup.number().positive().integer().required('Required'),
-    bathrooms: Yup.number().positive().integer().required('Required'),
+    bathrooms: Yup.number().positive().required('Required'),
     unit_type: Yup.string().required('Required'),
     offer_type: Yup.string().required('Required'),
   });
@@ -61,6 +66,9 @@ const post = ({}) => {
               </WizardStep>
               <WizardStep validationSchema={page2Validation}>
                 <Page2 />
+              </WizardStep>
+              <WizardStep>
+                <Page3 />
               </WizardStep>
             </Wizard>
           </div>

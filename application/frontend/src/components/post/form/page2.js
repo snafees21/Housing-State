@@ -1,4 +1,3 @@
-import { Field } from 'formik';
 import { TextInput, Select } from '../../../utils/inputs';
 
 const page2 = () => {
@@ -10,7 +9,6 @@ const page2 = () => {
             Unit Type
           </label>
           <Select
-            as='select'
             name='unit_type'
             className='form-control border border drop-text'
           >
@@ -24,11 +22,7 @@ const page2 = () => {
           <label className='label-text' htmlFor='offer_type'>
             Offer Type
           </label>
-          <Select
-            as='select'
-            name='offer_type'
-            className='form-control border drop-text'
-          >
+          <Select name='offer_type' className='form-control border drop-text'>
             <option value=''>Pick</option>
             <option value='buy'>Buy</option>
             <option value='rent'>Rent</option>
@@ -38,11 +32,7 @@ const page2 = () => {
           <label className='label-text' htmlFor='bedrooms'>
             Bedrooms
           </label>
-          <Select
-            as='select'
-            name='bedrooms'
-            className='form-control border drop-text'
-          >
+          <Select name='bedrooms' className='form-control border drop-text'>
             <option value=''>Pick</option>
             <option value='1'>1</option>
             <option value='2'>2</option>
@@ -59,11 +49,7 @@ const page2 = () => {
           <label className='label-text' htmlFor='bathrooms'>
             Bathrooms
           </label>
-          <Select
-            as='select'
-            name='bathrooms'
-            className='form-control border drop-text'
-          >
+          <Select name='bathrooms' className='form-control border drop-text'>
             <option value=''>Pick</option>
             <option value='1'>1</option>
             <option value='2'>2</option>
@@ -79,7 +65,6 @@ const page2 = () => {
             Description
           </label>
           <TextInput
-            type='text'
             name='description'
             className='form-control'
             maxLength='500'
