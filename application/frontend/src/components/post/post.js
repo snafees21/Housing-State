@@ -49,6 +49,13 @@ const post = ({}) => {
     offer_type: Yup.string().required('Required'),
   });
 
+  const page3Validation = Yup.object({
+    cost: Yup.number().positive().integer().required('Required'),
+    sq_footage: Yup.number().positive().integer().required('Required'),
+    lease_length: Yup.number().positive().integer().required('Required'),
+    img: Yup.mixed().required('Required'),
+  });
+
   return (
     <div className='row container-fluid align-item-center justify-content-center my-5'>
       <div className='col-md-6'>
@@ -67,7 +74,7 @@ const post = ({}) => {
               <WizardStep validationSchema={page2Validation}>
                 <Page2 />
               </WizardStep>
-              <WizardStep>
+              <WizardStep validationSchema={page3Validation}>
                 <Page3 />
               </WizardStep>
             </Wizard>
