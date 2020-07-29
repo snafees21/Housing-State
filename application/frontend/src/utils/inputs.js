@@ -49,11 +49,11 @@ const Select = ({ label, ...props }) => {
 };
 
 const File = ({ label, ...props }) => {
-  const [field, meta] = useField(props);
+  const [meta] = useField(props);
   return (
     <>
       <label htmlFor={props.id || props.name}>{label}</label>
-      <input {...field} {...props} type='file' />
+      <input {...props} type='file' />
       {meta.touched && meta.error ? (
         <StyledErrorMessage>{meta.error}</StyledErrorMessage>
       ) : null}

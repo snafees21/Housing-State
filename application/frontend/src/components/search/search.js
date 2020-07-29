@@ -1,4 +1,4 @@
-import { Field, Form, Formik } from 'formik';
+import { Form, Formik } from 'formik';
 import axios from 'axios';
 import { TextInput, Select } from '../../utils/inputs';
 
@@ -12,6 +12,7 @@ const searchbar = ({ setListings }) => {
       })
       .catch(error);
   };
+
   const formData = {
     search_term: '',
     unit_type: '',
