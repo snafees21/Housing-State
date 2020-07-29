@@ -1,5 +1,5 @@
 import db from '../database/db';
-const bcrypt = require('bcrypt-nodejs');
+const bcrypt = require('bcryptjs');
 const Sequelize = require('sequelize');
 
 // defines schema for users table ('s' added by sequelize)
@@ -40,7 +40,7 @@ const User = db.define(
     },
 
     password: {
-      type: Sequelize.STRING(45),
+      type: Sequelize.STRING(100),
       allowNull: false,
     },
 
@@ -60,23 +60,28 @@ const User = db.define(
   },
   {
     hooks: {
-      // hashes password + salt before storing password in db
+      // hashes password + salt(8) before storing password in db
       beforeCreate: async (user) => {
-        const salt = await bcrypt.genSalt(8);
-        user.password = await bcrypt.hash(user.password, salt);
+        try {
+          user.password = await bcrypt.hash(user.password, 8);
+        } catch (error) {
+          console.log(error);
+        }
       },
     },
   }
 );
 
 // returns true if password is valid
-User.prototype.validPassword = async (password) => {
+// using 'function' since 'this.' does't work with =>
+User.prototype.validPassword = async function (password) {
+  console.log('guess: ' + password + ', actual: ' + this.password);
   return await bcrypt.compare(password, this.password);
 };
 
 // returns true if user is admin
-User.prototype.isAdmin = async () => {
-  return (await this.type) == 'admin';
+User.prototype.isAdmin = (user) => {
+  return user.type == 'admin';
 };
 
 module.exports = User;

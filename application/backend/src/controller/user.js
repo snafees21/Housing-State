@@ -27,12 +27,12 @@ exports.validateUser = async (req, res, next) => {
 // route: POST /api/user
 exports.addUser = async (req, res, next) => {
   try {
-    let user = User.findOne({ where: { email: req.body.email } });
+    let user = await User.findOne({ where: { email: req.body.email } });
     if (user) {
       res.send({ success: false, message: 'User with email already exists' });
     } else {
       user = await User.create(req.body);
-      res.send({ success: true, ...user });
+      res.send({ success: true, ...user.dataValues });
     }
   } catch (error) {
     console.log(error);
@@ -46,12 +46,13 @@ exports.authenticateUser = async (req, res, next) => {
     const user = await User.findOne({ where: { email: req.body.email } });
     if (!user) {
       res.send({ success: false, message: 'Invalid Email' });
-    } else if (!user.validPassword(res.body.password)) {
+    } else if (!(await user.validPassword(req.body.password))) {
       res.send({ success: false, message: 'Invalid Password' });
     } else {
-      res.send({ success: true, message: null, ...user });
+      res.send({ success: true, message: null, ...user.dataValues });
     }
   } catch (error) {
+    console.log(error);
     res.sendStatus(500);
   }
 };

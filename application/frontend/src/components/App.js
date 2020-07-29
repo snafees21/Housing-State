@@ -7,7 +7,7 @@ import Signup from './signup';
 import Login from './login';
 
 const App = ({}) => {
-  const [userId, setUserId] = React.useState('');
+  const [userId, setUserId] = React.useState(0);
   return (
     <>
       <div>

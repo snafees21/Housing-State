@@ -1,17 +1,27 @@
+import { Redirect } from 'react-router-dom';
 import { Form, Formik } from 'formik';
 import axios from 'axios';
 import * as Yup from 'yup';
 import { TextInput } from '../utils/inputs';
+import { StyledErrorMessage } from '../styled/styles';
 
-const login = ({ userId, SetUserId }) => {
+const login = ({ userId, setUserId }) => {
+  const [error, setError] = React.useState('');
+
   const login = (body, { setSubmitting }) => {
     axios
-      .get('/api/auth', body)
+      .post('/api/user/auth', body)
       .then((res) => {
-        //setListings(res.data);
-        setSubmitting(false);
+        if (res.data.success) {
+          setUserId(res.data.id);
+        } else {
+          setError(res.data.message);
+        }
       })
-      .catch(error);
+      .catch((error) => {
+        console.log(error);
+      })
+      .finally(() => setSubmitting(false));
   };
 
   const formData = {
@@ -24,6 +34,11 @@ const login = ({ userId, SetUserId }) => {
     email: Yup.string().email('Invalid email address').required('Required'),
     password: Yup.string().required('Required'),
   });
+
+  // send to home if signup successful
+  if (userId) {
+    return <Redirect to={'/'} />;
+  }
 
   return (
     <div className='row container-fluid align-item-center justify-content-center my-5'>
@@ -71,6 +86,7 @@ const login = ({ userId, SetUserId }) => {
                   >
                     Login
                   </button>
+                  {error && <StyledErrorMessage>{error}</StyledErrorMessage>}
                 </Form>
               )}
             </Formik>

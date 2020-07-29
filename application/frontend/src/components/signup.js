@@ -1,7 +1,9 @@
+import { Redirect } from 'react-router-dom';
 import { Form, Formik } from 'formik';
 import axios from 'axios';
 import * as Yup from 'yup';
 import { TextInput } from '../utils/inputs';
+import { StyledErrorMessage } from '../styled/styles';
 
 const signup = ({ userId, setUserId }) => {
   const [error, setError] = React.useState('');
@@ -32,13 +34,22 @@ const signup = ({ userId, setUserId }) => {
 
   // define form validation rules
   const validationSchema = Yup.object({
-    first_name: Yup.string().required('Required'),
-    last_name: Yup.string().required('Required'),
+    first_name: Yup.string()
+      .matches('^[A-z]+$', 'First name can only contain letters')
+      .required('Required'),
+    last_name: Yup.string()
+      .matches('^[A-z]+', 'First name can only contain letters')
+      .required('Required'),
     email: Yup.string().email('Invalid email address').required('Required'),
     password: Yup.string()
       .min(8, 'Password must be at least 8 characters long')
       .required('Required'),
   });
+
+  // send to home if signup successful
+  if (userId) {
+    return <Redirect to={'/'} />;
+  }
 
   return (
     <div className='row container-fluid align-item-center justify-content-center my-5'>
@@ -90,6 +101,7 @@ const signup = ({ userId, setUserId }) => {
                       placeholder='john.doe@mail.com'
                       maxLength='40'
                     />
+                    {error && <StyledErrorMessage>{error}</StyledErrorMessage>}
                   </div>
                   <div className='form-group col-sm-auto'>
                     <label className='label-text' htmlFor='password'>
