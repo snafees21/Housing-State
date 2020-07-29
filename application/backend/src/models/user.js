@@ -75,8 +75,11 @@ const User = db.define(
 // returns true if password is valid
 // using 'function' since 'this.' does't work with =>
 User.prototype.validPassword = async function (password) {
-  console.log('guess: ' + password + ', actual: ' + this.password);
-  return await bcrypt.compare(password, this.password);
+  try {
+    return await bcrypt.compare(password, this.password);
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 // returns true if user is admin
