@@ -40,7 +40,7 @@ const navbar = ({ userId }) => {
               </li>
               <li className='nav-item'>
                 <a className='nav-link text-white' href='/signup'>
-                  Signup
+                  Sign Up
                 </a>
               </li>
             </>

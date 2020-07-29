@@ -66,6 +66,7 @@ const signup = ({ userId, setUserId }) => {
             >
               {({ isSubmitting }) => (
                 <Form>
+                  <h4 className='mb-4'>Sign Up</h4>
                   <div className='form-row col-sm-auto'>
                     <div className='form-group col-sm-5'>
                       <label className='label-text' htmlFor='first_name'>
