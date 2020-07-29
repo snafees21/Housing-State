@@ -4,14 +4,22 @@ import * as Yup from 'yup';
 import { TextInput } from '../utils/inputs';
 
 const signup = ({ userId, setUserId }) => {
+  const [error, setError] = React.useState('');
+
   const signup = (body, { setSubmitting }) => {
     axios
-      .get('/api/user', body)
+      .post('/api/user', body)
       .then((res) => {
-        //setListings(res.data);
-        setSubmitting(false);
+        if (res.data.success) {
+          setUserId(res.data.id);
+        } else {
+          setError(res.data.message);
+        }
       })
-      .catch(error);
+      .catch((error) => {
+        console.log(error);
+      })
+      .finally(() => setSubmitting(false));
   };
 
   const formData = {
@@ -19,7 +27,7 @@ const signup = ({ userId, setUserId }) => {
     first_name: '',
     last_name: '',
     password: '',
-    type: '', // TODO: ?
+    type: 'student', // TODO: ?
   };
 
   // define form validation rules

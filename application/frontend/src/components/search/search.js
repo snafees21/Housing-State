@@ -8,9 +8,9 @@ const searchbar = ({ setListings }) => {
       .get('/api/listing', { params: query })
       .then((res) => {
         setListings(res.data);
-        setSubmitting(false);
       })
-      .catch(error);
+      .catch(error)
+      .finally(() => setSubmitting(false));
   };
 
   const formData = {

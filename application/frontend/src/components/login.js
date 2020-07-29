@@ -6,7 +6,7 @@ import { TextInput } from '../utils/inputs';
 const login = ({ userId, SetUserId }) => {
   const login = (body, { setSubmitting }) => {
     axios
-      .get('/api/authenticate', body)
+      .get('/api/auth', body)
       .then((res) => {
         //setListings(res.data);
         setSubmitting(false);

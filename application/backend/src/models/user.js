@@ -74,9 +74,9 @@ User.prototype.validPassword = async (password) => {
   return await bcrypt.compare(password, this.password);
 };
 
-// returns true if user is admin 
-User.prototype.isAdmin = async (type) => {
-  return await compare(type, 'admin')
+// returns true if user is admin
+User.prototype.isAdmin = async () => {
+  return (await this.type) == 'admin';
 };
 
 module.exports = User;
