@@ -2,7 +2,7 @@ import { Redirect } from 'react-router-dom';
 import { Form, Formik } from 'formik';
 import axios from 'axios';
 import * as Yup from 'yup';
-import { TextInput } from '../utils/inputs';
+import { TextInput } from './utils/inputs';
 import { StyledErrorMessage } from '../styled/styles';
 
 const login = ({ userId, setUserId }) => {

@@ -1,10 +1,11 @@
 import { Switch, Route } from 'react-router-dom';
-import Home from './home';
+import Home from './home/home';
 import About from './about/about';
 import Post from './post/post';
-import Navbar from '../utils/navbar';
+import Navbar from './utils/navbar';
 import Signup from './signup';
 import Login from './login';
+import Manage from './manage';
 
 const App = ({}) => {
   const [userId, setUserId] = React.useState(0);
@@ -32,7 +33,11 @@ const App = ({}) => {
               <Login userId={userId} setUserId={setUserId} />
             </Route>
 
-            <Route exact path='/'>
+            <Route path='/manage'>
+              <Manage userId={userId} setUserId={setUserId} />
+            </Route>
+
+            <Route path='/'>
               <Home />
             </Route>
           </Switch>

@@ -1,6 +1,6 @@
 import { useFormikContext } from 'formik';
 import { useMemo, useCallback } from 'react';
-import { TextInput, Select, File } from '../../../utils/inputs';
+import { TextInput, Select, File } from '../../utils/inputs';
 
 const page3 = () => {
   const { setFieldValue } = useFormikContext();

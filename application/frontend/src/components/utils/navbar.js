@@ -1,5 +1,6 @@
 const navbar = ({ userId }) => {
   // will conditionally render login/sigup when no userId exists
+  // and render Account when userId does exist
   return (
     <nav className='navbar navbar-expand-md navbar-fixed-top justify-content-end navbar-light bg-primary'>
       <div className='navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2'>
@@ -23,7 +24,7 @@ const navbar = ({ userId }) => {
         <ul className='navbar-nav ml-auto'>
           <li className='nav-item'>
             <a className='nav-link text-white' href='/'>
-              Home
+              Search
             </a>
           </li>
           <li className='nav-item'>
@@ -31,6 +32,15 @@ const navbar = ({ userId }) => {
               Post
             </a>
           </li>
+          {Boolean(userId) && (
+            <>
+              <li className='nav-item'>
+                <a className='nav-link text-white' href='/manage'>
+                  Account
+                </a>
+              </li>
+            </>
+          )}
           {!Boolean(userId) && (
             <>
               <li className='nav-item'>
