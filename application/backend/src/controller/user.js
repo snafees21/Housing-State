@@ -49,7 +49,7 @@ exports.authenticateUser = async (req, res, next) => {
     } else if (!(await user.validPassword(req.body.password))) {
       res.send({ success: false, message: 'Invalid Password' });
     } else {
-      res.send({ success: true, message: null, ...user.dataValues });
+      res.send({ success: true, ...user.dataValues });
     }
   } catch (error) {
     console.log(error);

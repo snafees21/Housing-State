@@ -83,8 +83,8 @@ User.prototype.validPassword = async function (password) {
 };
 
 // returns true if user is admin
-User.prototype.isAdmin = (user) => {
-  return user.type == 'admin';
+User.prototype.isAdmin = function () {
+  return this.type == 'admin';
 };
 
 module.exports = User;
