@@ -35,7 +35,7 @@ const login = ({ userId, setUserId }) => {
     password: Yup.string().required('Required'),
   });
 
-  // send to home if signup successful
+  // send to home if login successful
   if (userId) {
     return <Redirect to={'/'} />;
   }

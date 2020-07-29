@@ -38,7 +38,7 @@ const signup = ({ userId, setUserId }) => {
       .matches('^[A-z]+$', 'First name can only contain letters')
       .required('Required'),
     last_name: Yup.string()
-      .matches('^[A-z]+', 'First name can only contain letters')
+      .matches('^[A-z]+$', 'First name can only contain letters')
       .required('Required'),
     email: Yup.string().email('Invalid email address').required('Required'),
     password: Yup.string()
