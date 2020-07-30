@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import axios from 'axios';
 import ListingDisplay from './utils/display';
-import { useAuth } from './utils/auth';
+import { useAuth } from '../utils/auth';
 
 // TODO log out: https://medium.com/better-programming/building-basic-react-authentication-e20a574d5e71
 

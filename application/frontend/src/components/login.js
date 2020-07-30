@@ -4,21 +4,21 @@ import axios from 'axios';
 import * as Yup from 'yup';
 import { TextInput } from './utils/inputs';
 import { StyledErrorMessage } from '../styled/form/styles';
-import { useAuth } from './utils/auth';
+import { useAuth } from '../utils/auth';
 
 const login = (props) => {
   const [isLoggedIn, setLoggedIn] = React.useState(false);
   const [error, setError] = React.useState('');
   const { setAuthTokens } = useAuth();
-  const referer = props.location.state.referer || '/';
+  const referer = props.location.state ? props.location.state.referer : '/';
 
   const login = (body, { setSubmitting }) => {
     axios
       .post('/api/user/auth', body)
       .then((res) => {
         if (res.data.success) {
-          setAuthTokens(res.data);
           setLoggedIn(true);
+          setAuthTokens(res.data);
         } else {
           setError(res.data.message);
         }

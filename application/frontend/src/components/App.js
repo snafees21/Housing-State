@@ -1,5 +1,5 @@
 import { Switch, Route } from 'react-router-dom';
-import { AuthContext } from './utils/auth';
+import { AuthContext } from '../utils/auth';
 import ProtectedRoute from './utils/protectedRoute';
 import Home from './home/home';
 import About from './about/about';

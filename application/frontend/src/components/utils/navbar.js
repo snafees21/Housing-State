@@ -1,4 +1,4 @@
-import { useAuth } from './auth';
+import { useAuth } from '../../utils/auth';
 
 const navbar = () => {
   // will conditionally render login/sigup when no authTokens exist
