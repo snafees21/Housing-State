@@ -2,13 +2,13 @@ import { Route, Redirect } from 'react-router-dom';
 import { useAuth } from './auth';
 
 const ProtectedRoute = ({ component: Component, ...rest }) => {
-  const isAuth = useAuth();
+  const { authTokens } = useAuth();
 
   return (
     <Route
       {...rest}
       render={(props) =>
-        isAuth ? (
+        authTokens ? (
           <Component {...props} />
         ) : (
           <Redirect

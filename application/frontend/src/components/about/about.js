@@ -8,13 +8,8 @@ const about = () => {
   return (
     <>
       <Switch>
-        <Route exact path={path}>
-          <Cards />
-        </Route>
-
-        <Route path={`${path}/:name`}>
-          <Page />
-        </Route>
+        <Route exact path={path} component={Cards} />
+        <Route path={`${path}/:name`} component={Page} />
       </Switch>
     </>
   );

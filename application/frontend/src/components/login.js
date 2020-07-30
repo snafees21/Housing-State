@@ -4,16 +4,21 @@ import axios from 'axios';
 import * as Yup from 'yup';
 import { TextInput } from './utils/inputs';
 import { StyledErrorMessage } from '../styled/form/styles';
+import { useAuth } from './utils/auth';
 
-const login = ({ userId, setUserId }) => {
+const login = (props) => {
+  const [isLoggedIn, setLoggedIn] = React.useState(false);
   const [error, setError] = React.useState('');
+  const { setAuthTokens } = useAuth();
+  const referer = props.location.state.referer || '/';
 
   const login = (body, { setSubmitting }) => {
     axios
       .post('/api/user/auth', body)
       .then((res) => {
         if (res.data.success) {
-          setUserId(res.data.id);
+          setAuthTokens(res.data);
+          setLoggedIn(true);
         } else {
           setError(res.data.message);
         }
@@ -35,9 +40,9 @@ const login = ({ userId, setUserId }) => {
     password: Yup.string().required('Required'),
   });
 
-  // send to home if login successful
-  if (userId) {
-    return <Redirect to={'/'} />;
+  // send user back to previous page or home
+  if (isLoggedIn) {
+    return <Redirect to={referer} />;
   }
 
   return (

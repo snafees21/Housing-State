@@ -2,6 +2,8 @@ import { useEffect } from 'react';
 import axios from 'axios';
 import ListingDisplay from './utils/display';
 
+// TODO log out: https://medium.com/better-programming/building-basic-react-authentication-e20a574d5e71
+
 const account = ({ userId }) => {
   const [listings, setListings] = React.useState([]);
 

@@ -1,4 +1,4 @@
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import { AuthContext } from './utils/auth';
 import ProtectedRoute from './utils/protectedRoute';
 import Home from './home/home';
@@ -9,31 +9,29 @@ import Signup from './signup';
 import Login from './login';
 import Account from './account';
 
-const App = ({}) => {
-  const [userId, setUserId] = React.useState(0);
+const App = () => {
+  const existingTokens = JSON.parse(localStorage.getItem('tokens'));
+  const [authTokens, setAuthTokens] = React.useState(existingTokens);
+
+  const setTokens = (data) => {
+    localStorage.setItem.apply('tokens', JSON.stringify(data));
+    setAuthTokens(data);
+  };
+
   return (
     <>
-      <AuthContext.Provider value={false}>
+      <AuthContext.Provider value={{ authTokens, setAuthTokens: setTokens }}>
         <div>
           <header>
-            <Navbar userId={userId} />
+            <Navbar />
           </header>
           <div>
             <Switch>
               <Route path='/about' component={About} />
               <ProtectedRoute path='/post' component={Post} />
-              <Route
-                path='/signup'
-                render={() => <Signup userId={userId} setUserId={setUserId} />}
-              />
-              <Route
-                path='/login'
-                render={() => <Login userId={userId} setUserId={setUserId} />}
-              />
-              <ProtectedRoute
-                path='/account'
-                render={() => <Account userId={userId} />}
-              />
+              <Route path='/signup' component={Signup} />
+              <Route path='/login' component={Login} />
+              <ProtectedRoute path='/account' component={Account} />
               <Route exact path='/' component={Home} />
             </Switch>
           </div>

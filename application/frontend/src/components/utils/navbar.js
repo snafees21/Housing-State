@@ -1,6 +1,10 @@
-const navbar = ({ userId }) => {
-  // will conditionally render login/sigup when no userId exists
-  // and render Account when userId does exist
+import { useAuth } from './auth';
+
+const navbar = () => {
+  // will conditionally render login/sigup when no authTokens exist
+  // and render Account when authTokens exist
+  const { authTokens } = useAuth();
+
   return (
     <nav className='navbar navbar-expand-md navbar-fixed-top justify-content-end navbar-light bg-primary'>
       <div className='navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2'>
@@ -32,7 +36,7 @@ const navbar = ({ userId }) => {
               Post
             </a>
           </li>
-          {Boolean(userId) && (
+          {authTokens && (
             <>
               <li className='nav-item'>
                 <a className='nav-link text-white' href='/manage'>
@@ -41,7 +45,7 @@ const navbar = ({ userId }) => {
               </li>
             </>
           )}
-          {!Boolean(userId) && (
+          {!authTokens && (
             <>
               <li className='nav-item'>
                 <a className='nav-link text-white' href='/login'>
