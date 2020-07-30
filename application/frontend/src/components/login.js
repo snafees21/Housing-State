@@ -3,7 +3,7 @@ import { Form, Formik } from 'formik';
 import axios from 'axios';
 import * as Yup from 'yup';
 import { TextInput } from './utils/inputs';
-import { StyledErrorMessage } from '../styled/styles';
+import { StyledErrorMessage } from '../styled/form/styles';
 
 const login = ({ userId, setUserId }) => {
   const [error, setError] = React.useState('');

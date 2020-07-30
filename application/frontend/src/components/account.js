@@ -1,5 +1,4 @@
 import { useEffect } from 'react';
-import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 import ListingDisplay from './utils/display';
 
@@ -25,10 +24,6 @@ const account = ({ userId }) => {
     getListings(userId, mounted);
     return () => (mounted = false);
   }, []);
-
-  //   if (!userId) {
-  //     return <Redirect to={'/login'} />;
-  //   }
 
   return (
     <>

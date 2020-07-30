@@ -3,7 +3,7 @@ import {
   StyledLabel,
   StyledErrorMessage,
   StyledSelect,
-} from '../../styled/styles';
+} from '../../styled/form/styles';
 
 const TextInput = ({ label, ...props }) => {
   // useField() returns [formik.getFieldProps(), formik.getFieldMeta()]

@@ -1,6 +1,5 @@
 import * as Yup from 'yup';
 import axios from 'axios';
-import { Redirect } from 'react-router-dom';
 import Page1 from './form/page1';
 import Page2 from './form/page2';
 import Page3 from './form/page3';
@@ -59,10 +58,6 @@ const post = ({ userId }) => {
     unit_type: Yup.string().required('Required'),
     offer_type: Yup.string().required('Required'),
   });
-
-  // if (!userId) {
-  //   return <Redirect to={'/login'} />;
-  // }
 
   return (
     <div className='row container-fluid align-item-center justify-content-center my-5'>
