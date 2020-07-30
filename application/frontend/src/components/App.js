@@ -14,7 +14,7 @@ const App = () => {
   const [authTokens, setAuthTokens] = React.useState(existingTokens);
 
   const setTokens = (data) => {
-    localStorage.setItem.apply('tokens', JSON.stringify(data));
+    localStorage.setItem('tokens', JSON.stringify(data));
     setAuthTokens(data);
   };
 

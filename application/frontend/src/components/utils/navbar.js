@@ -39,7 +39,7 @@ const navbar = () => {
           {authTokens && (
             <>
               <li className='nav-item'>
-                <a className='nav-link text-white' href='/manage'>
+                <a className='nav-link text-white' href='/account'>
                   Account
                 </a>
               </li>
