@@ -5,7 +5,7 @@ import Post from './post/post';
 import Navbar from './utils/navbar';
 import Signup from './signup';
 import Login from './login';
-import Manage from './manage';
+import Account from './account';
 
 const App = ({}) => {
   const [userId, setUserId] = React.useState(0);
@@ -33,11 +33,11 @@ const App = ({}) => {
               <Login userId={userId} setUserId={setUserId} />
             </Route>
 
-            <Route path='/manage'>
-              <Manage userId={userId} setUserId={setUserId} />
+            <Route path='/account'>
+              <Account userId={userId} />
             </Route>
 
-            <Route path='/'>
+            <Route exact path='/'>
               <Home />
             </Route>
           </Switch>

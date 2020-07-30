@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 import ListingDisplay from './utils/display';
 
-const manage = ({ userId }) => {
+const account = ({ userId }) => {
   const [listings, setListings] = React.useState([]);
 
   const getListings = (userId, mounted) => {
@@ -43,4 +43,4 @@ const manage = ({ userId }) => {
   );
 };
 
-export default manage;
+export default account;

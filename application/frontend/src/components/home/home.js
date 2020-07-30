@@ -8,7 +8,7 @@ const home = () => {
     <>
       <center>
         <div className='my-5'>
-          <Searchbar listings={listings} setListings={setListings} />
+          <Searchbar setListings={setListings} />
         </div>
         <div>
           {listings.map((listing) => (
