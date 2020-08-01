@@ -1,15 +1,11 @@
-import { useEffect } from 'react';
 import axios from 'axios';
 import ListingDisplay from './utils/display';
 import { useAuth } from '../utils/auth';
-
-// TODO log out: https://medium.com/better-programming/building-basic-react-authentication-e20a574d5e71
 
 const account = () => {
   const [listings, setListings] = React.useState([]);
   const { authTokens, setAuthTokens } = useAuth();
 
-  // TODO
   const logOut = () => {
     setAuthTokens('');
   };
@@ -27,7 +23,7 @@ const account = () => {
       });
   };
 
-  useEffect(() => {
+  React.useEffect(() => {
     let mounted = true;
     getListings(authTokens.id, mounted);
     return () => (mounted = false);

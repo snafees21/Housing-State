@@ -17,16 +17,17 @@ const signup = (props) => {
       .post('/api/user', body)
       .then((res) => {
         if (res.data.success) {
-          setLoggedIn(true);
           setAuthTokens(res.data);
+          setLoggedIn(true);
         } else {
           setError(res.data.message);
+          setSubmitting(false);
         }
       })
       .catch((error) => {
+        setSubmitting(false);
         console.log(error);
-      })
-      .finally(() => setSubmitting(false));
+      });
   };
 
   const formData = {

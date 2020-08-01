@@ -28,7 +28,7 @@ const navbar = () => {
         <ul className='navbar-nav ml-auto'>
           <li className='nav-item'>
             <a className='nav-link text-white' href='/'>
-              Search
+              Home
             </a>
           </li>
           <li className='nav-item'>
