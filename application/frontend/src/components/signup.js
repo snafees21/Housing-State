@@ -10,7 +10,7 @@ const signup = (props) => {
   const [isLoggedIn, setLoggedIn] = React.useState(false);
   const [error, setError] = React.useState('');
   const { setAuthTokens } = useAuth();
-  const referer = props.location.state ? props.location.state.referer : '/';
+  const referer = props.location.state?.referer || '/';
 
   const signup = (body, { setSubmitting }) => {
     axios
