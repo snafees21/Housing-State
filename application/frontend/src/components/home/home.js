@@ -1,5 +1,5 @@
-import Searchbar from './search/search';
-import ListingDisplay from './search/display';
+import Searchbar from './search';
+import ListingDisplay from '../utils/display';
 
 const home = () => {
   const [listings, setListings] = React.useState([]);
@@ -8,7 +8,7 @@ const home = () => {
     <>
       <center>
         <div className='my-5'>
-          <Searchbar listings={listings} setListings={setListings} />
+          <Searchbar setListings={setListings} />
         </div>
         <div>
           {listings.map((listing) => (

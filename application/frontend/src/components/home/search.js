@@ -1,6 +1,6 @@
 import { Form, Formik } from 'formik';
 import axios from 'axios';
-import { TextInput, Select } from '../../utils/inputs';
+import { TextInput, Select } from '../utils/inputs';
 
 const searchbar = ({ setListings }) => {
   const searchListings = (query, { setSubmitting }) => {
@@ -9,7 +9,9 @@ const searchbar = ({ setListings }) => {
       .then((res) => {
         setListings(res.data);
       })
-      .catch(error)
+      .catch((error) => {
+        console.log(error);
+      })
       .finally(() => setSubmitting(false));
   };
 

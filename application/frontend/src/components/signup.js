@@ -2,26 +2,32 @@ import { Redirect } from 'react-router-dom';
 import { Form, Formik } from 'formik';
 import axios from 'axios';
 import * as Yup from 'yup';
-import { TextInput } from '../utils/inputs';
-import { StyledErrorMessage } from '../styled/styles';
+import { TextInput } from './utils/inputs';
+import { StyledErrorMessage } from '../styled/form/styles';
+import { useAuth } from '../utils/auth';
 
-const signup = ({ userId, setUserId }) => {
+const signup = (props) => {
+  const [isLoggedIn, setLoggedIn] = React.useState(false);
   const [error, setError] = React.useState('');
+  const { setAuthTokens } = useAuth();
+  const referer = props.location.state?.referer || '/';
 
   const signup = (body, { setSubmitting }) => {
     axios
       .post('/api/user', body)
       .then((res) => {
         if (res.data.success) {
-          setUserId(res.data.id);
+          setAuthTokens(res.data);
+          setLoggedIn(true);
         } else {
           setError(res.data.message);
+          setSubmitting(false);
         }
       })
       .catch((error) => {
+        setSubmitting(false);
         console.log(error);
-      })
-      .finally(() => setSubmitting(false));
+      });
   };
 
   const formData = {
@@ -46,9 +52,9 @@ const signup = ({ userId, setUserId }) => {
       .required('Required'),
   });
 
-  // send to home if signup successful
-  if (userId) {
-    return <Redirect to={'/'} />;
+  // send user back to previous page or home
+  if (isLoggedIn) {
+    return <Redirect to={referer} />;
   }
 
   return (

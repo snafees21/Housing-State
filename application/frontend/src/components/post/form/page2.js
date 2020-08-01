@@ -1,4 +1,4 @@
-import { TextInput, Select } from '../../../utils/inputs';
+import { TextInput, Select } from '../../utils/inputs';
 
 const page2 = () => {
   return (

@@ -151,6 +151,13 @@ const Listing = db.define('Listing', {
     comment: 'building_num + street + city + state + zip_code',
   },
 
+  approved: {
+    type: Sequelize.BOOLEAN,
+    allowNull: false,
+    defaultValue: false,
+    comment: 'whether listing has been approved by admin',
+  },
+
   img_path: {
     type: Sequelize.STRING(100),
     allowNull: false,

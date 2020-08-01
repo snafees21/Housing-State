@@ -1,11 +1,11 @@
 import * as Yup from 'yup';
 import axios from 'axios';
-import { Redirect } from 'react-router-dom';
 import Page1 from './form/page1';
 import Page2 from './form/page2';
 import Page3 from './form/page3';
-import { Wizard, WizardStep } from '../../utils/multiStepForm';
+import { Wizard, WizardStep } from '../utils/multiStepForm';
 
+// TODO: redirect to viewListings after a posting successfullly
 const post = ({ userId }) => {
   const postListing = (body, { setSubmitting }) => {
     console.log(body); // TODO
@@ -17,9 +17,11 @@ const post = ({ userId }) => {
       })
       .then((res) => {
         //setListings(res.data);
-        setSubmitting(false);
       })
-      .catch(error);
+      .catch((error) => {
+        console.log(error);
+      })
+      .finally(() => setSubmitting(false));
   };
 
   const formData = {

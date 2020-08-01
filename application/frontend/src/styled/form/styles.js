@@ -14,4 +14,12 @@ const StyledErrorMessage = styled.div`
   }
 `;
 
-export default StyledErrorMessage;
+const StyledLabel = styled.label`
+  margin-top: 1rem;
+`;
+
+const StyledSelect = styled.select`
+  color: var(--grey);
+`;
+
+export { StyledSelect, StyledLabel, StyledErrorMessage };
