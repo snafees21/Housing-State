@@ -1,4 +1,4 @@
-import { Field, Form, Formik } from 'formik';
+import { Form, Formik } from 'formik';
 import axios from 'axios';
 import { TextInput, Select } from '../../utils/inputs';
 
@@ -8,10 +8,11 @@ const searchbar = ({ setListings }) => {
       .get('/api/listing', { params: query })
       .then((res) => {
         setListings(res.data);
-        setSubmitting(false);
       })
-      .catch(error);
+      .catch(error)
+      .finally(() => setSubmitting(false));
   };
+
   const formData = {
     search_term: '',
     unit_type: '',

@@ -1,5 +1,6 @@
-const navbar = () => {
-  const factory = () => (
+const navbar = ({ userId }) => {
+  // will conditionally render login/sigup when no userId exists
+  return (
     <nav className='navbar navbar-expand-md navbar-fixed-top justify-content-end navbar-light bg-primary'>
       <div className='navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2'>
         <ul className='navbar-nav mr-auto'>
@@ -30,6 +31,20 @@ const navbar = () => {
               Post
             </a>
           </li>
+          {!Boolean(userId) && (
+            <>
+              <li className='nav-item'>
+                <a className='nav-link text-white' href='/login'>
+                  Login
+                </a>
+              </li>
+              <li className='nav-item'>
+                <a className='nav-link text-white' href='/signup'>
+                  Sign Up
+                </a>
+              </li>
+            </>
+          )}
           <li className='nav-item'>
             <a className='nav-link text-white' href='/about'>
               About Us
@@ -39,8 +54,6 @@ const navbar = () => {
       </div>
     </nav>
   );
-
-  return <div>{factory()}</div>;
 };
 
 export default navbar;

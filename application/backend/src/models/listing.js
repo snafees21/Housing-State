@@ -110,7 +110,7 @@ const Listing = db.define('Listing', {
 
   sq_footage: {
     type: Sequelize.INTEGER,
-    allowNull: true,
+    allowNull: false,
     validate: {
       isNumeric: true,
     },

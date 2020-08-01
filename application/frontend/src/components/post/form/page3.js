@@ -1,6 +1,13 @@
+import { useFormikContext } from 'formik';
+import { useMemo, useCallback } from 'react';
 import { TextInput, Select, File } from '../../../utils/inputs';
 
 const page3 = () => {
+  const { setFieldValue } = useFormikContext();
+  const setFile = useCallback((event) => {
+    setFieldValue('listingImage', event.currentTarget.files[0]);
+  }, []);
+
   return (
     <>
       <div className='form-row justify-content-center'>
@@ -35,16 +42,10 @@ const page3 = () => {
       </div>
       <div className='form-row justify-content-center'>
         <div className='form-group col-sm-10 text-left'>
-          <label className='label-text' htmlFor='lease_length'>
+          <label className='label-text' htmlFor='listingImage'>
             Upload an Image
           </label>
-          <File
-            name='img'
-            type='file'
-            onChange={(event) => {
-              this.props.setFieldValue('img', event.currentTarget.files[0]);
-            }}
-          />
+          <File name='listingImage' type='file' onChange={setFile} />
         </div>
       </div>
     </>

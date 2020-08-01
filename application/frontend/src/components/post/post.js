@@ -1,14 +1,20 @@
 import * as Yup from 'yup';
 import axios from 'axios';
+import { Redirect } from 'react-router-dom';
 import Page1 from './form/page1';
 import Page2 from './form/page2';
 import Page3 from './form/page3';
 import { Wizard, WizardStep } from '../../utils/multiStepForm';
 
-const post = ({}) => {
+const post = ({ userId }) => {
   const postListing = (body, { setSubmitting }) => {
+    console.log(body); // TODO
     axios
-      .post('/api/listing', body)
+      .post('/api/listing', body, {
+        headers: {
+          'Content-Type': 'form-data',
+        },
+      })
       .then((res) => {
         //setListings(res.data);
         setSubmitting(false);
@@ -30,7 +36,9 @@ const post = ({}) => {
     cost: '',
     sq_footage: '',
     lease_length: '',
-    img: undefined,
+    user_id: '1', // TODO
+    img_path: 'path/to/image', // TODO
+    listingImage: undefined,
   };
 
   // define form validation rules
