@@ -1,6 +1,7 @@
 import { Switch, Route } from 'react-router-dom';
 import Home from '../home/home';
 import About from '../about/about';
+import Post from '../post/post';
 import Navbar from '../../utils/navbar';
 
 const App = ({}) => (
@@ -13,6 +14,10 @@ const App = ({}) => (
         <Switch>
           <Route path='/about'>
             <About />
+          </Route>
+
+          <Route path='/post'>
+            <Post />
           </Route>
 
           <Route exact path='/'>

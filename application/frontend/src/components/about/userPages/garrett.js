@@ -2,7 +2,7 @@ import { bioGarrett } from '../../../utils/text';
 import imgGarrett from '../../../assets/imgs/garrett.png';
 
 const garrett = () => (
-  <React.Fragment>
+  <>
     <div className='container-fluid'>
       <div className='row'>
         <div className='col-sm-3 m-3'>
@@ -16,7 +16,7 @@ const garrett = () => (
         </div>
       </div>
     </div>
-  </React.Fragment>
+  </>
 );
 
 export default garrett;

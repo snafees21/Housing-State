@@ -85,7 +85,7 @@ const Listing = db.define('Listing', {
   offer_type: {
     type: Sequelize.STRING(45),
     allowNull: false,
-    comment: 'rent, buy, or both',
+    comment: 'rent or buy',
   },
 
   bedrooms: {

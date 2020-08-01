@@ -26,6 +26,11 @@ const navbar = () => {
             </a>
           </li>
           <li className='nav-item'>
+            <a className='nav-link text-white' href='/post'>
+              Post
+            </a>
+          </li>
+          <li className='nav-item'>
             <a className='nav-link text-white' href='/about'>
               About Us
             </a>
