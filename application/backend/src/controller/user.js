@@ -1,6 +1,15 @@
 const User = require('../models/user');
 const Sequelize = require('sequelize');
 
+// helper function which returns token issue time
+// and time in milliseconds till token expires (1hr)
+const setSessionTime = () => {
+  return {
+    issued_at: Date.now(),
+    expires_in: 60 * 60 * 1000,
+  };
+};
+
 // route: GET /api/user
 exports.getUsers = async (req, res, next) => {
   try {
@@ -32,7 +41,7 @@ exports.addUser = async (req, res, next) => {
       res.send({ success: false, message: 'User with email already exists' });
     } else {
       user = await User.create(req.body);
-      res.send({ success: true, ...user.dataValues });
+      res.send({ success: true, ...user.dataValues, ...setSessionTime() });
     }
   } catch (error) {
     console.log(error);
@@ -49,7 +58,7 @@ exports.authenticateUser = async (req, res, next) => {
     } else if (!(await user.validPassword(req.body.password))) {
       res.send({ success: false, message: 'Invalid Password' });
     } else {
-      res.send({ success: true, ...user.dataValues });
+      res.send({ success: true, ...user.dataValues, ...setSessionTime() });
     }
   } catch (error) {
     console.log(error);
