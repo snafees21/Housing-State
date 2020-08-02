@@ -1,5 +1,4 @@
 const User = require('../models/user');
-const Sequelize = require('sequelize');
 
 // helper function which returns token issue time
 // and time in milliseconds till token expires (1hr)
@@ -35,6 +34,8 @@ exports.validateUser = async (req, res, next) => {
 
 // route: POST /api/user
 exports.addUser = async (req, res, next) => {
+  // unpacks key, values of req.body to provide
+  // {column: value} association
   try {
     let user = await User.findOne({ where: { email: req.body.email } });
     if (user) {
