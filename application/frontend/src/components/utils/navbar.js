@@ -1,4 +1,5 @@
 import { useAuth } from '../../utils/auth';
+import imgLogo from '../../assets/imgs/logo.jpg';
 
 const navbar = () => {
   // will conditionally render login/sigup when no authTokens exist
@@ -6,9 +7,10 @@ const navbar = () => {
   const { authTokens } = useAuth();
 
   return (
-  <div class="center navbar-light bg-primary">
+  <div class="navbar-light bg-primary">
     <h1>Housing State</h1> 
     <p>SFSU Software Engineering Project CSC 648-848, Summer 2020. For Demonstration Only.</p>
+     <img src="assets/imgs/logo.jpg" width="50" height="50"></img> 
       <nav className='navbar navbar-expand-md navbar-fixed-top justify-content-end navbar-light bg-primary'>
       <div className='navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2'>
         <ul className='navbar-nav mr-auto'>
