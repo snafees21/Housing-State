@@ -33,7 +33,7 @@ const page2 = () => {
             Bedrooms
           </label>
           <Select name='bedrooms' className='form-control border drop-text'>
-            <option value=''>Pick</option>
+            <option value=''>0</option>
             <option value='1'>1</option>
             <option value='2'>2</option>
             <option value='3'>3</option>
@@ -50,7 +50,7 @@ const page2 = () => {
             Bathrooms
           </label>
           <Select name='bathrooms' className='form-control border drop-text'>
-            <option value=''>Pick</option>
+            <option value=''>0</option>
             <option value='1'>1</option>
             <option value='2'>2</option>
             <option value='3'>3</option>
