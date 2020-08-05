@@ -1,10 +1,9 @@
 import { useFormikContext } from 'formik';
-import { useMemo, useCallback } from 'react';
 import { TextInput, Select, File } from '../../utils/inputs';
 
 const page3 = () => {
   const { setFieldValue } = useFormikContext();
-  const setFile = useCallback((event) => {
+  const setFile = React.useCallback((event) => {
     setFieldValue('listingImage', event.currentTarget.files[0]);
   }, []);
 

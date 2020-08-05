@@ -6,15 +6,11 @@ import Page3 from './form/page3';
 import { Wizard, WizardStep } from '../utils/multiStepForm';
 
 // TODO: redirect to viewListings after a posting successfullly
-const post = ({ userId }) => {
+const post = () => {
   const postListing = (body, { setSubmitting }) => {
     console.log(body); // TODO
     axios
-      .post('/api/listing', body, {
-        headers: {
-          'Content-Type': 'form-data',
-        },
-      })
+      .post('/api/listing', body)
       .then((res) => {
         //setListings(res.data);
       })
