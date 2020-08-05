@@ -59,7 +59,7 @@ const post = () => {
     cost: Yup.number().positive().integer().required('Required'),
     sq_footage: Yup.number().positive().integer().required('Required'),
     lease_length: Yup.number().positive().integer().required('Required'),
-    img: Yup.mixed().required('Required'),
+    listingImage: Yup.mixed().required('Required'),
   });
 
   return (
