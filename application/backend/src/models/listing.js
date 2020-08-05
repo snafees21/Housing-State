@@ -85,7 +85,7 @@ const Listing = db.define('Listing', {
   offer_type: {
     type: Sequelize.STRING(45),
     allowNull: false,
-    comment: 'rent or buy',
+    comment: 'rent, buy, or both',
   },
 
   bedrooms: {
@@ -110,7 +110,7 @@ const Listing = db.define('Listing', {
 
   sq_footage: {
     type: Sequelize.INTEGER,
-    allowNull: false,
+    allowNull: true,
     validate: {
       isNumeric: true,
     },
@@ -149,13 +149,6 @@ const Listing = db.define('Listing', {
       );
     },
     comment: 'building_num + street + city + state + zip_code',
-  },
-
-  approved: {
-    type: Sequelize.BOOLEAN,
-    allowNull: false,
-    defaultValue: false,
-    comment: 'whether listing has been approved by admin',
   },
 
   img_path: {
