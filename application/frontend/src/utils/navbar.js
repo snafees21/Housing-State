@@ -47,4 +47,4 @@ const navbar = () => {
   return <div>{factory()}</div>;
 };
 
-export default navbar;
+export default navbar; 
