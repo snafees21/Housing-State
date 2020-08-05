@@ -16,7 +16,6 @@ listing
   .get(searchListings)
   .post(upload.single('listingImage'), addListing);
 
-// the '/:' allows params to be passed
 listing
   .route('/:id')
   .get(getListing)

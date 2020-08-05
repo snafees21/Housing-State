@@ -1,38 +1,90 @@
-const User = require('../models/user');
+import db from '../database/db';
+const bcrypt = require('bcryptjs');
+const Sequelize = require('sequelize');
 
-// route: GET /api/user
-exports.getUsers = async (req, res, next) => {
-  res.send('GET user'); // TODO: replace with actual code
-};
+// defines schema for users table ('s' added by sequelize)
+const User = db.define(
+  'User',
+  {
+    id: {
+      type: Sequelize.INTEGER,
+      allowNull: false,
+      unique: true,
+      autoIncrement: true,
+      primaryKey: true,
+    },
 
-// route: GET /api/user/:id
-exports.validateUser = async (req, res, next) => {
-  // return if user has sfsu email and if they are an admin
-  res.send('POST user'); // TODO: replace with actual code
-};
+    email: {
+      type: Sequelize.STRING(100),
+      unique: true,
+      allowNull: false,
+      validate: {
+        isEmail: true,
+      },
+    },
 
-// route: POST /api/user
-exports.addUser = async (req, res, next) => {
-  res.send('POST user'); // TODO: replace with actual code
-};
+    first_name: {
+      type: Sequelize.STRING(45),
+      allowNull: false,
+      validate: {
+        isAlpha: true,
+      },
+    },
 
-// route: POST /api/user/auth
-exports.authenticateUser = async (req, res, next) => {
+    last_name: {
+      type: Sequelize.STRING(45),
+      allowNull: false,
+      validate: {
+        isAlpha: true,
+      },
+    },
+
+    password: {
+      type: Sequelize.STRING(100),
+      allowNull: false,
+    },
+
+    type: {
+      type: Sequelize.STRING(20),
+      allowNull: false,
+      comment: 'can be: admin, student, professor, other',
+    },
+
+    sfsu_verified: {
+      type: Sequelize.VIRTUAL,
+      get() {
+        return `${this.email}`.includes('@mail.sfsu.edu') ? true : false;
+      },
+      comment: 'whether the user has an sfsu email address',
+    },
+  },
+  {
+    hooks: {
+      // hashes password + salt(8) before storing password in db
+      beforeCreate: async (user) => {
+        try {
+          user.password = await bcrypt.hash(user.password, 8);
+        } catch (error) {
+          console.log(error);
+        }
+      },
+    },
+  }
+);
+
+// returns true if password is valid
+// using 'function' since 'this.' does't work with =>
+User.prototype.validPassword = async function (password) {
   try {
-    const user = await User.findOne({ where: { email: res.body.email } });
-    if (!user) {
-      res.send({ sucess: false, message: 'Invalid Email' });
-    } else if (!user.validPassword(res.body.password)) {
-      res.send({ sucess: false, message: 'Invalid Password' });
-    } else {
-      res.send({ sucess: true, message: null });
-    }
+    return await bcrypt.compare(password, this.password);
   } catch (error) {
-    res.sendStatus(500);
+    console.log(error);
   }
 };
 
-// route: DELETE /api/user/:id
-exports.deleteUsers = async (req, res, next) => {
-  res.send('DELETE user'); // TODO: replace with actual code
+// returns true if user is admin
+User.prototype.isAdmin = function () {
+  return this.type == 'admin';
 };
+
+module.exports = User;
