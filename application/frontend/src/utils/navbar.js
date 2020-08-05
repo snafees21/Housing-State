@@ -1,8 +1,7 @@
 const navbar = () => {
   // will conditionally render login/sigup when no authTokens exist
   // and render Account when authTokens exist
-  const { authTokens } = useAuth();
-
+ 
   return (
   <div className="navbar-light bg">
     <div className="header">
@@ -34,34 +33,7 @@ const navbar = () => {
               Home
             </a>  
           </li>
-          <li className='nav-item'>
-            <a className='nav-link text-white' href='/post'>
-              Post
-            </a>
-          </li>
-          {authTokens && (
-            <>
-              <li className='nav-item'>
-                <a className='nav-link text-white' href='/account'>
-                  Account
-                </a>
-              </li>
-            </>
-          )}
-          {!authTokens && (
-            <>
-              <li className='nav-item'>
-                <a className='nav-link text-white' href='/login'>
-                  Login
-                </a>
-              </li>
-              <li className='nav-item'>
-                <a className='nav-link text-white' href='/signup'>
-                  Sign Up
-                </a>
-              </li>
-            </>
-          )}
+
           <li className='nav-item'>
             <a className='nav-link text-white' href='/about'>
               About Us
@@ -72,6 +44,7 @@ const navbar = () => {
     </nav>
   </div>
   );
+  return <div>{factory()}</div>;
 };
 
 export default navbar;
