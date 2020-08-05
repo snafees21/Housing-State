@@ -7,7 +7,6 @@ import { useAuth } from '../../utils/auth';
 import { Wizard, WizardStep } from '../utils/multiStepForm';
 import { Redirect } from 'react-router-dom';
 
-// TODO: redirect to viewListings after a posting successfullly
 const post = () => {
   const [hasPosted, setHasPosted] = React.useState(false);
   const { authTokens } = useAuth();
