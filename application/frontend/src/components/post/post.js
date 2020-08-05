@@ -12,7 +12,6 @@ const post = () => {
   const { authTokens } = useAuth();
 
   const postListing = (body, { setSubmitting }) => {
-    console.log(body);
     const fd = new FormData();
     Object.entries(body).forEach(([key, val]) => {
       fd.append(key, val);
