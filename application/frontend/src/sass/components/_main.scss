@@ -1,4 +1,40 @@
 // put css here that is used in multiple components
+body {
+  background: #ece0bc;
+  background: linear-gradient(to right, #ece0bc, #ece0bc);
+}
+
+.ml-auto { 
+  position: relative;
+  background: #364C63;;
+}
+
+.mb-4 {
+  border: 0;
+  box-shadow: 0 .5rem 100rem 0 rgba(0, 0, 0, 1);
+  background: #ece0bc;;
+}
+
+.navbar{
+  border: 0;
+  box-shadow: 0 0.5rem 100rem 0 rgba(0, 0, 0, .1);
+  background: #364C63;
+}
+
+.logo{
+  text-align: left;
+}
+.header{
+  border: 0;
+  box-shadow: 0 0.5rem 100rem 0 rgba(0, 0, 0, .1);
+  background: #364C63;
+  position: center;
+  font-size: .8rem;
+  text-align: center;
+  color: white;
+  font-family: "Arial Narrow Bold, sans-serif";
+  font-style: normal;
+}
 
 // images will zoom in instead of stretch to fit the aspect ratio
 .embed-responsive {
@@ -12,9 +48,9 @@
 }
 
 .drop-text {
-  font-size: 0.9rem;
+  font-size: 1rem;
 }
 
 .label-text {
-  font-size: 0.6rem;
+  font-size: 0.75rem;
 }
