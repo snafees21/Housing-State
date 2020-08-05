@@ -5,9 +5,11 @@ import Page2 from './form/page2';
 import Page3 from './form/page3';
 import { useAuth } from '../../utils/auth';
 import { Wizard, WizardStep } from '../utils/multiStepForm';
+import { Redirect } from 'react-router-dom';
 
 // TODO: redirect to viewListings after a posting successfullly
 const post = () => {
+  const [hasPosted, setHasPosted] = React.useState(false);
   const { authTokens } = useAuth();
 
   const postListing = (body, { setSubmitting }) => {
@@ -19,12 +21,12 @@ const post = () => {
     axios
       .post('/api/listing', fd)
       .then((res) => {
-        setListings(res.data);
+        setHasPosted(true);
       })
       .catch((error) => {
         console.log(error);
-      })
-      .finally(() => setSubmitting(false));
+        setSubmitting(false);
+      });
   };
 
   const formData = {
@@ -72,6 +74,10 @@ const post = () => {
     lease_length: Yup.number().positive().integer().required('Required'),
     listingImage: Yup.mixed().required('Required'),
   });
+
+  if (hasPosted) {
+    return <Redirect to='/account' />;
+  }
 
   return (
     <div className='row container-fluid align-item-center justify-content-center my-5'>
