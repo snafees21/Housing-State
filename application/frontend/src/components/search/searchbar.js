@@ -136,7 +136,7 @@ const searchbar = ({ listings, setListings }) => {
                   <button
                     type='submit'
                     disabled={isSubmitting}
-                    className='btn btn-info float-right mt-3'
+                    className='btn btn-info btn-dark float-right mt-3'
                   >
                     Search
                   </button>
