@@ -2,24 +2,15 @@ import { Field, Form, Formik } from "formik";
 import axios from "axios";
 
 const newMessage = () => {
-  const [uhmessages, setUserMessage] = React.useState("");
   const [to_user, setTo_user] = React.useState("");
   const [from_user, setFrom_user] = React.useState("");
-  const [dateTime, setDateTime] = React.useState(
-    new Date(Date.now()).toLocaleString()
-  );
-  const handleNewMesseages = (userMessage) => {
-    setDateTime(new Date(Date.now()).toLocaleString());
-    const message = {
-      from_user: from_user,
-      to_user: to_user,
-      message: userMessage.message,
-      time: dateTime,
-    };
 
-    console.log("body: " + JSON.stringify(message));
-    /*axios
-      .post("/api/newMessage", message)
+  const handleNewMesseages = (body) => {
+   
+    //console.log("body: " + JSON.stringify(body));
+    /*
+    axios
+      .post("/api/newMessage", body)
       .then((res) => {
         if (res.data) {
           console.log("success");
@@ -33,9 +24,11 @@ const newMessage = () => {
       */
   };
   return (
-    <div class="card-body container ">
+    <div className="card-body container ">
       <Formik
         initialValues={{
+          from_user: from_user,
+          to_user: to_user,
           message: "",
         }}
         onSubmit={(values, { resetForm }) => {
@@ -44,7 +37,7 @@ const newMessage = () => {
         }}
       >
         {({ values, handleChange, handleBlur, handleSubmit, isSubmitting }) => (
-          <Form class="row" onSubmit={handleSubmit}>
+          <Form className="row" onSubmit={handleSubmit}>
             <Field
               type="text"
               name="message"
@@ -59,7 +52,7 @@ const newMessage = () => {
             <button
               type="submit"
               disabled={isSubmitting}
-              class="btn col btn-primary"
+              className="btn col btn-primary"
             >
               Send
             </button>

@@ -8,7 +8,15 @@ const messagePage = ({ userID }) => {
   //const [recentMessages, setRecentMessages] = React.useState([]);
   const [from_user, setFrom_user] = React.useState("");
 
-  const friends = [
+  /*
+    <button
+      className="btn message-no-padding float-right"
+      onClick={() => deleteMessage(message.id)}>
+      X
+     </button>
+   */
+
+  const messages = [
     {
       id: 1,
       name: "Dav",
@@ -52,18 +60,6 @@ const messagePage = ({ userID }) => {
       time: "3:59 AM",
     },
     { id: 8, name: "Jacky", message: "Thanks! Will do", time: "11:45 AM" },
-  ];
-
-  const friend2 = [
-    { id: 1, name: "Dave", message: "Hello!" },
-    { id: 2, name: "Kelly", message: "Hi!" },
-    { id: 3, name: "Max", message: "Bye!" },
-    { id: 4, name: "Jack", message: "Thanks!" },
-  ];
-
-  const friend3 = [
-    { id: 1, name: "Dave", message: "Hello!" },
-    { id: 2, name: "Kelly", message: "Hi!" },
   ];
 
   const smessages = [
@@ -114,6 +110,7 @@ const messagePage = ({ userID }) => {
   //need to be replace
   const getMessages = (from_user) => {
     setFrom_user(from_user);
+    //console.log("last: "+ JSON.stringify(smessages[smessages.length-1]));
     /*
     query ={
       from_user: from_user,
@@ -126,12 +123,10 @@ const messagePage = ({ userID }) => {
       })
       .catch(() => {
         console.log("Failed");
-      });
-*/
+      });*/
   };
-
+  /*
   const getRecentMessages = () => {
-    /*
     query ={
       to_user: userID
     }
@@ -143,11 +138,10 @@ const messagePage = ({ userID }) => {
     .catch(() => {
       console.log("Failed");
     });
-    */
   };
-
+*/
   const deleteMessage = (delete_User_ID) => {
-    console.log("ID is: "+delete_User_ID);
+    console.log("ID is: " + delete_User_ID);
     /*axios
     .get('/api/deleteMessage', { params: query })
     .then((res) => {
@@ -158,147 +152,40 @@ const messagePage = ({ userID }) => {
     */
   };
   
+
   return (
-    <div class="row container-fluid message-no-padding bg-black">
-      <div class="col-md-4 message-no-padding full-screen message-high-light">
-        <ul
-          class="nav nav-tabs message-high-light bg-dark"
-          id="myTab"
-          role="tablist"
-        >
-          <li class="card nav-item">
-            <a
-              class="nav-link bg-dark text-white"
-              id="input-tab"
-              data-toggle="tab"
-              href="#input"
-              role="tab"
-            >
-              Inbox
-            </a>
-          </li>
-          <li class="card nav-item">
-            <a
-              class="nav-link bg-dark text-white"
-              id="sent-tab"
-              data-toggle="tab"
-              href="#sent"
-              role="tab"
-            >
-              Sent
-            </a>
-          </li>
-          <li class="card nav-item">
-            <a
-              class="nav-link bg-dark text-white"
-              id="marked-tab"
-              data-toggle="tab"
-              href="#marked"
-              role="tab"
-            >
-              Marked
-            </a>
-          </li>
-        </ul>
-
-        <div class=" tab-content" id="myTabContent">
-          <div class="tab-pane fade show active" id="input" role="tabpanel">
-            <div class="message-no-padding message-scroll bg-dark">
-              {friends.map((friend) => (
-                <div
-                  class="row container-fluid message-no-padding"
-                  onClick={() => getMessages(friend.name)}
-                >
-                  <div class="message-high-light col nav-item message-no-padding">
-                    <button class="btn text-light message-no-padding float-right" onClick={()=>deleteMessage(friend.id)}>
-                      X
-                    </button>
-                    <a
-                      class="nav-link bg-dark"
-                      id="sent-tab"
-                      data-toggle="tab"
-                      href="#message"
-                      role="tab"
-                    >
-                      <ShowRecent
-                        name={friend.name}
-                        message={friend.message}
-                        time={friend.time}
-                      />
-                    </a>
-                  </div>
-                </div>
-              ))}
+    <div className="row container-fluid message-no-padding bg-black">
+      <div className="col-md-4 message-no-padding full-screen message-high-light">
+        <center className="card-header text-white">Inbox</center>
+        <div className="message-no-padding message-scroll">
+          {messages.map((message) => (
+            <div  className="message-high-light bg-dark" onClick={() => getMessages(message.name)}>
+              <a
+                className="nav-link message-select"
+                id="selectMessage"
+                data-toggle="tab"
+                href="#message"
+                role="tab"
+              >
+                <ShowRecent
+                  name={message.name}
+                  message={message.message}
+                  time={message.time}
+                />
+              </a>
             </div>
-          </div>
-
-          <div class="tab-pane fade" id="sent" role="tabpanel">
-            <div class="message-no-padding message-scroll bg-dark">
-              {friend2.map((friend) => (
-                <div
-                  class="row container-fluid message-no-padding"
-                  onClick={() => getMessages(friend.name)}
-                >
-                  <div class="message-high-light col-md-11 nav-item message-no-padding">
-                    <a
-                      class="nav-link bg-dark"
-                      id="sent-tab"
-                      data-toggle="tab"
-                      href="#message"
-                      role="tab"
-                    >
-                      <ShowRecent
-                        name={friend.name}
-                        message={friend.message}
-                        time={friend.time}
-                      />
-                    </a>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div class="tab-pane fade" id="marked" role="tabpanel">
-            <div class="message-no-padding message-scroll bg-dark">
-              {friend3.map((friend) => (
-                <div
-                  class="row container-fluid message-no-padding"
-                  onClick={() => getMessages(friend.name)}
-                >
-                  <div class="message-high-light col-md-11 nav-item message-no-padding">
-                    <a
-                      class="nav-link bg-dark"
-                      id="sent-tab"
-                      data-toggle="tab"
-                      href="#message"
-                      role="tab"
-                    >
-                      <ShowRecent
-                        name={friend.name}
-                        message={friend.message}
-                        time={friend.time}
-                      />
-                    </a>
-                  </div>
-                  <button class="btn col btn btn-outline-dark message-no-padding">
-                    X
-                  </button>
-                </div>
-              ))}
-            </div>
-          </div>
+          ))}
         </div>
       </div>
 
-      <div class="col message-no-padding full-screen message-high-light bg-black">
-        <div class=" tab-content">
-          <div class="tab-pane fade" id="message" role="tabpanel">
-            <div class="card bg-dark full-screen">
-              <center class="card-header font-weight-bold text-white">
+      <div className="col message-no-padding full-screen message-high-light bg-dark">
+        <div className=" tab-content">
+          <div className="tab-pane fade" id="message" role="tabpanel">
+            <div className="card bg-dark full-screen">
+              <center className="card-header font-weight-bold text-white">
                 {from_user}
               </center>
-              <div class="bg-black message-scroll">
+              <div className="bg-black message-scroll">
                 <DisplayMessage messages={smessages} userID={"Dave"} />
               </div>
               <NewMessage />

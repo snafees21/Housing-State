@@ -1,11 +1,12 @@
-
 const showRecent = ({ name, message, time }) => {
   return (
     <React.Fragment>
-      <div class="card-body m-2 text-white">
-        <span class="float-right">{time}</span>
-        <legend>{name}</legend>
-        <p>{message}</p>
+      <div className="">
+        <div className="card-body text-light">
+          <span className="float-right">{time}</span>
+          <legend>{name}</legend>
+          <p>{message}</p>
+        </div>
       </div>
     </React.Fragment>
   );

@@ -8,6 +8,7 @@ import Navbar from './utils/navbar';
 import Signup from './signup';
 import Login from './login';
 import Account from './account';
+import Message from './message/messagePage';
 
 const App = () => {
   const existingTokens = JSON.parse(localStorage.getItem('tokens'));
@@ -32,6 +33,7 @@ const App = () => {
               <Route path='/signup' component={Signup} />
               <Route path='/login' component={Login} />
               <ProtectedRoute path='/account' component={Account} />
+              <Route path='/message' component={Message} />
               <Route exact path='/' component={Home} />
             </Switch>
           </div>
