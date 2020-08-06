@@ -13,7 +13,7 @@ const cards = () => {
   const { path } = useRouteMatch();
 
   return (
-    <React.Fragment>
+    <>
       <div>CSC648 Summer 2020, Team 5</div>
       <div className='card-deck container-fluid align-item-center justify-content-center'>
         <div className='row py-5'>
@@ -43,7 +43,7 @@ const cards = () => {
           </div>
         </div>
       </div>
-    </React.Fragment>
+    </>
   );
 };
 

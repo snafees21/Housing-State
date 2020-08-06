@@ -2,7 +2,7 @@ import { bioNick } from '../../../utils/text';
 import imgNick from '../../../assets/imgs/nick.png';
 
 const nick = () => (
-  <React.Fragment>
+  <>
     <div className='container-fluid'>
       <div className='row'>
         <div className='col-sm-3 m-3'>
@@ -16,7 +16,7 @@ const nick = () => (
         </div>
       </div>
     </div>
-  </React.Fragment>
+  </>
 );
 
 export default nick;
