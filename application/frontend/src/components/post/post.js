@@ -1,30 +1,25 @@
 import * as Yup from 'yup';
 import axios from 'axios';
-import Page1 from './form/page1';
-import Page2 from './form/page2';
-import Page3 from './form/page3';
-import { useAuth } from '../../utils/auth';
+import {Page1} from './form/page1';
 import { Wizard, WizardStep } from '../utils/multiStepForm';
-import { Redirect } from 'react-router-dom';
 
-const post = () => {
-  const [hasPosted, setHasPosted] = React.useState(false);
-  const { authTokens } = useAuth();
-
+// TODO: redirect to viewListings after a posting successfullly
+const post = ({ userId }) => {
   const postListing = (body, { setSubmitting }) => {
-    const fd = new FormData();
-    Object.entries(body).forEach(([key, val]) => {
-      fd.append(key, val);
-    });
+    console.log(body); // TODO
     axios
-      .post('/api/listing', fd)
+      .post('/api/listing', body, {
+        headers: {
+          'Content-Type': 'form-data',
+        },
+      })
       .then((res) => {
-        setHasPosted(true);
+        //setListings(res.data);
       })
       .catch((error) => {
         console.log(error);
-        setSubmitting(false);
-      });
+      })
+      .finally(() => setSubmitting(false));
   };
 
   const formData = {
@@ -41,22 +36,18 @@ const post = () => {
     cost: '',
     sq_footage: '',
     lease_length: '',
-    img_path: '',
-    user_id: authTokens?.id,
+    user_id: '1', // TODO
+    img_path: 'path/to/image', // TODO
     listingImage: undefined,
   };
 
   // define form validation rules
   const page1Validation = Yup.object({
-    state: Yup.string()
-      .matches(/^[A-z]{2}$/, 'Must be two letters')
-      .required('Required'),
-    zip_code: Yup.string()
-      .matches(/^[0-9]{5}$/, 'Must be 5 digits')
-      .required('Required'),
+    building_num: Yup.number().positive().integer().required('Required'),
+    zip_code: Yup.number().positive().integer().required('Required'),
     street: Yup.string().required('Required'),
     city: Yup.string().required('Required'),
-    building_num: Yup.number().positive().integer().required('Required'),
+    state: Yup.string().required('Required'),
   });
 
   const page2Validation = Yup.object({
@@ -70,12 +61,8 @@ const post = () => {
     cost: Yup.number().positive().integer().required('Required'),
     sq_footage: Yup.number().positive().integer().required('Required'),
     lease_length: Yup.number().positive().integer().required('Required'),
-    listingImage: Yup.mixed().required('Required'),
+    img: Yup.mixed().required('Required'),
   });
-
-  if (hasPosted) {
-    return <Redirect to='/account' />;
-  }
 
   return (
     <div className='row container-fluid align-item-center justify-content-center my-5'>
@@ -91,12 +78,6 @@ const post = () => {
             >
               <WizardStep validationSchema={page1Validation}>
                 <Page1 />
-              </WizardStep>
-              <WizardStep validationSchema={page2Validation}>
-                <Page2 />
-              </WizardStep>
-              <WizardStep validationSchema={page3Validation}>
-                <Page3 />
               </WizardStep>
             </Wizard>
           </div>

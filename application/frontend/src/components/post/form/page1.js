@@ -1,6 +1,14 @@
-import { TextInput } from '../../utils/inputs';
+import { TextInput, Select , File } from '../../utils/inputs';
+import { useFormikContext } from 'formik';
+import { useMemo, useCallback } from 'react';
 
-const page1 = () => {
+/*************************/
+//Page1 Code
+const Page1 = () => {
+  const { setFieldValue } = useFormikContext();
+  const setFile = useCallback((event) => {
+    setFieldValue('listingImage', event.currentTarget.files[0]);
+  }, []);
   return (
     <>
       <div className='form-row justify-content-center'>
@@ -42,8 +50,117 @@ const page1 = () => {
           <TextInput name='zip_code' className='form-control' maxLength='5' />
         </div>
       </div>
+      <div className='form-row justify-content-center'>
+        <div className='form-group col-sm-3 text-left'>
+          <label className='label-text' htmlFor='unit_type'>
+            Unit Type
+          </label>
+          <Select
+            name='unit_type'
+            className='form-control border border drop-text'
+          >
+            <option value=''>Pick</option>
+            <option value='house'>House</option>
+            <option value='appartment'>Apartment</option>
+            <option value='townhouse'>Townhouse</option>
+          </Select>
+        </div>
+        <div className='form-group col-sm-3 text-left'>
+          <label className='label-text' htmlFor='offer_type'>
+            Offer Type
+          </label>
+          <Select name='offer_type' className='form-control border drop-text'>
+            <option value=''>Pick</option>
+            <option value='buy'>Buy</option>
+            <option value='rent'>Rent</option>
+          </Select>
+        </div>
+        <div className='form-group col-sm-2 text-left'>
+          <label className='label-text' htmlFor='bedrooms'>
+            Bedrooms
+          </label>
+          <Select name='bedrooms' className='form-control border drop-text'>
+            <option value=''>Pick</option>
+            <option value='1'>1</option>
+            <option value='2'>2</option>
+            <option value='3'>3</option>
+            <option value='4'>4</option>
+            <option value='5'>5</option>
+            <option value='6'>6</option>
+            <option value='7'>7</option>
+            <option value='8'>8</option>
+            <option value='9'>9</option>
+          </Select>
+        </div>
+        <div className='form-group col-sm-2 text-left'>
+          <label className='label-text' htmlFor='bathrooms'>
+            Bathrooms
+          </label>
+          <Select name='bathrooms' className='form-control border drop-text'>
+            <option value=''>Pick</option>
+            <option value='1'>1</option>
+            <option value='2'>2</option>
+            <option value='3'>3</option>
+            <option value='4'>4</option>
+            <option value='5'>5</option>
+          </Select>
+        </div>
+      </div>
+      <div className='form-row justify-content-center'>
+        <div className='form-group col-sm-10 text-left'>
+          <label className='label-text' htmlFor='description'>
+            Description
+          </label>
+          <TextInput
+            name='description'
+            className='form-control'
+            maxLength='500'
+          />
+        </div>
+      </div>
+      <div className='form-row justify-content-center'>
+        <div className='form-group col-sm-3 text-left'>
+          <label className='label-text' htmlFor='cost'>
+            Cost
+          </label>
+          <TextInput name='cost' className='form-control' maxLength='10' />
+        </div>
+        <div className='form-group col-sm-3 text-left'>
+          <label className='label-text' htmlFor='sq_footage'>
+            Sq. Footage
+          </label>
+          <TextInput
+            name='sq_footage'
+            className='form-control'
+            maxLength='10'
+          />
+        </div>
+        <div className='form-group col-sm-4 text-left'>
+          <label className='label-text' htmlFor='lease_length'>
+            Lease Length
+          </label>
+          <Select name='lease_length' className='form-control border drop-text'>
+            <option value=''>Pick</option>
+            <option value='1'>Monthly</option>
+            <option value='4'>Quarterly</option>
+            <option value='6'>Semi-Annualy</option>
+            <option value='12'>Yearly</option>
+          </Select>
+        </div>
+      </div>
+      <div className='form-row justify-content-center'>
+        <div className='form-group col-sm-10 text-left'>
+          <label className='label-text' htmlFor='listingImage'>
+            Upload an Image
+          </label>
+          <File name='listingImage' type='file' onChange={setFile} />
+        </div>
+      </div>
     </>
   );
 };
 
-export default page1;
+
+
+//Export Statement
+export {Page1}
