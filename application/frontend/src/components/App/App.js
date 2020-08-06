@@ -23,6 +23,7 @@ const App = ({}) => (
           <Route path ='/message'>
             <Message/>
           </Route>
+          
         </Switch>
       </div>
     </div>
