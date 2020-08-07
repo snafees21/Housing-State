@@ -44,25 +44,6 @@ const navbar = () => {
                 </a>
               </li>
 
-              {authTokens && (
-                <>
-              <li className="nav-item">
-                <a className="nav-link text-white" href="/post">
-                  Post
-                </a>
-              </li>
-              </>
-              )}
-
-              {authTokens && (
-                <>
-                  <li className="nav-item">
-                    <a className="nav-link text-white" href="/account">
-                      Account
-                    </a>
-                  </li>
-                </>
-              )}
               {!authTokens && (
                 <>
                   <li className="nav-item">

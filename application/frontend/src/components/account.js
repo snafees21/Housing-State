@@ -1,13 +1,13 @@
-import axios from 'axios';
-import ListingDisplay from './utils/display';
-import { useAuth } from '../utils/auth';
+import axios from "axios";
+import ListingDisplay from "./utils/display";
+import { useAuth } from "../utils/auth";
 
 const account = () => {
   const [listings, setListings] = React.useState([]);
   const { authTokens, setAuthTokens } = useAuth();
 
   const logOut = () => {
-    setAuthTokens('');
+    setAuthTokens("");
   };
 
   const getListings = (userId, mounted) => {
@@ -35,11 +35,10 @@ const account = () => {
         <div>
           <button onClick={logOut}>Log out</button>
         </div>
-        <div>
-          {listings.map((listing) => (
-            <ListingDisplay key={listing.id} listing={listing} />
-          ))}
-        </div>
+
+        {listings.map((listing) => (
+          <ListingDisplay key={listing.id} listing={listing} />
+        ))}
       </center>
     </>
   );

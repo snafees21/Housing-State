@@ -12,7 +12,6 @@ import Account from "./account";
 const App = () => {
   const existingTokens = JSON.parse(localStorage.getItem("tokens"));
   const [authTokens, setAuthTokens] = React.useState(existingTokens);
-  const [listings, setListings] = React.useState([]);
   const setTokens = (data) => {
     localStorage.setItem("tokens", JSON.stringify(data));
     setAuthTokens(data);
@@ -22,16 +21,37 @@ const App = () => {
     <>
       <AuthContext.Provider value={{ authTokens, setAuthTokens: setTokens }}>
         <header>
-            <Navbar setListings={setListings} />
-          </header>
-            <Switch>
-              <Route path="/about" component={About} />
-              <ProtectedRoute path="/post" component={Post} />
-              <Route path="/signup" component={Signup} />
-              <Route path="/login" component={Login} />
-              <ProtectedRoute path="/account" component={Account} />
-              <Route exact path="/" component={Home} />
-            </Switch>
+          <Navbar />
+        </header>
+
+        <div className="col">
+          <div className="row">
+            {authTokens && (
+              <div className="col-md-2 bg-dark">
+                <a class="card navbar-link" href="/account">
+                  Account
+                </a>
+                <a class="card navbar-link" href="/message">
+                  Message
+                </a>
+                <a class="card navbar-link" href="/post">
+                  Post
+                </a>
+              </div>
+            )}
+
+            <div className="col">
+              <Switch>
+                <Route path="/about" component={About} />
+                <ProtectedRoute path="/post" component={Post} />
+                <Route path="/signup" component={Signup} />
+                <Route path="/login" component={Login} />
+                <ProtectedRoute path="/account" component={Account} />
+                <Route exact path="/" component={Home} />
+              </Switch>
+            </div>
+          </div>
+        </div>
       </AuthContext.Provider>
     </>
   );
