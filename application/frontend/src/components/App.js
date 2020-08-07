@@ -30,7 +30,7 @@ const App = () => {
         <div className='col'>
           <div className='row'>
             {authTokens && (
-              <div className='col-md-2 bg-dark'>
+              <div className='col-md-2 bg-dark no-padding'>
                 <a className='card navbar-link' href='/account'>
                   Account
                 </a>

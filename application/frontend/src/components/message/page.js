@@ -42,7 +42,8 @@ const page = () => {
   }, []);
 
   return (
-    <div className='row container-fluid message-no-padding bg-black'>
+    <div className="message-no-padding">
+    <div className='row bg-black'>
       <div className='col-md-4 message-no-padding full-screen message-high-light'>
         <center className='card-header text-white'>Chat</center>
         <div className='message-no-padding message-scroll'>
@@ -80,6 +81,7 @@ const page = () => {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 };
