@@ -1,4 +1,4 @@
-const User = require('../models/user');
+const { User } = require('../models/associations');
 
 // helper function which returns token issue time
 // and time in milliseconds till token expires (1hr)
