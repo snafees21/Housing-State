@@ -37,7 +37,7 @@ const account = () => {
             Log out
           </button>
         </div>
-
+        <h2 className='my-5'>View Your Listings</h2>
         {listings.map((listing) => (
           <ListingDisplay key={listing.id} listing={listing} />
         ))}
