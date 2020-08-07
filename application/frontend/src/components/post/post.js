@@ -1,17 +1,24 @@
 import * as Yup from 'yup';
 import axios from 'axios';
-import Page1 from './form/page1';
-import Page2 from './form/page2';
-import Page3 from './form/page3';
-import { useAuth } from '../../utils/auth';
+import { Page1 } from './form/page1';
 import { Wizard, WizardStep } from '../utils/multiStepForm';
-import { Redirect } from 'react-router-dom';
+import { useAuth } from '../../utils/auth';
 
-const post = () => {
+const post = ({}) => {
   const [hasPosted, setHasPosted] = React.useState(false);
   const { authTokens } = useAuth();
 
   const postListing = (body, { setSubmitting }) => {
+    body['full_address'] =
+      body.building_num +
+      ' ' +
+      body.street +
+      ', ' +
+      body.city +
+      ', ' +
+      body.state +
+      ' ' +
+      body.zip_code;
     const fd = new FormData();
     Object.entries(body).forEach(([key, val]) => {
       fd.append(key, val);
@@ -26,7 +33,6 @@ const post = () => {
         setSubmitting(false);
       });
   };
-
   const formData = {
     street: '',
     city: '',
@@ -47,7 +53,7 @@ const post = () => {
   };
 
   // define form validation rules
-  const page1Validation = Yup.object({
+  const pageValidation = Yup.object({
     state: Yup.string()
       .matches(/^[A-z]{2}$/, 'Must be two letters')
       .required('Required'),
@@ -57,25 +63,15 @@ const post = () => {
     street: Yup.string().required('Required'),
     city: Yup.string().required('Required'),
     building_num: Yup.number().positive().integer().required('Required'),
-  });
-
-  const page2Validation = Yup.object({
     bedrooms: Yup.number().positive().integer().required('Required'),
     bathrooms: Yup.number().positive().required('Required'),
     unit_type: Yup.string().required('Required'),
     offer_type: Yup.string().required('Required'),
-  });
-
-  const page3Validation = Yup.object({
     cost: Yup.number().positive().integer().required('Required'),
     sq_footage: Yup.number().positive().integer().required('Required'),
     lease_length: Yup.number().positive().integer().required('Required'),
     listingImage: Yup.mixed().required('Required'),
   });
-
-  if (hasPosted) {
-    return <Redirect to='/account' />;
-  }
 
   return (
     <div className='row container-fluid align-item-center justify-content-center my-5'>
@@ -89,16 +85,11 @@ const post = () => {
                 postListing(values, { setSubmitting });
               }}
             >
-              <WizardStep validationSchema={page1Validation}>
+              <WizardStep validationSchema={pageValidation}>
                 <Page1 />
               </WizardStep>
-              <WizardStep validationSchema={page2Validation}>
-                <Page2 />
-              </WizardStep>
-              <WizardStep validationSchema={page3Validation}>
-                <Page3 />
-              </WizardStep>
             </Wizard>
+            {hasPosted && <div>Post Successful!</div>}
           </div>
         </div>
       </div>

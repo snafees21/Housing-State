@@ -1,11 +1,11 @@
 import express from 'express';
 import {
   searchListings,
-  getListing,
   getListingByUserId,
   addListing,
   updateListing,
   deleteListing,
+  getUnapprovedListings,
 } from '../controller/listing';
 const upload = require('../utils/storage');
 
@@ -16,12 +16,10 @@ listing
   .get(searchListings)
   .post(upload.single('listingImage'), addListing);
 
-listing
-  .route('/:id')
-  .get(getListing)
-  .patch(updateListing)
-  .delete(deleteListing);
+listing.route('/:id').patch(updateListing).delete(deleteListing);
 
 listing.route('/user/:id').get(getListingByUserId);
+
+listing.route('/unapproved').get(getUnapprovedListings);
 
 export default listing;

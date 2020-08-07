@@ -14,6 +14,7 @@ exports.searchListings = async (req, res, next) => {
         { offer_type: { [Op.like]: `%${req.query.offer_type}%` } },
         { bedrooms: { [Op.gte]: req.query.bedrooms } },
         { cost: { [Op.gte]: req.query.cost } },
+        { approved: { [Op.eq]: true } },
       ],
     };
     const listings = await Listing.findAll({ where: where });
@@ -80,6 +81,19 @@ exports.getListingByUserId = async (req, res, next) => {
   try {
     const listings = await Listing.findAll({
       where: { user_id: req.params.id },
+    });
+    res.send(listings);
+  } catch (error) {
+    console.log(error);
+    res.sendStatus(500);
+  }
+};
+
+// route: GET /api/listing/unapproved
+exports.getUnapprovedListings = async (req, res, next) => {
+  try {
+    const listings = await Listing.findAll({
+      where: { approved: null },
     });
     res.send(listings);
   } catch (error) {

@@ -1,18 +1,15 @@
 import axios from 'axios';
 import ListingDisplay from './utils/acountDisplay';
 import { useAuth } from '../utils/auth';
+import { Redirect } from 'react-router-dom';
 
 const account = () => {
   const [listings, setListings] = React.useState([]);
-  const { authTokens, setAuthTokens } = useAuth();
+  const { authTokens } = useAuth();
 
-  const logOut = () => {
-    setAuthTokens('');
-  };
-
-  const getListings = (userId, mounted) => {
+  const getListings = (mounted) => {
     axios
-      .get(`/api/listing/user/${userId}`)
+      .get('api/listing/unapproved')
       .then((res) => {
         if (mounted) {
           setListings(res.data);
@@ -25,19 +22,17 @@ const account = () => {
 
   React.useEffect(() => {
     let mounted = true;
-    getListings(authTokens.id, mounted);
+    getListings(mounted);
     return () => (mounted = false);
   }, []);
+
+  if (authTokens.type != 'admin') {
+    return <Redirect to='/login' />;
+  }
 
   return (
     <>
       <center>
-        <div>
-          <button className='btn btn-warning float-left' onClick={logOut}>
-            Log out
-          </button>
-        </div>
-        <h2 className='my-5'>View Your Listings</h2>
         {listings.map((listing) => (
           <ListingDisplay key={listing.id} listing={listing} />
         ))}

@@ -1,4 +1,8 @@
 // put css here that is used in multiple components
+body {
+  background: #ece0bc;
+  background: linear-gradient(to right, #ece0bc, #ece0bc);
+}
 
 // define colors here
 :root {
@@ -10,10 +14,6 @@
   .card-img-top {
     object-fit: cover;
   }
-}
-
-.overflow {
-  overflow: hidden;
 }
 
 .drop-text {
@@ -28,4 +28,8 @@
   font-size: 12px;
   color: var(--red-600);
   margin-top: 0.25rem;
+}
+
+.box-shadow {
+  box-shadow: 0 0.5rem 100rem 0 rgba(0, 0, 0, 1);
 }

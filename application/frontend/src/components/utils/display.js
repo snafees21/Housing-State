@@ -1,4 +1,31 @@
+import { useAuth } from '../../utils/auth';
+import axios from 'axios';
+import { Form, Formik, Field } from 'formik';
+import { Redirect } from 'react-router-dom';
+
 const listingsDisplay = ({ listing }) => {
+  const { authTokens } = useAuth();
+
+  const handleNewMessage = (body) => {
+    if (authTokens) {
+      body = { ...body, from_user: authTokens.id, to_user: listing.user_id };
+      console.log(body);
+      axios
+        .post('/api/message/', body)
+        .then((res) => {
+          if (res.data.success) {
+          } else {
+            setError(res.data.message);
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else {
+      return <Redirect to='/login' />;
+    }
+  };
+
   return (
     <>
       <div className='row my-4 container-fluid align-item-center justify-content-center'>
@@ -23,6 +50,80 @@ const listingsDisplay = ({ listing }) => {
                     <li>Offer Type: {listing.offer_type}</li>
                     <li>Unit Type: {listing.unit_type}</li>
                   </ul>
+                  <button
+                    type='button'
+                    class='btn btn-dark'
+                    data-toggle='modal'
+                    data-target='#exampleModal'
+                  >
+                    Contact
+                  </button>
+
+                  <div
+                    class='modal fade'
+                    id='exampleModal'
+                    tabIndex='-1'
+                    role='dialog'
+                    aria-labelledby='exampleModalLabel'
+                    aria-hidden='true'
+                  >
+                    <div class='modal-dialog' role='document'>
+                      <div class='modal-content'>
+                        <div class='modal-header'>
+                          <h5 class='modal-title' id='exampleModalLabel'>
+                            Send them a message!
+                          </h5>
+                          <button
+                            type='button'
+                            class='close'
+                            data-dismiss='modal'
+                            aria-label='Close'
+                          >
+                            <span aria-hidden='true'>&times;</span>
+                          </button>
+                        </div>
+                        <div class='modal-body'>
+                          <Formik
+                            initialValues={{ text: '' }}
+                            onSubmit={(values, { resetForm }) => {
+                              handleNewMessage(values);
+                              resetForm();
+                            }}
+                          >
+                            {({
+                              values,
+                              handleChange,
+                              handleBlur,
+                              handleSubmit,
+                              isSubmitting,
+                            }) => (
+                              <Form className='row' onSubmit={handleSubmit}>
+                                <Field
+                                  type='text'
+                                  name='text'
+                                  className='form-control col'
+                                  placeholder='Enter a message...'
+                                  maxLength='200'
+                                  value={values.message}
+                                  onChange={handleChange}
+                                  onBlur={handleBlur}
+                                />
+                                <div class='col-md-2'>
+                                  <button
+                                    type='submit'
+                                    disabled={isSubmitting}
+                                    className='btn btn-dark'
+                                  >
+                                    Send
+                                  </button>
+                                </div>
+                              </Form>
+                            )}
+                          </Formik>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

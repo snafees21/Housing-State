@@ -5,7 +5,7 @@ import axios from 'axios';
 
 const chat = ({ message }) => {
   const sendMessage = (body, { setSubmitting }) => {
-    body = { ...body, to_user: message.to_user, from_user: message.from_user };
+    body = { ...body, to_user: message.from_user, from_user: message.to_user };
     console.log(body);
     axios
       .post('/api/message', body)
