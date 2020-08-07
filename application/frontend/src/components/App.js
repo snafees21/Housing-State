@@ -30,14 +30,14 @@ const App = () => {
         <div className='col'>
           <div className='row'>
             {authTokens && (
-              <div className='col-md-2 bg-dark no-padding'>
-                <a className='card navbar-link' href='/account'>
+              <div className='col-md-2 bg-dark'>
+                <a className='card navbar-link my-2' href='/account'>
                   Account
                 </a>
-                <a className='card navbar-link' href='/message'>
+                <a className='card navbar-link my-2' href='/message'>
                   Message
                 </a>
-                <a className='card navbar-link' href='/post'>
+                <a className='card navbar-link my-2' href='/post'>
                   Post
                 </a>
               </div>
