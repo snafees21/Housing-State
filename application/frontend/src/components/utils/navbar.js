@@ -22,9 +22,7 @@ const navbar = ({ setListings }) => {
           Demonstration Only.
         </p>
 
-        <div className='mt-2'>
-          <Search setListings={setListings} />
-        </div>
+        <div className='mt-2'>{/* <Search setListings={setListings} /> */}</div>
       </center>
       <div className=''>
         <nav className='navbar navbar-expand-md navbar-light justify-content-end'>

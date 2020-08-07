@@ -1,12 +1,13 @@
 import Searchbar from '../search/search';
 import ListingDisplay from '../utils/display';
 
-const home = ({ listings }) => {
+const home = ({}) => {
+  const [listings, setListings] = React.useState([]);
   return (
     <>
       <center>
         <div className='my-5'>
-          {/* <Searchbar setListings={setListings} /> */}
+          <Searchbar setListings={setListings} />
         </div>
         <div>
           {listings.map((listing) => (

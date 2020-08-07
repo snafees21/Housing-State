@@ -35,7 +35,7 @@ const searchbar = ({ setListings }) => {
         }}
       >
         {({ isSubmitting }) => (
-          <Form>
+          <div>
             <div className='form-row'>
               <TextInput
                 name='search_term'
@@ -61,7 +61,7 @@ const searchbar = ({ setListings }) => {
                     Options
                   </button>
 
-                  <div class='dropdown-menu' role='menu'>
+                  <div className='dropdown-menu' role='menu'>
                     <Form>
                       <div className='mt-4 mb-1'>
                         <center className='text-muted'>Advanced Search</center>
@@ -136,7 +136,7 @@ const searchbar = ({ setListings }) => {
                 </div>
               </div>
             </div>
-          </Form>
+          </div>
         )}
       </Formik>
     </div>
