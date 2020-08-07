@@ -87,3 +87,16 @@ exports.getListingByUserId = async (req, res, next) => {
     res.sendStatus(500);
   }
 };
+
+// route: GET /api/listing/unapproved
+exports.getUnapprovedListings = async (req, res, next) => {
+  try {
+    const listings = await Listing.findAll({
+      where: { approved: null },
+    });
+    res.send(listings);
+  } catch (error) {
+    console.log(error);
+    res.sendStatus(500);
+  }
+};

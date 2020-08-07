@@ -1,19 +1,21 @@
-import { Switch, Route } from "react-router-dom";
-import { AuthContext } from "../utils/auth";
-import ProtectedRoute from "./utils/protectedRoute";
-import Home from "./home/home";
-import About from "./about/about";
-import Post from "./post/post";
-import Navbar from "./utils/navbar";
-import Signup from "./signup";
-import Login from "./login";
-import Account from "./account";
+import { Switch, Route } from 'react-router-dom';
+import { AuthContext } from '../utils/auth';
+import ProtectedRoute from './utils/protectedRoute';
+import Home from './home/home';
+import About from './about/about';
+import Post from './post/post';
+import Navbar from './utils/navbar';
+import Signup from './signup';
+import Login from './login';
+import Account from './account';
+import Admin from './admin';
 
 const App = () => {
-  const existingTokens = JSON.parse(localStorage.getItem("tokens"));
+  const existingTokens = JSON.parse(localStorage.getItem('tokens'));
   const [authTokens, setAuthTokens] = React.useState(existingTokens);
+  const [listings, setListings] = React.useState([]);
   const setTokens = (data) => {
-    localStorage.setItem("tokens", JSON.stringify(data));
+    localStorage.setItem('tokens', JSON.stringify(data));
     setAuthTokens(data);
   };
 
@@ -21,33 +23,36 @@ const App = () => {
     <>
       <AuthContext.Provider value={{ authTokens, setAuthTokens: setTokens }}>
         <header>
-          <Navbar />
+          <Navbar setListings={setListings} />
         </header>
 
-        <div className="col">
-          <div className="row">
+        <div className='col'>
+          <div className='row'>
             {authTokens && (
-              <div className="col-md-2 bg-dark">
-                <a class="card navbar-link" href="/account">
+              <div className='col-md-2 bg-dark'>
+                <a className='card navbar-link' href='/account'>
                   Account
                 </a>
-                <a class="card navbar-link" href="/message">
+                <a className='card navbar-link' href='/message'>
                   Message
                 </a>
-                <a class="card navbar-link" href="/post">
+                <a className='card navbar-link' href='/post'>
                   Post
                 </a>
               </div>
             )}
 
-            <div className="col">
+            <div className='col'>
               <Switch>
-                <Route path="/about" component={About} />
-                <ProtectedRoute path="/post" component={Post} />
-                <Route path="/signup" component={Signup} />
-                <Route path="/login" component={Login} />
-                <ProtectedRoute path="/account" component={Account} />
-                <Route exact path="/" component={Home} />
+                <Route path='/about' component={About} />
+                <ProtectedRoute path='/post' component={Post} />
+                <Route path='/signup' component={Signup} />
+                <Route path='/login' component={Login} />
+                <ProtectedRoute path='/account' component={Account} />
+                <ProtectedRoute path='/admin' component={Admin} />
+                <Route exact path='/'>
+                  <Home listings={listings} />
+                </Route>
               </Switch>
             </div>
           </div>
