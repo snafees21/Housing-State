@@ -29,7 +29,6 @@ exports.addListing = async (req, res, next) => {
   // unpacks key, values of req.body to provide
   // {column: value} association
   try {
-    console.log(req.body);
     await Listing.create(req.body);
     res.sendStatus(200);
   } catch (error) {

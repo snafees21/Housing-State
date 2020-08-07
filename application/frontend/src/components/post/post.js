@@ -1,8 +1,6 @@
 import * as Yup from 'yup';
 import axios from 'axios';
-import Page1 from './form/page1';
-import Page2 from './form/page2';
-import Page3 from './form/page3';
+import {Page1} from './form/page1';
 import { Wizard, WizardStep } from '../utils/multiStepForm';
 
 // TODO: redirect to viewListings after a posting successfullly
@@ -80,12 +78,6 @@ const post = ({ userId }) => {
             >
               <WizardStep validationSchema={page1Validation}>
                 <Page1 />
-              </WizardStep>
-              <WizardStep validationSchema={page2Validation}>
-                <Page2 />
-              </WizardStep>
-              <WizardStep validationSchema={page3Validation}>
-                <Page3 />
               </WizardStep>
             </Wizard>
           </div>
