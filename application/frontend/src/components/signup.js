@@ -60,7 +60,7 @@ const signup = (props) => {
   return (
     <div className='row container-fluid align-item-center justify-content-center my-5'>
       <div className='col-md-6'>
-        <div className='card mb-4'>
+        <div className='card mb-4 box-shadow'>
           <div className='card-body'>
             <Formik
               initialValues={{ ...formData }}

@@ -7,9 +7,8 @@ const navbar = () => {
   const { authTokens } = useAuth();
 
   return (
-    <div className="bg-dark">
+    <div className="col bg-dark">
       <center>
-        <div>
           <div className="row justify-content-center">
             <img
               src="https://raw.githubusercontent.com/CSC-648-SFSU/csc648-su20-team5/page-title-logo/application/frontend/src/assets/imgs/logo.jpg?token=AOPF5EZT72CMBRDXZFPQOKK7F6JFS"
@@ -22,7 +21,6 @@ const navbar = () => {
             SFSU Software Engineering Project CSC 648-848, Summer 2020 Team 5.
             For Demonstration Only.
           </p>
-        </div>
       </center>
 
       <div className="">

@@ -46,7 +46,7 @@ const searchbar = ({ setListings }) => {
             />
             <div className="col-md-2 btn-group">
               <button
-                className="btn btn-outline-primary"
+                className="btn btn-dark"
                 type="submit"
                 disabled={isSubmitting}
               >
@@ -54,7 +54,7 @@ const searchbar = ({ setListings }) => {
               </button>
               <div className="dropdown">
               <button
-                className="btn btn-outline-primary ml-2 dropdown-toggle "
+                className="btn btn-dark ml-2 dropdown-toggle "
                 type="button"
                 data-toggle="dropdown"
                 aria-expanded="false"

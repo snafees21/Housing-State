@@ -40,9 +40,6 @@ const Wizard = ({ children, initialValues, onSubmit }) => {
     >
       {(formik) => (
         <Form>
-          <p>
-            Step {stepNumber + 1} of {totalSteps}
-          </p>
           {step}
           <div>
             {stepNumber > 0 && (
