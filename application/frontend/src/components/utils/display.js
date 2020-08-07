@@ -16,13 +16,15 @@ const listingsDisplay = ({ listing }) => {
                 </div>
                 <div className='col-4 text-left'>
                   <h5>{listing.full_address}</h5>
-                  <ul>
+                  <ul className = 'bullet'>
                     <li>Bedrooms: {listing.bedrooms}</li>
                     <li>Bathrooms: {listing.bathrooms}</li>
                     <li>Cost: {listing.cost}</li>
                     <li>Offer Type: {listing.offer_type}</li>
-                    <li>Unit Type: {listing.unit_type}</li>
-                  </ul>
+                    <li>Unit Type: {listing.unit_type}</li> 
+                    
+                  </ul> 
+                 <button type="button" class="btn btn-dark">Contact Seller</button>
                 </div>
               </div>
             </div>
