@@ -1,4 +1,4 @@
-const Listing = require('../models/listing');
+const { Listing } = require('../models/associations');
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
 

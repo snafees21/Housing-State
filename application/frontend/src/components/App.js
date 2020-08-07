@@ -8,7 +8,7 @@ import Navbar from './utils/navbar';
 import Signup from './signup';
 import Login from './login';
 import Account from './account';
-import Message from './message/messagePage';
+import Message from './message/page';
 
 const App = () => {
   const existingTokens = JSON.parse(localStorage.getItem('tokens'));
