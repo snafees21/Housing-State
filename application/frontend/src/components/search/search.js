@@ -60,13 +60,11 @@ const searchbar = ({ setListings }) => {
                   >
                     Options
                   </button>
-
                   <div className='dropdown-menu' role='menu'>
                     <Form>
                       <div className='mt-4 mb-1'>
                         <center className='text-muted'>Advanced Search</center>
                       </div>
-
                       <div className='card-body'>
                         <div className='form-group text-left'>
                           <label className='label-text' htmlFor='unit_type'>

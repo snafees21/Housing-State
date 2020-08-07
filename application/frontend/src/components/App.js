@@ -34,10 +34,10 @@ const App = () => {
                 <a className='card navbar-link my-2' href='/account'>
                   Account
                 </a>
-                <a className='card navbar-link my-2' href='/message'>
+                <a className='card navbar-link' href='/message'>
                   Message
                 </a>
-                <a className='card navbar-link my-2' href='/post'>
+                <a className='card navbar-link' href='/post'>
                   Post
                 </a>
               </div>
