@@ -1,6 +1,5 @@
 import Searchbar from '../search/search';
 import ListingDisplay from '../utils/display';
-import { Form, Formik, Field } from 'formik';
 
 const home = ({ listings }) => {
   return (

@@ -2,26 +2,37 @@ import * as Yup from 'yup';
 import axios from 'axios';
 import { Page1 } from './form/page1';
 import { Wizard, WizardStep } from '../utils/multiStepForm';
+import { useAuth } from '../../utils/auth';
 
-// TODO: redirect to viewListings after a posting successfullly
-const post = ({ userId }) => {
+const post = ({}) => {
+  const [hasPosted, setHasPosted] = React.useState(false);
+  const { authTokens } = useAuth();
+
   const postListing = (body, { setSubmitting }) => {
-    console.log(body); // TODO
+    body['full_address'] =
+      body.building_num +
+      ' ' +
+      body.street +
+      ', ' +
+      body.city +
+      ', ' +
+      body.state +
+      ' ' +
+      body.zip_code;
+    const fd = new FormData();
+    Object.entries(body).forEach(([key, val]) => {
+      fd.append(key, val);
+    });
     axios
-      .post('/api/listing', body, {
-        headers: {
-          'Content-Type': 'form-data',
-        },
-      })
+      .post('/api/listing', fd)
       .then((res) => {
-        //setListings(res.data);
+        setHasPosted(true);
       })
       .catch((error) => {
         console.log(error);
-      })
-      .finally(() => setSubmitting(false));
+        setSubmitting(false);
+      });
   };
-
   const formData = {
     street: '',
     city: '',
@@ -36,18 +47,22 @@ const post = ({ userId }) => {
     cost: '',
     sq_footage: '',
     lease_length: '',
-    user_id: '1', // TODO
-    img_path: 'path/to/image', // TODO
+    img_path: '',
+    user_id: authTokens?.id,
     listingImage: undefined,
   };
 
   // define form validation rules
   const pageValidation = Yup.object({
-    building_num: Yup.number().positive().integer().required('Required'),
-    zip_code: Yup.number().positive().integer().required('Required'),
+    state: Yup.string()
+      .matches(/^[A-z]{2}$/, 'Must be two letters')
+      .required('Required'),
+    zip_code: Yup.string()
+      .matches(/^[0-9]{5}$/, 'Must be 5 digits')
+      .required('Required'),
     street: Yup.string().required('Required'),
     city: Yup.string().required('Required'),
-    state: Yup.string().required('Required'),
+    building_num: Yup.number().positive().integer().required('Required'),
     bedrooms: Yup.number().positive().integer().required('Required'),
     bathrooms: Yup.number().positive().required('Required'),
     unit_type: Yup.string().required('Required'),
@@ -74,6 +89,7 @@ const post = ({ userId }) => {
                 <Page1 />
               </WizardStep>
             </Wizard>
+            {hasPosted && <div>Post Successful!</div>}
           </div>
         </div>
       </div>

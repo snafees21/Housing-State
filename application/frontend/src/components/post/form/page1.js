@@ -5,7 +5,12 @@ import { useMemo, useCallback } from 'react';
 const Page1 = () => {
   const { setFieldValue } = useFormikContext();
   const setFile = useCallback((event) => {
-    setFieldValue('listingImage', event.currentTarget.files[0]);
+    const file = event.currentTarget.files[0];
+    setFieldValue('listingImage', file);
+    setFieldValue(
+      'img_path',
+      `listingImage-${Date.now()}.${file.type.split('/')[1]}`
+    );
   }, []);
 
   return (

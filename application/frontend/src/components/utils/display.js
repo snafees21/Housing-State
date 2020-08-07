@@ -9,6 +9,7 @@ const listingsDisplay = ({ listing }) => {
   const handleNewMessage = (body) => {
     if (authTokens) {
       body = { ...body, from_user: authTokens.id, to_user: listing.user_id };
+      console.log(body);
       axios
         .post('/api/message/', body)
         .then((res) => {

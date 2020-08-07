@@ -1,5 +1,6 @@
-const Message = require('../models/message');
+const { Message, User } = require('../models/associations');
 const Sequelize = require('sequelize');
+const Op = Sequelize.Op;
 
 // route: GET /api/message/:from_user
 exports.getConversationsWith = async (req, res, next) => {
@@ -8,9 +9,18 @@ exports.getConversationsWith = async (req, res, next) => {
       group: ['to_user'],
       attributes: [
         'to_user',
-        [Sequelize.fn('max', Sequelize.col('createdAt')), 'last_message_at'],
+        [
+          Sequelize.fn('max', Sequelize.col('Message.createdAt')),
+          'last_message_at',
+        ],
       ],
-      where: { from_user: req.params.from_user },
+      where: {
+        [Op.or]: [
+          { from_user: req.params.from_user },
+          { to_user: req.params.from_user },
+        ],
+      },
+      include: [{ model: User, attributes: ['first_name', 'last_name'] }],
       order: [[Sequelize.col('last_message_at'), 'DESC']],
     });
     res.send(conversations);
@@ -24,7 +34,13 @@ exports.getConversationsWith = async (req, res, next) => {
 exports.getMessages = async (req, res, next) => {
   try {
     const messages = await Message.findAll({
-      where: { from_user: req.params.from_user, to_user: req.params.to_user },
+      where: {
+        [Op.or]: [
+          { from_user: req.params.from_user, to_user: req.params.to_user },
+          { from_user: req.params.to_user, to_user: req.params.from_user },
+        ],
+      },
+      include: [{ model: User, attributes: ['first_name', 'last_name'] }],
       order: [['createdAt', 'DESC']],
     });
     res.send(messages);

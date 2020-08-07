@@ -40,7 +40,7 @@ const listingsDisplay = ({ listing }) => {
               </div>
               {authTokens.type == 'admin' && (
                 <button
-                  onClick={admin(listing.id, true)}
+                  onClick={() => admin(listing.id, true)}
                   className='float-right'
                 >
                   Approve
@@ -48,7 +48,7 @@ const listingsDisplay = ({ listing }) => {
               )}
               {authTokens.type == 'admin' && (
                 <button
-                  onClick={admin(listing.id, false)}
+                  onClick={() => admin(listing.id, false)}
                   className='float-right'
                 >
                   Reject

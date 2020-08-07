@@ -1,4 +1,4 @@
-const Listing = require('../models/listing');
+const { Listing } = require('../models/associations');
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
 
@@ -14,6 +14,7 @@ exports.searchListings = async (req, res, next) => {
         { offer_type: { [Op.like]: `%${req.query.offer_type}%` } },
         { bedrooms: { [Op.gte]: req.query.bedrooms } },
         { cost: { [Op.gte]: req.query.cost } },
+        { approved: { [Op.eq]: true } },
       ],
     };
     const listings = await Listing.findAll({ where: where });
