@@ -1,4 +1,4 @@
-import Searchbar from './search';
+import Searchbar from '../search/search';
 import ListingDisplay from '../utils/display';
 
 const home = () => {
