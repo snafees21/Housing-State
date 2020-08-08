@@ -66,7 +66,7 @@ const searchbar = ({ setListings }) => {
                       <center className='text-muted'>Advanced Search</center>
                     </div>
 
-                    <div className='card-body'>
+                    <Form className='card-body'>
                       <div className='form-group text-left'>
                         <label className='label-text' htmlFor='unit_type'>
                           Unit Type
@@ -129,7 +129,7 @@ const searchbar = ({ setListings }) => {
                           <option value='3000'>$3000+</option>
                         </Select>
                       </div>
-                    </div>
+                    </Form>
                   </div>
                 </div>
               </div>
