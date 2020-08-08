@@ -19,14 +19,14 @@ const admin = ({ listing }) => {
           <span className='input-group-btn'>
             <button
               type='submit'
-              className='btn btn-primary float-right ml-2'
+              className='btn btn-success float-right ml-2'
               onClick={() => stampListing(listing.id, true)}
             >
               Approve
             </button>
             <button
               type='submit'
-              className='btn btn-primary float-right ml-2'
+              className='btn btn-danger float-right ml-2'
               onClick={() => stampListing(listing.id, false)}
             >
               Reject

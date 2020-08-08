@@ -1,4 +1,5 @@
 import Admin from './admin';
+import Contact from './contact';
 
 const listingsDisplay = ({ listing }) => {
   return (
@@ -44,6 +45,7 @@ const listingsDisplay = ({ listing }) => {
           </div>
           <div className='card-footer'>
             <Admin listing={listing} />
+            <Contact listing={listing} />
           </div>
         </div>
       </div>
