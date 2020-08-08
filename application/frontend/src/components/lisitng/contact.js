@@ -15,7 +15,7 @@ const contact = ({ listing }) => {
         from_user: authTokens.id,
         to_user: listing.user_id,
       };
-      console.log(body);
+
       axios
         .post('/api/message/', body)
         .then((res) => {})
@@ -33,7 +33,7 @@ const contact = ({ listing }) => {
 
   return (
     <>
-      {authTokens.id != listing.id && (
+      {authTokens.id != listing.user_id && (
         <div>
           <button
             type='button'
