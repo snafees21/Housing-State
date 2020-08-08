@@ -15,7 +15,7 @@ const admin = ({ listing }) => {
   return (
     <>
       <div>
-        {authTokens.type == 'admin' && listing.approved == null && (
+        {authTokens?.type == 'admin' && listing.approved == null && (
           <span className='input-group-btn'>
             <button
               type='submit'

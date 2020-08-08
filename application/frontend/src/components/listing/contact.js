@@ -33,7 +33,7 @@ const contact = ({ listing }) => {
 
   return (
     <>
-      {authTokens.id != listing.user_id && (
+      {authTokens?.id != listing.user_id && (
         <div>
           <button
             type='button'
