@@ -35,10 +35,12 @@ const account = () => {
         <div>
           <button onClick={logOut}>Log out</button>
         </div>
-        <div>
-          {listings.map((listing) => (
-            <ListingDisplay key={listing.id} listing={listing} />
-          ))}
+        <div className='container my-5 p-5'>
+          <div className='row my-4'>
+            {listings.map((listing) => (
+              <ListingDisplay key={listing.id} listing={listing} />
+            ))}
+          </div>
         </div>
       </center>
     </>
