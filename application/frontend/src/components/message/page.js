@@ -1,7 +1,7 @@
 import axios from 'axios';
 import Preview from './previews';
-import Conversation from './conversation';
-import Chat from './chat';
+import Message from './message';
+import Send from './send';
 import { useAuth } from '../../utils/auth';
 
 const page = () => {
@@ -73,9 +73,11 @@ const page = () => {
                 {recepient}
               </center>
               <div className='bg-black message-scroll'>
-                <Conversation messages={messages} />
+                {messages.map((message) => (
+                  <Message key={message.createdAt} message={message} />
+                ))}
               </div>
-              <Chat message={messages[0]} />
+              <Send message={messages[0]} />
             </div>
           </div>
         </div>

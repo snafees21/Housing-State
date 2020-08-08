@@ -18,7 +18,6 @@ const listingsDisplay = ({ listing }) => {
                     <li>Beds: {listing.bedrooms}</li>
                     <li>Baths: {listing.bathrooms}</li>
                     <li>Cost: {listing.cost}</li>
-
                     <li>Offer: {listing.offer_type}</li>
                     <li>Unit: {listing.unit_type}</li>
                   </ul>

@@ -3,7 +3,7 @@ import { TextInput } from '../utils/inputs';
 import * as Yup from 'yup';
 import axios from 'axios';
 
-const chat = ({ message }) => {
+const send = ({ message }) => {
   const sendMessage = (body, { setSubmitting }) => {
     body = { ...body, to_user: message.to_user, from_user: message.from_user };
     console.log(body);
@@ -52,4 +52,4 @@ const chat = ({ message }) => {
   );
 };
 
-export default chat;
+export default send;

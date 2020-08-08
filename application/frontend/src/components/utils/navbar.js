@@ -1,7 +1,7 @@
 import Searchbar from '../home/search';
 import { useAuth } from '../../utils/auth';
 
-const navbar = ({}) => {
+const navbar = ({ setListings }) => {
   // will conditionally render login/sigup when no authTokens exist
   // and render Account when authTokens exist
   const { authTokens } = useAuth();
@@ -10,7 +10,9 @@ const navbar = ({}) => {
     <nav className='navbar navbar-expand-md navbar-fixed-top justify-content-end navbar-light bg-primary'>
       <div className='navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2'>
         <ul className='navbar-nav mr-auto'>
-          <li className='nav-item'></li>
+          <li className='nav-item'>
+            <h4>Housing State - Team 5</h4>
+          </li>
         </ul>
       </div>
       <div className='ml-auto navbar-brand order-0'>

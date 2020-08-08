@@ -31,10 +31,12 @@ const account = () => {
 
   return (
     <>
+      <div>
+        <button className='btn btn-warning' onClick={logOut}>
+          Log out
+        </button>
+      </div>
       <center>
-        <div>
-          <button onClick={logOut}>Log out</button>
-        </div>
         <div className='container my-5 p-5'>
           <div className='row my-4'>
             {listings.map((listing) => (

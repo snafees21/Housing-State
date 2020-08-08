@@ -42,6 +42,7 @@ const post = () => {
     sq_footage: '',
     lease_length: '',
     img_path: '',
+    full_address: '',
     user_id: authTokens?.id,
     listingImage: undefined,
   };
