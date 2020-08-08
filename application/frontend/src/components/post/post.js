@@ -79,27 +79,32 @@ const post = () => {
   }
 
   return (
-    <div className='row container-fluid align-item-center justify-content-center my-5'>
-      <div className='col-md-6'>
-        <div className='card mb-4'>
-          <div className='card-body'>
-            <Wizard
-              initialValues={{ ...formData }}
-              onSubmit={(values, { setSubmitting }) => {
-                setSubmitting(true);
-                postListing(values, { setSubmitting });
-              }}
-            >
-              <WizardStep validationSchema={page1Validation}>
-                <Page1 />
-              </WizardStep>
-              <WizardStep validationSchema={page2Validation}>
-                <Page2 />
-              </WizardStep>
-              <WizardStep validationSchema={page3Validation}>
-                <Page3 />
-              </WizardStep>
-            </Wizard>
+    <div>
+      <center>
+        <h4 className='mt-3'>Post a Listing</h4>
+      </center>
+      <div className='row container-fluid align-item-center justify-content-center mt-2'>
+        <div className='col-md-6'>
+          <div className='card mb-4'>
+            <div className='card-body'>
+              <Wizard
+                initialValues={{ ...formData }}
+                onSubmit={(values, { setSubmitting }) => {
+                  setSubmitting(true);
+                  postListing(values, { setSubmitting });
+                }}
+              >
+                <WizardStep validationSchema={page1Validation}>
+                  <Page1 />
+                </WizardStep>
+                <WizardStep validationSchema={page2Validation}>
+                  <Page2 />
+                </WizardStep>
+                <WizardStep validationSchema={page3Validation}>
+                  <Page3 />
+                </WizardStep>
+              </Wizard>
+            </div>
           </div>
         </div>
       </div>

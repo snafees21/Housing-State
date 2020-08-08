@@ -1,6 +1,9 @@
 import axios from 'axios';
+import { useAuth } from '../../utils/auth';
 
-const admin = ({ listingId }) => {
+const admin = ({ listing }) => {
+  const { authTokens } = useAuth();
+
   const stampListing = (listingId, status) => {
     axios
       .patch(`/api/listing/${listingId}`, { approved: status })
@@ -12,22 +15,24 @@ const admin = ({ listingId }) => {
   return (
     <>
       <div>
-        <span class='input-group-btn'>
-          <button
-            type='submit'
-            className='btn btn-primary float-right ml-2'
-            onClick={() => stampListing(listingId, true)}
-          >
-            Approve
-          </button>
-          <button
-            type='submit'
-            className='btn btn-primary float-right ml-2'
-            onClick={() => stampListing(listingId, false)}
-          >
-            Reject
-          </button>
-        </span>
+        {authTokens.type == 'admin' && listing.approved == null && (
+          <span class='input-group-btn'>
+            <button
+              type='submit'
+              className='btn btn-primary float-right ml-2'
+              onClick={() => stampListing(listing.id, true)}
+            >
+              Approve
+            </button>
+            <button
+              type='submit'
+              className='btn btn-primary float-right ml-2'
+              onClick={() => stampListing(listing.id, false)}
+            >
+              Reject
+            </button>
+          </span>
+        )}
       </div>
     </>
   );

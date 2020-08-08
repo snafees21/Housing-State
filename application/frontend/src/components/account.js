@@ -37,8 +37,9 @@ const account = () => {
         </button>
       </div>
       <center>
-        <div className='container my-5 p-5'>
-          <div className='row my-4'>
+        <h4 className='mt-3'>Your Listings</h4>
+        <div className='container my-2 p-5'>
+          <div className='row my-2'>
             {listings.map((listing) => (
               <ListingDisplay key={listing.id} listing={listing} />
             ))}

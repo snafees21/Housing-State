@@ -1,9 +1,6 @@
 import Admin from './admin';
-import { useAuth } from '../../utils/auth';
 
 const listingsDisplay = ({ listing }) => {
-  const { authTokens } = useAuth();
-
   return (
     <>
       <div className='col-lg-4 my-4'>
@@ -45,11 +42,9 @@ const listingsDisplay = ({ listing }) => {
               </tbody>
             </table>
           </div>
-          {authTokens.role == 'admin' && (
-            <div className='card-footer'>
-              <Admin listingId={listing.id} />
-            </div>
-          )}
+          <div className='card-footer'>
+            <Admin listing={listing} />
+          </div>
         </div>
       </div>
     </>
