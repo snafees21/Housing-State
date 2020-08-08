@@ -26,7 +26,7 @@ const account = () => {
     return () => (mounted = false);
   }, []);
 
-  if (authTokens.type != 'admin') {
+  if (authTokens?.type != 'admin') {
     return <Redirect to='/login' />;
   }
 

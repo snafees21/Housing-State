@@ -46,7 +46,7 @@ const listingsDisplay = ({ listing }) => {
                   Approve
                 </button>
               )}
-              {authTokens.type == 'admin' && (
+              {authTokens?.type == 'admin' && (
                 <button
                   onClick={() => admin(listing.id, false)}
                   className='float-right'
