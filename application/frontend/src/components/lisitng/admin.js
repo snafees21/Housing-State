@@ -16,7 +16,7 @@ const admin = ({ listing }) => {
     <>
       <div>
         {authTokens.type == 'admin' && listing.approved == null && (
-          <span class='input-group-btn'>
+          <span className='input-group-btn'>
             <button
               type='submit'
               className='btn btn-primary float-right ml-2'

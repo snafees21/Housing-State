@@ -44,7 +44,7 @@ const searchbar = ({ setListings }) => {
                       placeholder='Enter an address, city, or ZIP code'
                       maxLength='40'
                     />
-                    <span class='input-group-btn'>
+                    <span className='input-group-btn'>
                       <button
                         type='submit'
                         disabled={isSubmitting}
