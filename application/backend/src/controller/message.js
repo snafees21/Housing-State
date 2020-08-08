@@ -6,9 +6,10 @@ const Op = Sequelize.Op;
 exports.getConversationsWith = async (req, res, next) => {
   try {
     const conversations = await Message.findAll({
-      group: ['to_user'],
+      group: ['to_user', 'from_user'],
       attributes: [
         'to_user',
+        'from_user',
         [
           Sequelize.fn('max', Sequelize.col('Message.createdAt')),
           'last_message_at',

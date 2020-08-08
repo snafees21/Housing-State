@@ -50,7 +50,7 @@ const page = () => {
             <div
               key={preview.last_message_at}
               className='message-high-light bg-dark'
-              onClick={() => getMessages(authTokens?.id, preview.to_user)}
+              onClick={() => getMessages(preview.from_user, preview.to_user)}
             >
               <a
                 className='nav-link message-select'

@@ -153,8 +153,7 @@ const Listing = db.define('Listing', {
 
   approved: {
     type: Sequelize.BOOLEAN,
-    allowNull: false,
-    defaultValue: false,
+    allowNull: true,
     comment: 'whether listing has been approved by admin',
   },
 
