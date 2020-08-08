@@ -1,5 +1,5 @@
 import Searchbar from './search';
-import ListingDisplay from '../lisitng/display';
+import ListingDisplay from '../listing/display';
 
 const home = () => {
   const [listings, setListings] = React.useState([]);

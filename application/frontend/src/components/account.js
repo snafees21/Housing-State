@@ -1,5 +1,5 @@
 import axios from 'axios';
-import ListingDisplay from './lisitng/display';
+import ListingDisplay from './listing/display';
 import { useAuth } from '../utils/auth';
 
 const account = () => {
