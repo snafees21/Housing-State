@@ -7,7 +7,7 @@ import { useAuth } from '../../utils/auth';
 const page = () => {
   const [previews, setPreviews] = React.useState([]);
   const [messages, setMessages] = React.useState([]);
-  const [recepient, setRecipient] = React.useState('');
+  const [recepientName, setRecipientName] = React.useState('');
   const { authTokens } = useAuth();
 
   const getMessages = (fromUserId, toUserId) => {
@@ -15,7 +15,7 @@ const page = () => {
       .get(`/api/message/${fromUserId}/${toUserId}`)
       .then((res) => {
         setMessages(res.data);
-        setRecipient(res.data[0].User.first_name);
+        setRecipientName(res.data[0].User.first_name);
       })
       .catch((error) => {
         console.log(error);
@@ -70,7 +70,7 @@ const page = () => {
           <div className='tab-pane fade' id='message' role='tabpanel'>
             <div className='card bg-dark full-screen'>
               <center className='card-header font-weight-bold text-white'>
-                {recepient}
+                {recepientName}
               </center>
               <div className='bg-black message-scroll'>
                 {messages.map((message) => (
