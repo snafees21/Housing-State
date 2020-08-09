@@ -1,8 +1,9 @@
 import Searchbar from '../home/search';
 import { useAuth } from '../../utils/auth';
 
-const navbar = ({ setListings }) => {
+const navbar = () => {
   // will conditionally render login/sigup when no authTokens exist
+  // will render admin when authToken indicates user is an admin
   // and render Account when authTokens exist
   const { authTokens } = useAuth();
 
