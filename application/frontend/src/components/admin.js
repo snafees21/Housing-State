@@ -28,7 +28,7 @@ const account = () => {
   return (
     <>
       <center>
-        <h4 className='mt-3'>Pending Listings</h4>
+        <h4 className='mt-3'>All Pending Listings</h4>
         <div className='container my-2 p-5'>
           <div className='row my-2'>
             {listings.map((listing) => (

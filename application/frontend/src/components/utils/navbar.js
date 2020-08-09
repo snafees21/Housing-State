@@ -8,11 +8,24 @@ const navbar = () => {
   const { authTokens } = useAuth();
 
   return (
-    <nav className='navbar navbar-expand-md navbar-fixed-top justify-content-end navbar-light bg-primary'>
-      <div className='navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2'>
+    <nav className='navbar navbar-expand-md navbar-fixed-top justify-content-end navbar-light nav-color'>
+      <div className='navbar-collapse collapse w-150 order-1 order-md-0 dual-collapse2 '>
         <ul className='navbar-nav mr-auto'>
           <li className='nav-item'>
-            <h4>Housing State - Team 5</h4>
+            <div className='container'>
+              <div className='row'>
+                <div className='col'>
+                  <img
+                    src='https://raw.githubusercontent.com/CSC-648-SFSU/csc648-su20-team5/page-title-logo/application/frontend/src/assets/imgs/logo.jpg?token=AOPF5EZT72CMBRDXZFPQOKK7F6JFS'
+                    width='60'
+                    height='55'
+                  />
+                </div>
+                <div className='col-8'>
+                  <h5>Housing State</h5>
+                </div>
+              </div>
+            </div>
           </li>
         </ul>
       </div>
