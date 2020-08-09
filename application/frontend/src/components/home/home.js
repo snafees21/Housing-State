@@ -4,8 +4,6 @@ import axios from "axios";
 
 const home = () => {
   const [listings, setListings] = React.useState([]);
-  let test = null;
-
   const searchRecentListings = () => {
     axios
       .get("/api/listing/recent")
