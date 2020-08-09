@@ -1,22 +1,22 @@
-import Searchbar from '../search/searchbar';
-import ListingDisplay from '../search/showListings';
+import Searchbar from './search';
+import ListingDisplay from '../listing/display';
 
 const home = () => {
   const [listings, setListings] = React.useState([]);
 
   return (
-    <React.Fragment>
+    <>
       <center>
-        <div className='my-5'>
-          <Searchbar listings={listings} setListings={setListings} />
-        </div>
-        <div>
-          {listings.map((listing) => (
-            <ListingDisplay key={listing.id} listing={listing} />
-          ))}
+        <div className='col my-4 py-5'>
+          <Searchbar setListings={setListings} />
+          <div className='row my-4'>
+            {listings.map((listing) => (
+              <ListingDisplay key={listing.id} listing={listing} />
+            ))}
+          </div>
         </div>
       </center>
-    </React.Fragment>
+    </>
   );
 };
 
