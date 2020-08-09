@@ -5,35 +5,23 @@ import { TextInput } from "../utils/inputs";
 import { useAuth } from "../../utils/auth";
 
 const contact = ({ listing }) => {
-  const [loginRequired, setLoginRequired] = React.useState(false);
   const { authTokens } = useAuth();
 
   const sendMessage = (text) => {
-    if (authTokens) {
-      let body = {
-        ...text,
-        from_user: authTokens.id,
-        to_user: listing.user_id,
-      };
-
-      axios
-        .post("/api/message/", body)
-        .then((res) => {})
-        .catch((error) => {
-          console.log(error);
-        });
-    } else {
-      setLoginRequired(true);
-    }
+    let body = {
+      ...text,
+      from_user: authTokens.id,
+      to_user: sellerId,
+    };
+    axios.post('/api/message/', body).catch((error) => {
+      console.log(error);
+    });
   };
 
-  if (loginRequired) {
-    return <Redirect to="/login" />;
-  }
 
   return (
     <>
-      {authTokens?.id != listing.user_id && (
+      {authTokens && authTokens.id != listing.user_id && (
         <div>
           <button
             type="button"
@@ -95,6 +83,11 @@ const contact = ({ listing }) => {
               </div>
             </div>
           </div>
+        </div>
+      )}
+      {!authTokens && (
+        <div className='text-left drop-text'>
+          <a href='/login'>Log in to contact</a>
         </div>
       )}
     </>

@@ -1,5 +1,6 @@
-import Searchbar from "../home/search";
-import { useAuth } from "../../utils/auth";
+import logo from '../../assets/imgs/logo.jpg';
+import { useAuth } from '../../utils/auth';
+
 
 const navbar = () => {
   // will conditionally render login/sigup when no authTokens exist
@@ -8,6 +9,7 @@ const navbar = () => {
   const { authTokens } = useAuth();
 
   return (
+
     <>
        <center
           class="alert alert-warning alert-dismissible fade show message-no-padding"
@@ -23,18 +25,14 @@ const navbar = () => {
             <span aria-hidden="true">&times;</span>
           </button>
         </center>
-    <nav className="navbar navbar-expand-md navbar-fixed-top justify-content-end navbar-light nav-color">
-      <div className="navbar-collapse collapse w-150 order-1 order-md-0 dual-collapse2 ">
-        <ul className="navbar-nav mr-auto">
-          <li className="nav-item">
-            <div className="container">
-              <div className="row">
-                <div className="col">
-                  <img
-                    src="https://raw.githubusercontent.com/CSC-648-SFSU/csc648-su20-team5/page-title-logo/application/frontend/src/assets/imgs/logo.jpg?token=AOPF5EZT72CMBRDXZFPQOKK7F6JFS"
-                    width="60"
-                    height="55"
-                  />
+    <nav className='navbar navbar-expand-md navbar-fixed-top justify-content-end navbar-light nav-color'>
+      <div className='navbar-collapse collapse w-150 order-1 order-md-0 dual-collapse2 '>
+        <ul className='navbar-nav mr-auto'>
+          <li className='nav-item'>
+            <div className='container'>
+              <div className='row'>
+                <div className='col'>
+                  <img src={logo} width='60' height='55' />
                 </div>
                 <div className="col-8">
                   <h5>Housing State</h5>
