@@ -1,7 +1,5 @@
 const { Listing } = require('../models/associations');
 const Sequelize = require('sequelize');
-const { where } = require('sequelize');
-const { default: listing } = require('../routes/listing');
 const Op = Sequelize.Op;
 
 // route: GET /api/listing
