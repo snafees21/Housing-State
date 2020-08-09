@@ -1,5 +1,7 @@
 const { Listing } = require('../models/associations');
 const Sequelize = require('sequelize');
+const { where } = require('sequelize');
+const { default: listing } = require('../routes/listing');
 const Op = Sequelize.Op;
 
 // route: GET /api/listing
@@ -18,6 +20,17 @@ exports.searchListings = async (req, res, next) => {
       ],
     };
     const listings = await Listing.findAll({ where: where });
+    res.send(listings);
+  } catch (error) {
+    console.log(error);
+    res.sendStatus(500);
+  }
+};
+
+// route: GET /api/listing/pending
+exports.getPendingListings = async (req, res, next) => {
+  try {
+    const listings = await Listing.findAll({ where: { approved: null } });
     res.send(listings);
   } catch (error) {
     console.log(error);

@@ -37,6 +37,15 @@ const navbar = ({ setListings }) => {
               Post
             </a>
           </li>
+          {authTokens?.type == 'admin' && (
+            <>
+              <li className='nav-item'>
+                <a className='nav-link text-white' href='/admin'>
+                  Admin
+                </a>
+              </li>
+            </>
+          )}
           {authTokens && (
             <>
               <li className='nav-item'>

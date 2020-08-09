@@ -16,22 +16,22 @@ const admin = ({ listing }) => {
     <>
       <div>
         {authTokens?.type == 'admin' && listing.approved == null && (
-          <span className='input-group-btn'>
+          <div>
             <button
               type='submit'
-              className='btn btn-success float-right ml-2'
+              className='btn btn-success btn-sm float-right ml-2'
               onClick={() => stampListing(listing.id, true)}
             >
               Approve
             </button>
             <button
               type='submit'
-              className='btn btn-danger float-right ml-2'
+              className='btn btn-danger btn-sm float-right ml-2'
               onClick={() => stampListing(listing.id, false)}
             >
               Reject
             </button>
-          </span>
+          </div>
         )}
       </div>
     </>

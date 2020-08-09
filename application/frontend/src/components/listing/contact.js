@@ -37,7 +37,7 @@ const contact = ({ listing }) => {
         <div>
           <button
             type='button'
-            className='btn btn-dark float-left'
+            className='btn btn-dark btn-sm float-left'
             data-toggle='modal'
             data-target='#exampleModal'
           >

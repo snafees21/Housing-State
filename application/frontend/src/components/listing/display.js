@@ -44,8 +44,10 @@ const listingsDisplay = ({ listing }) => {
             </table>
           </div>
           <div className='card-footer'>
-            <Admin listing={listing} />
-            <Contact listing={listing} />
+            <span className='input-group-btn'>
+              <Admin listing={listing} />
+              <Contact listing={listing} />
+            </span>
           </div>
         </div>
       </div>

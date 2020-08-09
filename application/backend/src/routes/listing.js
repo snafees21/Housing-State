@@ -3,6 +3,7 @@ import {
   searchListings,
   getListing,
   getListingByUserId,
+  getPendingListings,
   addListing,
   updateListing,
   deleteListing,
@@ -16,12 +17,14 @@ listing
   .get(searchListings)
   .post(upload.single('listingImage'), addListing);
 
+listing.route('/user/:id').get(getListingByUserId);
+
+listing.route('/pending').get(getPendingListings);
+
 listing
   .route('/:id')
   .get(getListing)
   .patch(updateListing)
   .delete(deleteListing);
-
-listing.route('/user/:id').get(getListingByUserId);
 
 export default listing;

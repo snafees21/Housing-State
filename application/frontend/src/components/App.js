@@ -9,6 +9,7 @@ import Signup from './signup';
 import Login from './login';
 import Account from './account';
 import Message from './message/page';
+import Admin from './admin';
 
 const App = () => {
   const existingTokens = JSON.parse(localStorage.getItem('tokens'));
@@ -33,6 +34,7 @@ const App = () => {
               <Route path='/signup' component={Signup} />
               <Route path='/login' component={Login} />
               <ProtectedRoute path='/account' component={Account} />
+              <ProtectedRoute path='/admin' component={Admin} />
               <Route path='/message' component={Message} />
               <Route exact path='/' component={Home} />
             </Switch>
