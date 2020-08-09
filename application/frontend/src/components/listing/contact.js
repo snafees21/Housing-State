@@ -13,7 +13,6 @@ const contact = ({ listing }) => {
       from_user: authTokens.id,
       to_user: sellerId,
     };
-    console.log(body);
     axios.post('/api/message/', body).catch((error) => {
       console.log(error);
     });
