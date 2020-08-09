@@ -1,8 +1,8 @@
-import { Redirect } from 'react-router-dom';
-import axios from 'axios';
-import { Form, Formik } from 'formik';
-import { TextInput } from '../utils/inputs';
-import { useAuth } from '../../utils/auth';
+import { Redirect } from "react-router-dom";
+import axios from "axios";
+import { Form, Formik } from "formik";
+import { TextInput } from "../utils/inputs";
+import { useAuth } from "../../utils/auth";
 
 const contact = ({ listing }) => {
   const [loginRequired, setLoginRequired] = React.useState(false);
@@ -17,7 +17,7 @@ const contact = ({ listing }) => {
       };
 
       axios
-        .post('/api/message/', body)
+        .post("/api/message/", body)
         .then((res) => {})
         .catch((error) => {
           console.log(error);
@@ -28,7 +28,7 @@ const contact = ({ listing }) => {
   };
 
   if (loginRequired) {
-    return <Redirect to='/login' />;
+    return <Redirect to="/login" />;
   }
 
   return (
@@ -36,33 +36,33 @@ const contact = ({ listing }) => {
       {authTokens?.id != listing.user_id && (
         <div>
           <button
-            type='button'
-            className='btn btn-dark btn-sm float-left'
-            data-toggle='modal'
-            data-target='#exampleModal'
+            type="button"
+            className="btn btn-dark btn-sm float-left"
+            data-toggle="modal"
+            data-target="#Modal"
           >
             Contact
           </button>
 
-          <div
-            className='modal fade'
-            id='exampleModal'
-            tabIndex='-1'
-            role='dialog'
-          >
-            <div className='modal-dialog' role='document'>
-              <div className='modal-content'>
-                <div className='modal-header'>
-                  <h5 className='modal-title' id='exampleModalLabel'>
+          <div className="modal fade" id="Modal" tabIndex="-1" role="dialog">
+            <div className="modal-dialog" role="document">
+              <div className="modal-content">
+                <div className="modal-header">
+                  <h5 className="modal-title" id="ModalLabel">
                     Send them a message!
                   </h5>
-                  <button type='button' className='close'>
-                    <span>&times;</span>
+                  <button
+                    type="button"
+                    class="close"
+                    data-dismiss="modal"
+                    aria-label="Close"
+                  >
+                    <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
-                <div className='modal-body'>
+                <div className="modal-body">
                   <Formik
-                    initialValues={{ text: '' }}
+                    initialValues={{ text: "" }}
                     onSubmit={(values, { resetForm, setSubmitting }) => {
                       setSubmitting(true);
                       sendMessage(values);
@@ -71,19 +71,19 @@ const contact = ({ listing }) => {
                     }}
                   >
                     {({ isSubmitting }) => (
-                      <Form className='row py-2'>
+                      <Form className="row py-2">
                         <TextInput
-                          type='text'
-                          name='text'
-                          className='form-control col my-1'
-                          placeholder='Enter a message...'
-                          maxLength='200'
+                          type="text"
+                          name="text"
+                          className="form-control col my-1"
+                          placeholder="Enter a message..."
+                          maxLength="200"
                         />
-                        <div className='col-md-2'>
+                        <div className="col-md-2">
                           <button
-                            type='submit'
+                            type="submit"
                             disabled={isSubmitting}
-                            className='btn btn-dark'
+                            className="btn btn-dark"
                           >
                             Send
                           </button>
