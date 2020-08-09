@@ -1,4 +1,4 @@
-import Searchbar from '../home/search';
+import logo from '../../assets/imgs/logo.jpg';
 import { useAuth } from '../../utils/auth';
 
 const navbar = () => {
@@ -15,11 +15,7 @@ const navbar = () => {
             <div className='container'>
               <div className='row'>
                 <div className='col'>
-                  <img
-                    src='https://raw.githubusercontent.com/CSC-648-SFSU/csc648-su20-team5/page-title-logo/application/frontend/src/assets/imgs/logo.jpg?token=AOPF5EZT72CMBRDXZFPQOKK7F6JFS'
-                    width='60'
-                    height='55'
-                  />
+                  <img src={logo} width='60' height='55' />
                 </div>
                 <div className='col-8'>
                   <h5>Housing State</h5>
