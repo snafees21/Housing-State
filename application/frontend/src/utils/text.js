@@ -14,8 +14,10 @@ const bioNick = 'Hey guys, my name is Nick Brown. I am a senior here at SFSU and
                   working or attending school I am working on my 1969 Shovelhead chopper or hanging with my \
                   wife.';
 
-const bioSarah = 'Hello! My name is Sarah Nafees and I am a senior at SFSU.  I am the Frontend Lead for this project. ';
-
+const bioSarah = 'Hi! My name is Sarah Nafees. I am a senior at SFSU and will graduate in Fall 2020. My goal \
+                  is to become a frontend developer and I am excited to be the frontend lead in this project. \
+                  My hobbies/interests include yoga, outdoor activities, and sketching.';
+                                    
 const bioKamelia = 'Hello! My name is Kamelia Shaharova, I will be a senior this upcoming Fall semester at SFSU. \
                     I am interested in data science and web development, and am currently exploring my options \
                     but I am very excited about my future and its possibilities. In my free time I enjoy \
