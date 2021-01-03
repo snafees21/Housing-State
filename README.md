@@ -21,7 +21,7 @@ The purpose of this project was to introduce students to the full lifecycle of s
 ![image](https://user-images.githubusercontent.com/55061688/103488869-259eeb00-4dc5-11eb-8a53-ec5e57cf6fe7.png)
 
 ### Message
-![image](https://user-images.githubusercontent.com/55061688/103488759-60ecea00-4dc4-11eb-9d66-66ee1f450bcc.png)
+![image](https://user-images.githubusercontent.com/55061688/103488964-a6f67d80-4dc5-11eb-8c42-2528f7edfa83.png)
 
 ### Admin Panel
 ![image](https://user-images.githubusercontent.com/55061688/103488885-449d7d00-4dc5-11eb-99be-9a6304080a26.png)
