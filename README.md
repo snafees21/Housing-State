@@ -18,13 +18,13 @@ The purpose of this project was to introduce students to the full lifecycle of s
 ![image](https://user-images.githubusercontent.com/55061688/103488697-c42a4c80-4dc3-11eb-95cb-97e3f6fb0da1.png)
 
 ### Post Listing
-![image](https://user-images.githubusercontent.com/55061688/103488754-4fa3dd80-4dc4-11eb-80c2-40985f7118d1.png)
+![image](https://user-images.githubusercontent.com/55061688/103488869-259eeb00-4dc5-11eb-8a53-ec5e57cf6fe7.png)
 
 ### Message
 ![image](https://user-images.githubusercontent.com/55061688/103488759-60ecea00-4dc4-11eb-9d66-66ee1f450bcc.png)
 
 ### Admin Panel
-![image](https://user-images.githubusercontent.com/55061688/103488771-73672380-4dc4-11eb-982b-9f2b5d316f36.png)
+![image](https://user-images.githubusercontent.com/55061688/103488885-449d7d00-4dc5-11eb-99be-9a6304080a26.png)
 
 ### About Us
-![image](https://user-images.githubusercontent.com/55061688/103488794-9abdf080-4dc4-11eb-8e5d-674f4a3acfa8.png)
+![image](https://user-images.githubusercontent.com/55061688/103488914-6dbe0d80-4dc5-11eb-816d-8b70bfa0f7b7.png)
