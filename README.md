@@ -12,7 +12,7 @@ The purpose of this project was to introduce students to the full lifecycle of s
 ## Product Screenshots
 
 ### Home Page
-![image](https://user-images.githubusercontent.com/55061688/103488720-02277080-4dc4-11eb-96ec-22228a4807d1.png)
+![image](https://user-images.githubusercontent.com/55061688/103488841-f1c3c580-4dc4-11eb-9a00-a015ea941e88.png)
 
 ### Sign Up
 ![image](https://user-images.githubusercontent.com/55061688/103488697-c42a4c80-4dc3-11eb-95cb-97e3f6fb0da1.png)
