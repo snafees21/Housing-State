@@ -16,7 +16,7 @@
     "@emotion/core": "^10.0.35",
     "@emotion/styled": "^10.0.27",
     "axios": "^0.19.2",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "formik": "^2.1.5",
     "jquery": "^3.5.1",
     "popper.js": "^1.16.1",
